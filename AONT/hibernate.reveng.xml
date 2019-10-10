@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="T_Achievement" catalog="ApplicationOfNursinTeaching"
+		class="Model.TAchievement">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Answer" catalog="ApplicationOfNursinTeaching"
+		class="Model.TAnswer">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Check" catalog="ApplicationOfNursinTeaching"
+		class="Model.TCheck">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Class" catalog="ApplicationOfNursinTeaching"
+		class="Model.TClass">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_DailyLife" catalog="ApplicationOfNursinTeaching"
+		class="Model.TDailyLife">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_DiaRecord" catalog="ApplicationOfNursinTeaching"
+		class="Model.TDiaRecord">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Diagnosis" catalog="ApplicationOfNursinTeaching"
+		class="Model.TDiagnosis">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Exam" catalog="ApplicationOfNursinTeaching"
+		class="Model.TExam">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_HPI" catalog="ApplicationOfNursinTeaching"
+		class="Model.THPI">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_MainSuit" catalog="ApplicationOfNursinTeaching"
+		class="Model.TMainSuit">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Patient" catalog="ApplicationOfNursinTeaching"
+		class="Model.TPatient">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Problem" catalog="ApplicationOfNursinTeaching"
+		class="Model.TProblem">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Student" catalog="ApplicationOfNursinTeaching"
+		class="Model.TStudent">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Teacher" catalog="ApplicationOfNursinTeaching"
+		class="Model.TTeacher">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="T_UserType" catalog="ApplicationOfNursinTeaching"
+		class="Model.TUserType">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Grade" catalog="ApplicationOfNursinTeaching"
+		class="Model.TGrade">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="T_Department" catalog="ApplicationOfNursinTeaching"
+	class="Model.TDepartment">
+	<primary-key>
+		<generator class="identity"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>
