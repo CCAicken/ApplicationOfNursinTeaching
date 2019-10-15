@@ -110,8 +110,38 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="T_Proportion" catalog="ApplicationOfNursinTeaching"
-	class="Model.TProportion">
+	<table name="T_Proportion" catalog="ApplicationOfNursinTeaching"
+		class="Model.TProportion">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Achievement" catalog="ApplicationOfNursinTeaching"
+		class="Model.VAchievement">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Class" catalog="ApplicationOfNursinTeaching"
+		class="Model.VClass">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Student" catalog="ApplicationOfNursinTeaching"
+		class="Model.VStudent">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="V_Teacher" catalog="ApplicationOfNursinTeaching"
+		class="Model.VTeacher">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+<table name="V_Diagnosis" catalog="ApplicationOfNursinTeaching"
+	class="Model.VDiagnosis">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
