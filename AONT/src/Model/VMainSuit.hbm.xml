@@ -6,6 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="Model.VMainSuit" table="V_MainSuit" catalog="ApplicationOfNursinTeaching">
+        
             <id name="mainSuitId" type="java.lang.Integer">
                 <column name="mainSuitId" />
             </id>
@@ -96,5 +97,8 @@
             <property name="personaHobbies" type="java.lang.String">
                 <column name="personaHobbies" length="100" />
             </property>
+            <property name="depName" type="java.lang.String">
+                <column name="depName" length="100" />
+            </property> 
     </class>
 </hibernate-mapping>
