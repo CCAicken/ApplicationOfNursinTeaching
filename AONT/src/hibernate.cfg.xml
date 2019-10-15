@@ -40,8 +40,9 @@
 		<mapping resource="Model/VAchievement.hbm.xml" />
 		<mapping resource="Model/VClass.hbm.xml" />
 		<mapping resource="Model/VStudent.hbm.xml" />
-		<mapping resource="Model/VTeacher.hbm.xml" /> 
+		<mapping resource="Model/VTeacher.hbm.xml" />
 		<mapping resource="Model/VDiagnosis.hbm.xml" />
+		<mapping resource="Model/VMainSuit.hbm.xml" />
 
 	</session-factory>
 

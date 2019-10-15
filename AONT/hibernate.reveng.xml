@@ -140,8 +140,14 @@
 			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-<table name="V_Diagnosis" catalog="ApplicationOfNursinTeaching"
-	class="Model.VDiagnosis">
+	<table name="V_Diagnosis" catalog="ApplicationOfNursinTeaching"
+		class="Model.VDiagnosis">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_MainSuit" catalog="ApplicationOfNursinTeaching"
+	class="Model.VMainSuit">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
