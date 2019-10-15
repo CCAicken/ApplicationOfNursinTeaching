@@ -30,6 +30,16 @@ public interface AchievementDAO {
 	 */
 	public boolean update(TAchievement Achievement);
 	/**
+	 * 根据id查询 成绩
+	 * @return  成绩数据实体
+	 */
+	public  TAchievement select(int TAchievementid);
+	/**
+	 * 根据id查询 成绩视图
+	 * @return  成绩数据实体
+	 */
+	public  VAchievement selectVachievement(int Achievementid);
+	/**
 	 * 查询所有成绩
 	 * @return 成绩数据集
 	 */
@@ -43,15 +53,15 @@ public interface AchievementDAO {
 	 * @return
 	 */
 	public int getAchievementrAmount(String wherecondition);
-
 	
- /**
-  * 根据条件查询成绩
-  * @param likecondtion 条件
-  * @param currentPage  开始页数
-  * @param pageSize 每页数量
-  * @return 成绩数据集
-  */
+		
+	 /**
+	  * 根据条件查询成绩
+	  * @param likecondtion 条件
+	  * @param currentPage  开始页数
+	  * @param pageSize 每页数量
+	  * @return 成绩数据集
+	  */
 	public List<VAchievement> getAchievementByLike(String likecondtion,int currentPage, int pageSize);
 	
 }

@@ -12,7 +12,6 @@ import business.DAO.AchievementDAO;
  */
 public class AchievementImpl implements AchievementDAO {
 
- 
 	@Override
 	public int Insert(TAchievement Achievement) {
 		// TODO Auto-generated method stub
@@ -29,6 +28,18 @@ public class AchievementImpl implements AchievementDAO {
 	public boolean update(TAchievement Achievement) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public TAchievement select(int TAchievementid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public VAchievement selectVachievement(int Achievementid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -50,4 +61,5 @@ public class AchievementImpl implements AchievementDAO {
 		return null;
 	}
 
+ 
 }

@@ -44,6 +44,7 @@
 		<mapping resource="Model/VDiagnosis.hbm.xml" />
 		<mapping resource="Model/VMainSuit.hbm.xml" />
 		<mapping resource="Model/VCheck.hbm.xml" />
+		<mapping resource="Model/VExam.hbm.xml" />
 
 	</session-factory>
 

@@ -152,8 +152,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_Check" catalog="ApplicationOfNursinTeaching"
-	class="Model.VCheck">
+	<table name="V_Check" catalog="ApplicationOfNursinTeaching"
+		class="Model.VCheck">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_Exam" catalog="ApplicationOfNursinTeaching"
+	class="Model.VExam">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
