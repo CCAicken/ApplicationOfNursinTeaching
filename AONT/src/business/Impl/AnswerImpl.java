@@ -5,6 +5,13 @@ import java.util.List;
 
 
 
+
+
+
+
+
+import Basic.iHibBaseDAO;
+import Basic.iHibBaseDAOImpl;
 import Model.TAnswer;
 import business.DAO.AnswerDAO;
 /**
@@ -13,36 +20,52 @@ import business.DAO.AnswerDAO;
  *
  */
 public class AnswerImpl implements AnswerDAO {
+	private iHibBaseDAO bdao;
+
+	public AnswerImpl() {
+		this.bdao = new iHibBaseDAOImpl();
+	}
 
 	@Override
 	public boolean insert(TAnswer answer) {
-		// TODO Auto-generated method stub
+		Integer id= (Integer) bdao.insert(answer);
+		if (id!=null  && !id.equals("")) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public TAnswer select(int TAnswerid) {
-		// TODO Auto-generated method stub
-		return null;
+		 
+		return (TAnswer) bdao.findById(TAnswer.class, TAnswerid);
 	}
 
 	@Override
 	public List<TAnswer> select() {
-		// TODO Auto-generated method stub
-		return null;
+		return 	bdao.select("from TAnswer");
 	}
 
 	@Override
 	public int getAnswerAmount(String wherecondition) {
-		// TODO Auto-generated method stub
-		return 0;
+		String hql="from TAnswer ";
+		if (wherecondition!=null&&wherecondition.equals("")) {
+			hql+=wherecondition;
+		}
+		
+		return bdao.selectValue(hql);
 	}
 
 	@Override
 	public List<TAnswer> getAnswerByLike(String likecondtion, int currentPage,
 			int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from TAnswer";
+		if (likecondtion != null && !likecondtion.equals("")) {
+			hql += likecondtion;
+		}
+		hql += " order by createTime asc";
+		return	  bdao.selectByPage(hql, currentPage, pageSize);
+		 
 	}
 
 	

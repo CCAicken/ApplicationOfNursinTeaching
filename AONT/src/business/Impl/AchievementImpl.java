@@ -28,51 +28,61 @@ public class AchievementImpl implements AchievementDAO {
 	}
 
 	@Override
-	public boolean delete(int Achid) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(int Achid) {  
+		return bdao.delete(bdao.findById(TAchievement.class, Achid));
 	}
 
 	@Override
 	public boolean update(TAchievement Achievement) {
-		// TODO Auto-generated method stub
-		return false;
+		//TAchievement oldAchievement= (TAchievement) bdao.findById(TAchievement.class, Achievement.getAchId());
+		 
+		return bdao.update(Achievement);
 	}
 
 	@Override
 	public TAchievement select(int TAchievementid) {
 		// TODO Auto-generated method stub
-		return null;
+		return  (TAchievement) bdao.findById(TAchievement.class, TAchievementid);
 	}
 
 	@Override
 	public VAchievement selectVachievement(int Achievementid) {
 		// TODO Auto-generated method stub
-		return null;
+		return   (VAchievement) bdao.findById(VAchievement.class, Achievementid);
 	}
 
 	@Override
 	public List<VAchievement> select() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return 	bdao.select("from VAchievement");
 	}
 
 	@Override
 	public int getAchievementrAmount(String wherecondition) {
-		// TODO Auto-generated method stub
-		return 0;
+		String hql="from VAchievement ";
+		if (wherecondition!=null&&wherecondition.equals("")) {
+			hql+=wherecondition;
+		}
+		
+		return bdao.selectValue(hql);
 	}
 
 	@Override
 	public List<VAchievement> getAchievementByLike(String likecondtion,
 			int currentPage, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from VAchievement";
+		if (likecondtion != null && !likecondtion.equals("")) {
+			hql += likecondtion;
+		}
+		hql += " order by achId asc";
+		return	  bdao.selectByPage(hql, currentPage, pageSize);
+		 
+	 
 	}
 	 
-	public static void main(String[] args) {
-		 
-
-	}
+//	public static void main(String[] args) {
+//		 
+//
+//	}
  
 }
