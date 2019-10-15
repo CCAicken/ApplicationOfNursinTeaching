@@ -46,7 +46,7 @@ public interface TeacherDAO {
 	 * 
 	 * @return
 	 */
-	public List<VTeacher> getTeaByUserType();
+	public List<VTeacher> getTeaByUserType(int userTypeId);
 
 	/**
 	 * 根据用户Id获取教师信息
