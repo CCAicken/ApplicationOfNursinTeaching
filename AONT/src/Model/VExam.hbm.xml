@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="Model.VExam" table="V_Exam" catalog="ApplicationOfNursinTeaching">
-        
+         
             <id name="examId" type="java.lang.Integer">
                 <column name="examId" />
             </id>

@@ -2,6 +2,10 @@ package business.Impl;
 
 import java.util.List;
 
+import org.apache.log4j.chainsaw.Main;
+
+import Basic.iHibBaseDAO;
+import Basic.iHibBaseDAOImpl;
 import Model.TAchievement;
 import Model.VAchievement;
 import business.DAO.AchievementDAO;
@@ -11,11 +15,16 @@ import business.DAO.AchievementDAO;
  *
  */
 public class AchievementImpl implements AchievementDAO {
+	private iHibBaseDAO bdao;
+
+	public AchievementImpl() {
+		this.bdao = new iHibBaseDAOImpl();
+	}
 
 	@Override
 	public int Insert(TAchievement Achievement) {
-		// TODO Auto-generated method stub
-		return 0;
+		return 	(int) bdao.insert(Achievement);
+		
 	}
 
 	@Override
@@ -60,6 +69,10 @@ public class AchievementImpl implements AchievementDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	 
+	public static void main(String[] args) {
+		 
 
+	}
  
 }
