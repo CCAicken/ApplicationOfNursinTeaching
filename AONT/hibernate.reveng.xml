@@ -98,8 +98,20 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="T_Department" catalog="ApplicationOfNursinTeaching"
-	class="Model.TDepartment">
+	<table name="T_Department" catalog="ApplicationOfNursinTeaching"
+		class="Model.TDepartment">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_KeyWord" catalog="ApplicationOfNursinTeaching"
+		class="Model.TKeyword">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="T_Proportion" catalog="ApplicationOfNursinTeaching"
+	class="Model.TProportion">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

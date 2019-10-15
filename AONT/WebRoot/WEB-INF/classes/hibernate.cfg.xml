@@ -17,8 +17,7 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-		<property name="myeclipse.connection.profile">mysql</property>
-		<mapping resource="Model/Tachievement.hbm.xml" />
+		<property name="myeclipse.connection.profile">mysql</property> 
 		<mapping resource="Model/TAnswer.hbm.xml" />
 		<mapping resource="Model/TAchievement.hbm.xml" />
 		<mapping resource="Model/TCheck.hbm.xml" />
@@ -34,9 +33,10 @@
 		<mapping resource="Model/TStudent.hbm.xml" />
 		<mapping resource="Model/TTeacher.hbm.xml" />
 		<mapping resource="Model/TUserType.hbm.xml" />
-		<mapping resource="Model/TGrade.hbm.xml" />
-		<mapping resource="Model/Department.hbm.xml" />
+		<mapping resource="Model/TGrade.hbm.xml" /> 
 		<mapping resource="Model/TDepartment.hbm.xml" />
+		<mapping resource="Model/TKeyword.hbm.xml" /> 
+		<mapping resource="Model/TProportion.hbm.xml" />
 
 	</session-factory>
 
