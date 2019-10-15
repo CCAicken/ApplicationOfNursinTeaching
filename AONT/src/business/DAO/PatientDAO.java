@@ -3,6 +3,7 @@ package business.DAO;
 import java.util.List;
 
 import Model.TPatient;
+import Model.VMainSuit;
 
 /***
  * 
@@ -33,18 +34,32 @@ public interface PatientDAO {
 	 */
 	public boolean delPat(int patId);
 
+	// /**
+	// * 获取所有病人信息
+	// *
+	// * @return
+	// */
+	// public List<TPatient> getAllPat();
+
+	// /**
+	// * 根据病人Id获取病人信息
+	// *
+	// * @param patId
+	// * @return
+	// */
+	// public TPatient getPatById(int patId);
 	/**
-	 * 获取所有病人信息
+	 * 根据病人Id获取病人基本信息
 	 * 
+	 * @param pId
 	 * @return
 	 */
-	public List<TPatient> getAllPat();
+	public VMainSuit getPatByPId(int pId);
 
 	/**
-	 * 根据病人Id获取病人信息
+	 * 获取所有病人基本信息
 	 * 
-	 * @param patId
 	 * @return
 	 */
-	public TPatient getPatById(int patId);
+	public List<VMainSuit> getAllPat();
 }

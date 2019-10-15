@@ -3,6 +3,7 @@ package business.DAO;
 import java.util.List;
 
 import Model.TMainSuit;
+import Model.VMainSuit;
 
 /***
  * 主要症状模块接口
@@ -40,6 +41,13 @@ public interface MainSuitDAO {
 	 * 
 	 * @return
 	 */
-	public List<TMainSuit> getAllMs();
+	public List<VMainSuit> getAllMs();
 
+	/**
+	 * 根据主诉Id获取主诉对应基本信息
+	 * 
+	 * @param msId
+	 * @return
+	 */
+	public VMainSuit getMsByMsId(int msId);
 }
