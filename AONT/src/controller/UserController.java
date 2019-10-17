@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -226,6 +227,92 @@ public class UserController {
 	}
 
 	/**
+	 * 获取所有学生
+	 * 
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getallstu")
+	public void getAllStu(HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		StudentImpl studao = new StudentImpl();
+		List<VStudent> list = studao.getAllStu();
+		LayuiData laydata = new LayuiData();
+		laydata.code = LayuiData.SUCCESS;
+		laydata.data = list;
+		laydata.msg = "查询成功";
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 根据班级获取学生
+	 * 
+	 * @param classId
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getstubyclass")
+	public void getStuByClassId(int classId, HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		StudentImpl studao = new StudentImpl();
+		List<VStudent> list = studao.getStuByClassId(classId);
+		LayuiData laydata = new LayuiData();
+		laydata.code = LayuiData.SUCCESS;
+		laydata.data = list;
+		laydata.msg = "查询成功";
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 根据学生账号获取学生信息
+	 * 
+	 * @param stuId
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getStuByStuId")
+	public void getStuByStuId(String stuId, HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		StudentImpl studao = new StudentImpl();
+		VStudent stu = studao.getStuByStuId(stuId);
+		LayuiData laydata = new LayuiData();
+		laydata.code = LayuiData.SUCCESS;
+		laydata.data = stu;
+		laydata.msg = "查询成功";
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * 教师登录
 	 * 
 	 * @param teaId
@@ -384,6 +471,63 @@ public class UserController {
 			laydata.code = LayuiData.ERRR;
 			laydata.msg = "删除失败";
 		}
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 获取所有教师用户
+	 * 
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getTea")
+	public void getTea(HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		TeacherImpl teadao = new TeacherImpl();
+		List<VTeacher> list = teadao.getAllTea();
+		LayuiData laydata = new LayuiData();
+		laydata.code = LayuiData.SUCCESS;
+		laydata.data = list;
+		laydata.msg = "查询成功";
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 根据账号获取教师信息
+	 * 
+	 * @param teaId
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getTeaId")
+	public void getByGrade(String teaId, HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		TeacherImpl teadao = new TeacherImpl();
+		VTeacher tea = teadao.getTeaById(teaId);
+		LayuiData laydata = new LayuiData();
+		laydata.code = LayuiData.SUCCESS;
+		laydata.data = tea;
+		laydata.msg = "查询成功";
 		Writer out;
 		try {
 			out = response.getWriter();

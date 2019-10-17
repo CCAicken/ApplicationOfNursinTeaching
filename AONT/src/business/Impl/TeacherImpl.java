@@ -15,7 +15,7 @@ public class TeacherImpl implements TeacherDAO {
 		this.bdao = bdao;
 	}
 
-	// public teacherImpl() {
+	// public void teacherImpl() {
 	// bdao = new iHibBaseDAOImpl();
 	// }
 
@@ -68,10 +68,10 @@ public class TeacherImpl implements TeacherDAO {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TTeacher tea = new TTeacher();
-		tea.setTeaId("1001");
+		tea.setTeaId("1008");
 		tea.setAgend("男");
 		tea.setJobTitle("教授");
-		tea.setNation("龙");
+		tea.setTeaPhoto("15108809880");
 		tea.setTeaName("潘森");
 		tea.setTeapwd("123456");
 		tea.setUserType(1);
