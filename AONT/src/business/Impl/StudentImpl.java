@@ -65,4 +65,22 @@ public class StudentImpl implements StudentDAO {
 		return student;
 	}
 
+	@Override
+	public TStudent stuLogin(String stuId, String pwd) {
+		// TODO Auto-generated method stub
+		TStudent student = (TStudent) bdao.findById(TStudent.class, stuId);
+		if (pwd.equals(student.getStupwd())) {
+			return student;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public TStudent getStuFromTStu(String stuId) {
+		// TODO Auto-generated method stub
+		TStudent stu = (TStudent) bdao.findById(TStudent.class, stuId);
+		return stu;
+	}
+
 }

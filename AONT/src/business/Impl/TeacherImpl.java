@@ -80,4 +80,22 @@ public class TeacherImpl implements TeacherDAO {
 		System.out.print(count);
 	}
 
+	@Override
+	public TTeacher teaLogin(String teaId, String pwd) {
+		// TODO Auto-generated method stub
+		TTeacher teacher = (TTeacher) bdao.findById(TTeacher.class, teaId);
+		if (pwd.equals(teacher.getTeapwd())) {
+			return teacher;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public TTeacher getTeaFromTTea(String teaId) {
+		// TODO Auto-generated method stub
+		TTeacher tea = (TTeacher) bdao.findById(TTeacher.class, teaId);
+		return tea;
+	}
+
 }

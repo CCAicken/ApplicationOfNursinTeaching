@@ -49,10 +49,27 @@ public interface TeacherDAO {
 	public List<VTeacher> getTeaByUserType(int userTypeId);
 
 	/**
-	 * 根据用户Id获取教师信息
+	 * 根据用户Id获取教师信息 从教师视图获取教师信息
 	 * 
 	 * @param teaId
 	 * @return
 	 */
 	public VTeacher getTeaById(String teaId);
+
+	/**
+	 * 从教师表获取教师信息
+	 * 
+	 * @param teaId
+	 * @return
+	 */
+	public TTeacher getTeaFromTTea(String teaId);
+
+	/**
+	 * 教师用户登录
+	 * 
+	 * @param teaId
+	 * @param pwd
+	 * @return
+	 */
+	public TTeacher teaLogin(String teaId, String pwd);
 }

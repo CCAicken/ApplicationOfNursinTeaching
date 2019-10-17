@@ -50,10 +50,27 @@ public interface StudentDAO {
 	public List<VStudent> getStuByClassId(int classId);
 
 	/**
-	 * 根据学生Id获取学生信息
+	 * 根据学生Id从学生视图获取学生信息
 	 * 
 	 * @param stuId
-	 * @return
+	 * @return 学生实体
 	 */
 	public VStudent getStuByStuId(String stuId);
+
+	/**
+	 * 根据学生Id从学生表获取学生信息
+	 * 
+	 * @param stuId
+	 * @return 学生实体
+	 */
+	public TStudent getStuFromTStu(String stuId);
+
+	/**
+	 * 学生登录
+	 * 
+	 * @param stuId
+	 * @param pwd
+	 * @return
+	 */
+	public TStudent stuLogin(String stuId, String pwd);
 }
