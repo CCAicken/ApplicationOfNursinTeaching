@@ -4,7 +4,6 @@ import java.util.List;
 
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
-import Model.TDiaRecord;
 import Model.TExam;
 import Model.VExam;
 import business.DAO.ExamDAO;
@@ -15,10 +14,11 @@ public class ExamImpl implements ExamDAO {
 	public ExamImpl() {
 		this.bdao = new iHibBaseDAOImpl();
 	}
+
 	@Override
 	public boolean Insert(TExam TExam) {
-		Integer id= (Integer) bdao.insert(TExam);
-		if (id!=null  && !id.equals("")) {
+		Integer id = (Integer) bdao.insert(TExam);
+		if (id != null && !id.equals("")) {
 			return true;
 		}
 		return false;
@@ -36,32 +36,32 @@ public class ExamImpl implements ExamDAO {
 
 	@Override
 	public boolean update(TExam TExam) {
-		return bdao.update( TExam);
+		return bdao.update(TExam);
 	}
 
 	@Override
 	public List<VExam> select() {
-		return 	bdao.select("from VExam");
+		return bdao.select("from VExam");
 	}
 
 	@Override
-	public int getAchievementrAmount(String wherecondition) {
-		String hql="from VExam ";
-		if (wherecondition!=null&&wherecondition.equals("")) {
-			hql+=wherecondition;
+	public int getVExamAmount(String wherecondition) {
+		String hql = "from VExam ";
+		if (wherecondition != null && wherecondition.equals("")) {
+			hql += wherecondition;
 		}
-		
+
 		return bdao.selectValue(hql);
 	}
 
 	@Override
-	public List<VExam> getAchievementByLike(String likecondtion,
-			int currentPage, int pageSize) {
+	public List<VExam> getVExamByLike(String likecondtion, int currentPage,
+			int pageSize) {
 		String hql = "from VExam";
 		if (likecondtion != null && !likecondtion.equals("")) {
 			hql += likecondtion;
-		} 
-		return	  bdao.selectByPage(hql, currentPage, pageSize);
+		}
+		return bdao.selectByPage(hql, currentPage, pageSize);
 	}
 
 }

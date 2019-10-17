@@ -4,8 +4,6 @@ import java.util.List;
 
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
-import Model.TAchievement;
-import Model.TAnswer;
 import Model.TCheck;
 import Model.VCheck;
 import business.DAO.CheckDAO;
@@ -16,10 +14,11 @@ public class CheckImpl implements CheckDAO {
 	public CheckImpl() {
 		this.bdao = new iHibBaseDAOImpl();
 	}
+
 	@Override
 	public boolean Insert(TCheck Check) {
-		Integer id= (Integer) bdao.insert(Check);
-		if (id!=null  && !id.equals("")) {
+		Integer id = (Integer) bdao.insert(Check);
+		if (id != null && !id.equals("")) {
 			return true;
 		}
 		return false;
@@ -47,32 +46,32 @@ public class CheckImpl implements CheckDAO {
 
 	@Override
 	public List<VCheck> select() {
-		return 	bdao.select("from VCheck");
+		return bdao.select("from VCheck");
 	}
 
 	@Override
-	public int getAchievementrAmount(String wherecondition) {
-		String hql="from VCheck ";
-		if (wherecondition!=null&&wherecondition.equals("")) {
-			hql+=wherecondition;
+	public int getVCheckAmount(String wherecondition) {
+		String hql = "from VCheck ";
+		if (wherecondition != null && wherecondition.equals("")) {
+			hql += wherecondition;
 		}
-		
+
 		return bdao.selectValue(hql);
 	}
 
 	@Override
-	public List<VCheck> getAchievementByLike(String likecondtion,
-			int currentPage, int pageSize) {
+	public List<VCheck> getVCheckByLike(String likecondtion, int currentPage,
+			int pageSize) {
 		String hql = "from VCheck";
 		if (likecondtion != null && !likecondtion.equals("")) {
 			hql += likecondtion;
-		} 
-		return	  bdao.selectByPage(hql, currentPage, pageSize);
+		}
+		return bdao.selectByPage(hql, currentPage, pageSize);
 	}
 
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//
-//	}
+	// public static void main(String[] args) {
+	// // TODO Auto-generated method stub
+	//
+	// }
 
 }

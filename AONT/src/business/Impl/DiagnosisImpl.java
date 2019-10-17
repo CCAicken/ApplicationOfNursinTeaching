@@ -4,22 +4,22 @@ import java.util.List;
 
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
-import Model.TDepartment;
 import Model.TDiagnosis;
 import Model.VDiagnosis;
 import business.DAO.DiagnosisDAO;
 
 public class DiagnosisImpl implements DiagnosisDAO {
-	
+
 	private iHibBaseDAO bdao;
 
 	public DiagnosisImpl() {
 		this.bdao = new iHibBaseDAOImpl();
 	}
+
 	@Override
 	public boolean Insert(TDiagnosis TDiagnosis) {
-		Integer id= (Integer) bdao.insert(TDiagnosis);
-		if (id!=null  && !id.equals("")) {
+		Integer id = (Integer) bdao.insert(TDiagnosis);
+		if (id != null && !id.equals("")) {
 			return true;
 		}
 		return false;
@@ -42,27 +42,27 @@ public class DiagnosisImpl implements DiagnosisDAO {
 
 	@Override
 	public List<VDiagnosis> select() {
-		return 	bdao.select("from VDiagnosis");
+		return bdao.select("from VDiagnosis");
 	}
 
 	@Override
-	public int getAchievementrAmount(String wherecondition) {
-		String hql="from VDiagnosis ";
-		if (wherecondition!=null&&wherecondition.equals("")) {
-			hql+=wherecondition;
+	public int getVDiagnosisAmount(String wherecondition) {
+		String hql = "from VDiagnosis ";
+		if (wherecondition != null && wherecondition.equals("")) {
+			hql += wherecondition;
 		}
-		
+
 		return bdao.selectValue(hql);
 	}
 
 	@Override
-	public List<VDiagnosis> getAchievementByLike(String likecondtion,
+	public List<VDiagnosis> getVDiagnosisByLike(String likecondtion,
 			int currentPage, int pageSize) {
 		String hql = "from VDiagnosis";
 		if (likecondtion != null && !likecondtion.equals("")) {
 			hql += likecondtion;
-		} 
-		return	  bdao.selectByPage(hql, currentPage, pageSize);
+		}
+		return bdao.selectByPage(hql, currentPage, pageSize);
 	}
 
 }

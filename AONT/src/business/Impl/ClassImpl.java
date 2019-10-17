@@ -4,9 +4,7 @@ import java.util.List;
 
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
-import Model.TCheck;
 import Model.TClass;
-import Model.VCheck;
 import Model.VClass;
 import business.DAO.ClassDAO;
 
@@ -16,10 +14,11 @@ public class ClassImpl implements ClassDAO {
 	public ClassImpl() {
 		this.bdao = new iHibBaseDAOImpl();
 	}
+
 	@Override
 	public boolean Insert(TClass tclass) {
-		Integer id= (Integer) bdao.insert(tclass);
-		if (id!=null  && !id.equals("")) {
+		Integer id = (Integer) bdao.insert(tclass);
+		if (id != null && !id.equals("")) {
 			return true;
 		}
 		return false;
@@ -47,27 +46,27 @@ public class ClassImpl implements ClassDAO {
 
 	@Override
 	public List<VClass> select() {
-		return 	bdao.select("from VClass");
+		return bdao.select("from VClass");
 	}
 
 	@Override
-	public int getAchievementrAmount(String wherecondition) {
-		String hql="from VClass ";
-		if (wherecondition!=null&&wherecondition.equals("")) {
-			hql+=wherecondition;
+	public int getVClassAmount(String wherecondition) {
+		String hql = "select count(classId) from VClass ";
+		if (wherecondition != null && wherecondition.equals("")) {
+			hql += wherecondition;
 		}
-		
+
 		return bdao.selectValue(hql);
 	}
 
 	@Override
-	public List<VClass> getAchievementByLike(String likecondtion,
-			int currentPage, int pageSize) {
+	public List<VClass> getVClassByLike(String likecondtion, int currentPage,
+			int pageSize) {
 		String hql = "from VClass";
 		if (likecondtion != null && !likecondtion.equals("")) {
 			hql += likecondtion;
-		} 
-		return	  bdao.selectByPage(hql, currentPage, pageSize);
+		}
+		return bdao.selectByPage(hql, currentPage, pageSize);
 	}
 
 }

@@ -2,15 +2,15 @@ package business.Impl;
 
 import java.util.List;
 
-import org.apache.log4j.chainsaw.Main;
-
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
 import Model.TAchievement;
 import Model.VAchievement;
 import business.DAO.AchievementDAO;
+
 /**
  * 成绩接口实现类
+ * 
  * @author Aicken
  *
  */
@@ -23,47 +23,48 @@ public class AchievementImpl implements AchievementDAO {
 
 	@Override
 	public int Insert(TAchievement Achievement) {
-		return 	(int) bdao.insert(Achievement);
-		
+		return (int) bdao.insert(Achievement);
+
 	}
 
 	@Override
-	public boolean delete(int Achid) {  
+	public boolean delete(int Achid) {
 		return bdao.delete(bdao.findById(TAchievement.class, Achid));
 	}
 
 	@Override
 	public boolean update(TAchievement Achievement) {
-		//TAchievement oldAchievement= (TAchievement) bdao.findById(TAchievement.class, Achievement.getAchId());
-		 
+		// TAchievement oldAchievement= (TAchievement)
+		// bdao.findById(TAchievement.class, Achievement.getAchId());
+
 		return bdao.update(Achievement);
 	}
 
 	@Override
 	public TAchievement select(int TAchievementid) {
 		// TODO Auto-generated method stub
-		return  (TAchievement) bdao.findById(TAchievement.class, TAchievementid);
+		return (TAchievement) bdao.findById(TAchievement.class, TAchievementid);
 	}
 
 	@Override
 	public VAchievement selectVachievement(int Achievementid) {
 		// TODO Auto-generated method stub
-		return   (VAchievement) bdao.findById(VAchievement.class, Achievementid);
+		return (VAchievement) bdao.findById(VAchievement.class, Achievementid);
 	}
 
 	@Override
 	public List<VAchievement> select() {
-	
-		return 	bdao.select("from VAchievement");
+
+		return bdao.select("select count(achId) from VAchievement");
 	}
 
 	@Override
 	public int getAchievementrAmount(String wherecondition) {
-		String hql="from VAchievement ";
-		if (wherecondition!=null&&wherecondition.equals("")) {
-			hql+=wherecondition;
+		String hql = "select from VAchievement ";
+		if (wherecondition != null && wherecondition.equals("")) {
+			hql += wherecondition;
 		}
-		
+
 		return bdao.selectValue(hql);
 	}
 
@@ -75,14 +76,13 @@ public class AchievementImpl implements AchievementDAO {
 			hql += likecondtion;
 		}
 		hql += " order by achId asc";
-		return	  bdao.selectByPage(hql, currentPage, pageSize);
-		 
-	 
+		return bdao.selectByPage(hql, currentPage, pageSize);
+
 	}
-	 
-//	public static void main(String[] args) {
-//		 
-//
-//	}
- 
+
+	// public static void main(String[] args) {
+	//
+	//
+	// }
+
 }

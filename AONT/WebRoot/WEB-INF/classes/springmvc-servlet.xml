@@ -12,8 +12,33 @@
 		
 	<!-- springmvc 注解驱动 -->
     <mvc:annotation-driven/>
+    	  <!-- 处理请求返回json字符串的乱码问题 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+             <!-- fastJson配置 -->
+            <bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>text/json;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+		    </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
      <!-- 扫描器  扫描control包中的类，出现@Controller注解时，将类注册成bean-->
      <context:component-scan base-package="controller"></context:component-scan> 
+   
      
      	<!-- 配置文件上传类型解析器 multipartResolver-->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -28,7 +53,6 @@
     <mvc:resources location="/layui/" mapping="/layui/**"/>
     <mvc:resources location="/myplugs/" mapping="/myplugs/js/**"/>
     <mvc:resources location="/myplugs/" mapping="/myplugs/css/**"/>
-     <mvc:resources location="/" mapping="/**"/>
     
      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
             id="internalResourceViewResolver">
