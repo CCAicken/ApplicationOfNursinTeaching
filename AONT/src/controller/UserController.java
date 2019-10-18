@@ -16,10 +16,12 @@ import util.Expression;
 import util.LayuiData;
 import Model.TStudent;
 import Model.TTeacher;
+import Model.TUserType;
 import Model.VStudent;
 import Model.VTeacher;
 import business.Impl.StudentImpl;
 import business.Impl.TeacherImpl;
+import business.Impl.UserTypeImpl;
 
 import com.alibaba.fastjson.JSON;
 
@@ -643,6 +645,41 @@ public class UserController {
 			laydata.code = LayuiData.SUCCESS;
 			laydata.msg = "查询成功";
 			laydata.count = count;
+			laydata.data = list;
+		} else {
+			laydata.code = LayuiData.ERRR;
+			laydata.msg = "查询失败";
+		}
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 获取用户类型
+	 * 
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getusertype")
+	public void getUserType(HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		UserTypeImpl udao = new UserTypeImpl();
+		List<TUserType> list = udao.getAllUserTypes();
+		LayuiData laydata = new LayuiData();
+		if (list != null) {
+			laydata.code = LayuiData.SUCCESS;
+			laydata.msg = "查询成功";
 			laydata.data = list;
 		} else {
 			laydata.code = LayuiData.ERRR;
