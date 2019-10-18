@@ -35,7 +35,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "stuLogin")
+	@RequestMapping(value = "stulogin")
 	public void stuLogin(String stuId, String stuPwd,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
@@ -75,7 +75,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "addStu")
+	@RequestMapping(value = "addstu")
 	public void addStu(String stuId, String stuName, String stuPwd,
 			int classId, String stuAgend, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
@@ -121,7 +121,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "delStu")
+	@RequestMapping(value = "delstu")
 	public void delStu(String stuId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		StudentImpl studao = new StudentImpl();
@@ -158,7 +158,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "edtiStu")
+	@RequestMapping(value = "edtistu")
 	public void edtiStu(String stuId, String stuName, String stuPwd,
 			int classId, String stuAgend, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
@@ -199,7 +199,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "changeStuPwd")
+	@RequestMapping(value = "changestupwd")
 	public void changeStuPwd(String stuId, String stuPwd,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
@@ -292,7 +292,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "getStuByStuId")
+	@RequestMapping(value = "getstubystuId")
 	public void getStuByStuId(String stuId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		StudentImpl studao = new StudentImpl();
@@ -323,7 +323,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "selStuByPage")
+	@RequestMapping(value = "selstubypage")
 	public void selStuByPage(String strwhere, int page, int limit,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
@@ -369,7 +369,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "teaLogin")
+	@RequestMapping(value = "tealogin")
 	public void teaLogin(String teaId, String teaPwd,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
@@ -411,7 +411,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "addTea")
+	@RequestMapping(value = "addtea")
 	public void addTea(String teaId, String teaPwd, String teaName,
 			String agend, String jobTitle, int userType,
 			HttpServletRequest request, HttpServletResponse response,
@@ -464,7 +464,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "editTea")
+	@RequestMapping(value = "edittea")
 	public void editTea(String teaId, String teaPwd, String teaName,
 			String agend, String jobTitle, int userType,
 			HttpServletRequest request, HttpServletResponse response,
@@ -506,7 +506,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "delTea")
+	@RequestMapping(value = "deltea")
 	public void delTea(String teaId, String teaPwd, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		TeacherImpl teadao = new TeacherImpl();
@@ -538,7 +538,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "getTea")
+	@RequestMapping(value = "gettea")
 	public void getTea(HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		TeacherImpl teadao = new TeacherImpl();
@@ -567,7 +567,7 @@ public class UserController {
 	 * @param response
 	 * @param model
 	 */
-	@RequestMapping(value = "getTeaId")
+	@RequestMapping(value = "getteaid")
 	public void getByGrade(String teaId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		TeacherImpl teadao = new TeacherImpl();
@@ -588,7 +588,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "getTeaByPage")
+	@RequestMapping(value = "getteaBypage")
 	public void getTeaByPage(String strwhere, int page, int limit,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {

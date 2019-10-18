@@ -11,13 +11,13 @@ import business.DAO.TeacherDAO;
 public class TeacherImpl implements TeacherDAO {
 	private iHibBaseDAO bdao = null;
 
-	public void setBdao(iHibBaseDAOImpl bdao) {
-		this.bdao = bdao;
-	}
-
-	// public void teacherImpl() {
-	// bdao = new iHibBaseDAOImpl();
+	// public void setBdao(iHibBaseDAOImpl bdao) {
+	// this.bdao = bdao;
 	// }
+
+	public TeacherImpl() {
+		this.bdao = new iHibBaseDAOImpl();
+	}
 
 	@Override
 	public int addTeacher(TTeacher teahcer) {
@@ -75,9 +75,12 @@ public class TeacherImpl implements TeacherDAO {
 		tea.setTeaName("潘森");
 		tea.setTeapwd("123456");
 		tea.setUserType(1);
-		TeacherImpl teadao = new TeacherImpl();
-		int count = teadao.addTeacher(tea);
-		System.out.print(count);
+		TeacherDAO teadao = new TeacherImpl();
+		// int count = teadao.addTeacher(tea);
+		List<VTeacher> list = teadao.getAllTea();
+		for (VTeacher tea2 : list) {
+			System.out.println(tea2.getTeaId());
+		}
 	}
 
 	@Override
