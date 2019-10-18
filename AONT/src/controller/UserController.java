@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.List;
 
@@ -40,6 +39,9 @@ public class UserController {
 	public void stuLogin(String stuId, String stuPwd,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+		// 回传json字符串
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		TStudent stu = studao.stuLogin(stuId, stuPwd);
 		LayuiData laydata = new LayuiData();
@@ -80,6 +82,8 @@ public class UserController {
 	public void addStu(String stuId, String stuName, String stuPwd,
 			int classId, String stuAgend, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		TStudent stu = new TStudent();
 		stu.setStuId(stuId);
@@ -125,6 +129,8 @@ public class UserController {
 	@RequestMapping(value = "delstu")
 	public void delStu(String stuId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		boolean result = studao.delStu(stuId);
 		LayuiData laydata = new LayuiData();
@@ -163,6 +169,8 @@ public class UserController {
 	public void edtiStu(String stuId, String stuName, String stuPwd,
 			int classId, String stuAgend, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		TStudent stu = new TStudent();
 		stu.setStuId(stuId);
@@ -204,6 +212,8 @@ public class UserController {
 	public void changeStuPwd(String stuId, String stuPwd,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		TStudent student = studao.getStuFromTStu(stuId);
 		student.setStupwd(stuPwd);
@@ -238,6 +248,8 @@ public class UserController {
 	@RequestMapping(value = "getallstu")
 	public void getAllStu(HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		List<VStudent> list = studao.getAllStu();
 		LayuiData laydata = new LayuiData();
@@ -267,6 +279,8 @@ public class UserController {
 	@RequestMapping(value = "getstubyclass")
 	public void getStuByClassId(int classId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		List<VStudent> list = studao.getStuByClassId(classId);
 		LayuiData laydata = new LayuiData();
@@ -296,6 +310,8 @@ public class UserController {
 	@RequestMapping(value = "getstubystuId")
 	public void getStuByStuId(String stuId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 		VStudent stu = studao.getStuByStuId(stuId);
 		LayuiData laydata = new LayuiData();
@@ -328,6 +344,9 @@ public class UserController {
 	public void selStuByPage(String strwhere, int page, int limit,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		StudentImpl studao = new StudentImpl();
 
 		Expression exp = new Expression();
@@ -374,6 +393,8 @@ public class UserController {
 	public void teaLogin(String teaId, String teaPwd,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 		TTeacher teacher = teadao.teaLogin(teaId, teaPwd);
 		LayuiData laydata = new LayuiData();
@@ -417,6 +438,8 @@ public class UserController {
 			String agend, String jobTitle, int userType,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 		TTeacher tea = new TTeacher();
 		tea.setTeaId(teaId);
@@ -470,6 +493,8 @@ public class UserController {
 			String agend, String jobTitle, int userType,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 		TTeacher tea = teadao.getTeaFromTTea(teaId);
 		tea.setTeaName(teaName);
@@ -510,6 +535,8 @@ public class UserController {
 	@RequestMapping(value = "deltea")
 	public void delTea(String teaId, String teaPwd, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 		boolean result = teadao.delTeacher(teaId);
 		LayuiData laydata = new LayuiData();
@@ -542,13 +569,9 @@ public class UserController {
 	@RequestMapping(value = "gettea")
 	public void getTea(HttpServletRequest request,
 			HttpServletResponse response, Model model) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
+		// 回传json字符串
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 		List<VTeacher> list = teadao.getAllTea();
 		LayuiData laydata = new LayuiData();
@@ -578,6 +601,8 @@ public class UserController {
 	@RequestMapping(value = "getteaid")
 	public void getByGrade(String teaId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 		VTeacher tea = teadao.getTeaById(teaId);
 		LayuiData laydata = new LayuiData();
@@ -600,6 +625,8 @@ public class UserController {
 	public void getTeaByPage(String strwhere, int page, int limit,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
 
 		Expression exp = new Expression();

@@ -13,6 +13,7 @@ public class TMainSuit implements java.io.Serializable {
 	private String nature;
 	private String lengthOfTime;
 	private String degree;
+	private Integer patId;
 
 	// Constructors
 
@@ -22,11 +23,12 @@ public class TMainSuit implements java.io.Serializable {
 
 	/** full constructor */
 	public TMainSuit(String symptom, String nature, String lengthOfTime,
-			String degree) {
+			String degree, Integer patId) {
 		this.symptom = symptom;
 		this.nature = nature;
 		this.lengthOfTime = lengthOfTime;
 		this.degree = degree;
+		this.patId = patId;
 	}
 
 	// Property accessors
@@ -69,6 +71,14 @@ public class TMainSuit implements java.io.Serializable {
 
 	public void setDegree(String degree) {
 		this.degree = degree;
+	}
+
+	public Integer getPatId() {
+		return this.patId;
+	}
+
+	public void setPatId(Integer patId) {
+		this.patId = patId;
 	}
 
 }

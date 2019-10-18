@@ -45,7 +45,7 @@
                 <comment>民族</comment>
             </column>
         </property>
-        <property name="beHospitalizedTime" type="java.sql.Timestamp">
+        <property name="beHospitalizedTime" type="java.lang.String">
             <column name="beHospitalizedTime" length="19" not-null="true">
                 <comment>入院时间</comment>
             </column>

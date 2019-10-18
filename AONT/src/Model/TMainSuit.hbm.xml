@@ -30,5 +30,10 @@
                 <comment>程度（轻微、严重）</comment>
             </column>
         </property>
+        <property name="patId" type="java.lang.Integer">
+            <column name="patId" not-null="true">
+                <comment>病人Id</comment>
+            </column>
+        </property>
     </class>
 </hibernate-mapping>

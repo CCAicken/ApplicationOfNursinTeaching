@@ -1,6 +1,5 @@
 package Model;
 
-import java.sql.Timestamp;
 
 /**
  * TPatient entity. @author MyEclipse Persistence Tools
@@ -18,7 +17,7 @@ public class TPatient implements java.io.Serializable {
 	private String origin;
 	private String marriageStatus;
 	private String nation;
-	private Timestamp beHospitalizedTime;
+	private String beHospitalizedTime;
 	private String degreeOfEducation;
 	private String address;
 	private String religiousBelief;
@@ -35,7 +34,7 @@ public class TPatient implements java.io.Serializable {
 	/** minimal constructor */
 	public TPatient(String patName, String profession, String agend,
 			Integer age, String origin, String marriageStatus, String nation,
-			Timestamp beHospitalizedTime, String degreeOfEducation,
+			String beHospitalizedTime, String degreeOfEducation,
 			String address, String religiousBelief, Boolean state, Integer depId) {
 		this.patName = patName;
 		this.profession = profession;
@@ -55,7 +54,7 @@ public class TPatient implements java.io.Serializable {
 	/** full constructor */
 	public TPatient(String patName, String profession, String agend,
 			Integer age, String origin, String marriageStatus, String nation,
-			Timestamp beHospitalizedTime, String degreeOfEducation,
+			String beHospitalizedTime, String degreeOfEducation,
 			String address, String religiousBelief, Boolean state,
 			String remarks, Integer depId) {
 		this.patName = patName;
@@ -140,11 +139,11 @@ public class TPatient implements java.io.Serializable {
 		this.nation = nation;
 	}
 
-	public Timestamp getBeHospitalizedTime() {
+	public String getBeHospitalizedTime() {
 		return this.beHospitalizedTime;
 	}
 
-	public void setBeHospitalizedTime(Timestamp beHospitalizedTime) {
+	public void setBeHospitalizedTime(String beHospitalizedTime) {
 		this.beHospitalizedTime = beHospitalizedTime;
 	}
 
