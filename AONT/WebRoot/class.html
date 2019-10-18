@@ -12,9 +12,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title></title>
 		<link rel="stylesheet" href="css/amazeui.min.css" />
 		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="layui/css/layui.css"/>
 	</head>
-
+	<style>
+	body .demo-class .layui-layer-title{background:#19A97B; color:#fff; border: none;}
+body .demo-class .layui-layer-btn{border-top:1px solid #19A97B}
+body .demo-class .layui-layer-btn a{background:#19A97B;}
+body .demo-class .layui-layer-btn .layui-layer-btn1{background:#19A97B;}
+body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e4;}
+.layui-layer-content{
+    text-align:center;
+}
+</style>
 	<body>
+	
 		<div class="admin-content-body">
 			<div class="am-cf am-padding am-padding-bottom-0">
 				<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">班级管理</strong><small></small></div>
@@ -35,203 +46,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="am-u-sm-12 am-u-md-3">
 					<div class="am-input-group am-input-group-sm">
-						<input type="text" class="am-form-field">
+						<input type="text" id="input_wherecondition" placeholder="班级，年级，教师" class="am-form-field">
 						<span class="am-input-group-btn">
-            <button class="am-btn am-btn-default sousuo" type="button">搜索</button>
+            <button class="am-btn am-btn-default sousuo" id="btnselfrontinfo" type="button">搜索</button>
           </span>
 					</div>
 				</div>
 			</div>
 			<div class="am-g">
 				<div class="am-u-sm-12">
-					<form class="am-form">
-						<table class="am-table am-table-striped am-table-hover table-main">
-							<thead>
-								<tr>
-									<th class="table-check"><input type="checkbox"></th>
-									<th class="table-id" style="width: 60px;">序号</th>
-									<th class="table-college">所属学院</th>
-									<th class="table-class">班级名称</th>
-									<th class="table-count">人数</th>
-									<th class="table-set">操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									<td>护理学院</td>
-									
-									<td>
-										<a href="#">【2017本科护理一班】</a>
-									</td>
-									<td>30</td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-								<td><input type="checkbox"></td>
-								<td>2</td>
-								<td>护理学院</td>
-								<td>
-									<a href="#">【2017本科护理十一班】</a>
-								</td>
-								<td>30</td>
-								<td>
-									<div class="am-btn-toolbar">
-										<div class="am-btn-group am-btn-group-xs">
-											<button class="am-btn am-btn-default am-btn-xs am-text-secondary"  type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-											<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-										</div>
-									</div>
-								</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>3</td>
-									<td>护理学院</td>
-									<td>
-										<a href="#">【2018本科护理一班】</a>
-									</td>
-									<td>30</td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>4</td>
-								<td>护理学院</td>
-								<td>
-									<a href="#">【2019本科护理一班】</a>
-								</td>
-								<td>30</td>
-								<td>
-									<div class="am-btn-toolbar">
-										<div class="am-btn-group am-btn-group-xs">
-											<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-											<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-										</div>
-									</div>
-								</td>
-							</tr>
-							
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									<td>护理学院</td>
-									<td>
-										<a href="#">【2017专升本护理一班】</a>
-									</td>
-									<td>30</td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-								<td><input type="checkbox"></td>
-								<td>2</td>
-								<td>护理学院</td>
-
-								<td>
-									<a href="#">【2017本科护理二班】</a>
-								</td>
-								<td>30</td>
-								<td>
-									<div class="am-btn-toolbar">
-										<div class="am-btn-group am-btn-group-xs">
-											<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-											<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-										</div>
-									</div>
-								</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>3</td>
-									<td>护理学院</td>
-									<td>
-										<a href="#">【2018本科护理一班】</a>
-									</td>
-									<td>30</td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>4</td>
-								<td>护理学院</td>
-								<td>
-									<a href="#">【2019本科护理一班】</a>
-								</td>
-								<td>30</td>
-								<td>
-									<div class="am-btn-toolbar">
-										<div class="am-btn-group am-btn-group-xs">
-											<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-											<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-										</div>
-									</div>
-								</td>
-							</tr>
-							</tbody>
-						</table>
-						<div class="am-cf">
-							共 15 条记录
-							<div class="am-fr">
-								<ul class="am-pagination">
-									<li class="am-disabled">
-										<a href="#">«</a>
-									</li>
-									<li class="am-active">
-										<a href="#">1</a>
-									</li>
-									<li>
-										<a href="#">2</a>
-									</li>
-									<li>
-										<a href="#">3</a>
-									</li>
-									<li>
-										<a href="#">4</a>
-									</li>
-									<li>
-										<a href="#">5</a>
-									</li>
-									<li>
-										<a href="#">»</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<hr>
-					</form>
-				</div>
-
+					  <table id="classlist" style="text-align: center;" class="layui-table" lay-filter="tool">	</table>
+				</div>		
 			</div>
 		</div>
 
@@ -252,98 +77,318 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 		</div>
-
 		
+			<!--班级编辑div  -->
+		<div id="div_editcollege" style="display:none;text-align: center; margin-top: 15%;">
+			 <form class="layui-form layui-form-pane">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">班级名称:</label>
+				    <div class="layui-input-inline">
+				      <input type="text" name="username" id="oldclassname" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">辅导员:</label>
+				    <div class="layui-input-inline">
+				      <select id="edclassid"  lay-filter="edclassid" lay-search>
+							<option value="">请选择班级</option>
+						</select>
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">年级名称:</label>
+				    <div class="layui-input-inline">
+				     	<select id="edgradeid"  lay-filter="edgradeid" lay-search>
+							<option value="">请选择班级</option>
+						</select>	
+				    </div>
+				  </div>
+  			</form>
+		</div>
+		
+		<!--班级添加div  -->
+		<div id="div_addcollege"
+			style="display: none;text-align: center; margin-top: 15%;">
+			<form class="layui-form layui-form-pane">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">班级名称:</label>
+				    <div class="layui-input-inline">
+				      <input type="text" id="newclassname"  lay-verify="required" placeholder="请输入班级名称" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">辅导员:</label>
+				    <div class="layui-input-inline">
+				      <select id="addclasstea"  lay-filter="addclasstea" lay-search> 
+						</select>
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">年级名称:</label>
+				    <div class="layui-input-inline">
+				     	<select id="addclassgrade"  lay-filter="addclassgrade" lay-search> 
+						</select>	
+				    </div>
+				  </div>
+  			</form>
+		</div>
+		
+		<script type="text/html" id="barDemo">
+  			<a class="layui-btn layui-btn-xs" lay-event="edit"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+  			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><span class="am-icon-trash-o"></span> 删除</a>
+		</script>
 		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/popup.js"></script>
+		<script type="text/javascript" src="js/loadselect.js"></script>
+		<script type="text/javascript" src="layui/layui.all.js"></script>
 		
-		<script type="text/javascript">
-		
-			function confirmData () {
-				console.log('tihsi')
-			}
-			
-			var Popup = new Popup();
-			
-			$('.del').click(function(){
-				var title = '页面提示',
-					text = '确定删除此班级信息吗？';
-				Popup.confirm(title,text,confirmData);
+		<script>
+			layui.use(['layer','form','table'], function(){
+				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
+				/*加载表格*/
+				table.render({
+					elem : '#classlist',
+					id:'classlist',
+					url : 'basicinfo/getclass',
+					title : '班级数据表',
+					height: "full-160",
+					//skin : 'line',
+					even : true,
+					cols : [ 
+					     [ {
+							type : 'numbers',
+							title : '序号',
+							align : 'center',
+							
+						}, {
+		     				field : 'className',
+		     				align : 'center',
+		     				title : '班级名称',
+		   
+		    			},{
+		     				field : 'gradeName',
+		     				align : 'center',
+		     				title : '年级',
+		   
+		    			},{
+		     				field : 'teaName',
+		     				align : 'center',
+		     				title : '辅导员',
+		   
+		    			},{
+		     				field : 'createTime',
+		     				align : 'center',
+		     				title : '创建时间',
+		   
+		    			},{
+							title : '操作',
+							toolbar : '#barDemo',
+							align : 'center'
+						}] ],
+					 page: {
+							layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'],
+							groups: 5,
+							limit: 10,
+							limits: [1, 4, 5, 10, 50],
+							theme: '#1E9FFF',						
+					 },
+				});
+				
+				/* 点击查询对专业进行筛选 */
+				$("#btnselfrontinfo").click(function() {
+					table.reload('classlist', {
+						method : 'post',
+						where : {
+							'wherecondition' : $("#input_wherecondition").val().trim(),
+							
+								},
+						page : {
+							curr : 1
+							}
+					});
+				});
+				
+				//表格工具栏事件 
+				table.on('tool(tool)', function(obj) {
+					var data = obj.data;
+					switch (obj.event) {
+						//删除按钮操作
+						case 'del':
+							layer.confirm('即将删除'+data.className+',确定要删除么？', {
+							  btn: ['确定','取消'],
+							  icon:3
+							}, function(){
+								$.ajax({
+					        		type: 'get',
+					        		url: "basicinfo/delclass",
+					        		dataType: 'json',
+					        		data:{
+					        		classId:data.classId
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        				icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，删除失败，请重试！', {
+					        				icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});   
+							}, function(){ 
+								layer.closeAll();
+							});
+						break;
+						case 'edit':
+							$("#oldclassname").val(data.className);
+							loadTeaSelected("edclassid",data.teaId, form);
+							loadGradeSelected("edgradeid",data.gradeId, form);
+							layer.open({
+		  						title:"班级信息编辑",
+		  						type: 1,
+		  						area: ['500px', '500px'],
+		  						skin: 'demo-class',
+		  						btn:['确认保存'],
+		  						//maxmin: true,//显示最大化最小化按钮
+		  						//offset: 'b', 弹框的位置
+		  						content: $('#div_editcollege'),
+		  						btn1: function(index, layero){
+		    						$.ajax({
+					        		type: 'get',
+					        		url: "basicinfo/editclass",
+					        		dataType: 'json',
+					        		data:{
+					        		classId:data.classId,
+					        		 className:$("#oldclassname").val().trim(),
+					        		 teaId:$("#edclassid").val(),
+					        		 gradeId:$("#edgradeid").val()
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        			
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+									            form.render();
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  						},
+		  						cancel: function(){ 
+		  							form.render();
+		  						}
+							});
+							
+						break;
+					};
+				});
+				
+				//添加班级按钮事件
+		  		$("#addclass").click(function(){
+		  		
+		  			loadSelect("grade","addclassgrade", form); 
+		  			loadSelect("tea","addclasstea", form); 
+		  			layer.open({
+		  				title:"添加班级",
+		  				type: 1,
+		  				area: ['400px', '600px'],
+		  				skin: 'demo-class',
+		  				btn:['添加'],
+		  				//maxmin: true,//显示最大化最小化按钮
+		  				//offset: 'b', 弹框的位置
+		  				content: $('#div_addcollege'),
+		  				btn1: function(index, layero){
+		    				$.ajax({
+					        		type: 'get',
+					        		url: "basicinfo/addclass",
+					        		dataType: 'json',
+					        		data:{
+					        		className:$("#newclassname").val().trim(),
+					        		 teaId:$("#addclasstea"),
+					        		 gradeId:$("#addclassgrade")
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  				},
+		  				cancel: function(){ 
+		  				}
+					});
+		  		})
 			})
-			
-			sure.addEventListener('click',function(){
-				Popup.toast('操作成功',10);
-			})
-			</script>
-			
-			<script>
-				$(function() {
-					//alert($(window).height());
-					$('#addclass').click(function() {
-						$('#code').center();
-						$('#goodcover').show();
-						$('#code').fadeIn();
-					});
-					$('#closebt').click(function() {
-						$('#code').hide();
-						$('#goodcover').hide();
-					});
-					$('#goodcover').click(function() {
-						$('#code').hide();
-						$('#goodcover').hide();
-					});
-					/*var val=$(window).height();
-					var codeheight=$("#code").height();
-					var topheight=(val-codeheight)/2;
-					$('#code').css('top',topheight);*/
-					jQuery.fn.center = function(loaded) {
-						var obj = this;
-						body_width = parseInt($(window).width());
-						body_height = parseInt($(window).height());
-						block_width = parseInt(obj.width());
-						block_height = parseInt(obj.height());
-				
-						left_position = parseInt((body_width / 2) - (block_width / 2) + $(window).scrollLeft());
-						if (body_width < block_width) {
-							left_position = 0 + $(window).scrollLeft();
-						};
-				
-						top_position = parseInt((body_height / 2) - (block_height / 2) + $(window).scrollTop());
-						if (body_height < block_height) {
-							top_position = 0 + $(window).scrollTop();
-						};
-				
-						if (!loaded) {
-				
-							obj.css({
-								'position': 'absolute'
-							});
-							obj.css({
-								'top': ($(window).height() - $('#code').height()) * 0.5,
-								'left': left_position
-							});
-							$(window).bind('resize', function() {
-								obj.center(!loaded);
-							});
-							$(window).bind('scroll', function() {
-								obj.center(!loaded);
-							});
-				
-						} else {
-							obj.stop();
-							obj.css({
-								'position': 'absolute'
-							});
-							obj.animate({
-								'top': top_position
-							}, 200, 'linear');
-						}
-					}
-				
-				})
-				</script>
-				
+		</script>
+	
 				
 	</body>
+	
 
 </html>

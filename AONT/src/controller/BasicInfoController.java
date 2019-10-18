@@ -49,25 +49,21 @@ public class BasicInfoController {
 	 * @param model
 	 * @throws UnsupportedEncodingException
 	 */
-	@RequestMapping(value = "getclass", produces = {
-			"text/html;charset=UTF-8;", "application/json;" })
+	@RequestMapping(value = "getclass")
 	public void getAllClass(HttpServletRequest request, int page, int limit,
-			String classname, String gradeName, HttpServletResponse response,
-			Model model) throws UnsupportedEncodingException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
+			String wherecondition, HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		ClassDAO cdao = new ClassImpl();
 		// 查询条件
 		Expression exp = new Expression();
 
-		if (classname != null && !classname.equals("")) {
+		if (wherecondition != null && !wherecondition.equals("")) {
 
-			exp.andEqu("className", classname, String.class);
+			exp.andLike("className", wherecondition, String.class);
+			exp.orLike("gradeName", wherecondition, String.class);
+			exp.orLike("teaName", wherecondition, String.class);
 		}
-		if (gradeName != null && !gradeName.equals("")) {
-			exp.andEqu("gradeName", gradeName, String.class);
-		}
-
 		String opreation = exp.toString();
 		// System.out.println(opreation);
 		int allcount = cdao.getVClassAmount(opreation);
@@ -111,13 +107,8 @@ public class BasicInfoController {
 	public void addClass(HttpServletRequest request,
 			HttpServletResponse response, String className, String teaId,
 			Integer gradeId, Model model) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		ClassDAO cdao = new ClassImpl();
 
 		TClass newclass = new TClass();
@@ -163,13 +154,8 @@ public class BasicInfoController {
 	public void editClass(HttpServletRequest request,
 			HttpServletResponse response, Integer classId, String className,
 			String teaId, Integer gradeId, Model model) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		ClassDAO cdao = new ClassImpl();
 
 		TClass oldclass = new TClass();
@@ -209,13 +195,8 @@ public class BasicInfoController {
 	@RequestMapping(value = "delclass")
 	public void delClass(HttpServletRequest request,
 			HttpServletResponse response, Integer classId, Model model) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		ClassDAO cdao = new ClassImpl();
 
 		LayuiData laydata = new LayuiData();
@@ -248,13 +229,8 @@ public class BasicInfoController {
 	@RequestMapping(value = "getgrade")
 	public void getGrade(HttpServletRequest request,
 			HttpServletResponse response, Model model) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		GradeDAO gdao = new GradeImpl();
 
 		List<TGrade> grade = gdao.geTGradeByLike("", 0, 10000);
@@ -291,13 +267,8 @@ public class BasicInfoController {
 	@RequestMapping(value = "addgrade")
 	public void addGrade(HttpServletRequest request,
 			HttpServletResponse response, String gradeName, Model model) {
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		GradeDAO gdao = new GradeImpl();
 
 		TGrade newgrade = new TGrade();

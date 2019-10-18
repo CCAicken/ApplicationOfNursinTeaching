@@ -53,6 +53,7 @@
     <mvc:resources location="/layui/" mapping="/layui/**"/>
     <mvc:resources location="/myplugs/" mapping="/myplugs/js/**"/>
     <mvc:resources location="/myplugs/" mapping="/myplugs/css/**"/>
+    <mvc:resources location="/layui/" mapping="/layui/**"/>
     
      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
             id="internalResourceViewResolver">
