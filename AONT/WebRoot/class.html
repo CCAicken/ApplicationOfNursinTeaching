@@ -15,15 +15,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" href="layui/css/layui.css"/>
 	</head>
 	<style>
-	body .demo-class .layui-layer-title{background:#19A97B; color:#fff; border: none;}
-body .demo-class .layui-layer-btn{border-top:1px solid #19A97B}
-body .demo-class .layui-layer-btn a{background:#19A97B;}
-body .demo-class .layui-layer-btn .layui-layer-btn1{background:#19A97B;}
-body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e4;}
-.layui-layer-content{
-    text-align:center;
-}
-</style>
+		body .demo-class .layui-layer-title{background:#19A97B; color:#fff; border: none;}
+		body .demo-class .layui-layer-btn{border-top:1px solid #19A97B}
+		body .demo-class .layui-layer-btn a{background:#19A97B;}
+		body .demo-class .layui-layer-btn .layui-layer-btn1{background:#19A97B;}
+		body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e4;}
+		.layui-layer-content{
+		    text-align:center;
+		}
+	</style>
 	<body>
 	
 		<div class="admin-content-body">
@@ -59,25 +59,6 @@ body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e
 				</div>		
 			</div>
 		</div>
-
-		<div id="goodcover"></div>
-	
-		<div id="code">
-		<div class="close1"><a href="javascript:void(0)" id="closebt"><img src="images/close.gif"></a></div>
-		<div class="goodtxt">
-			<h3>填写班级信息</h3>
-			<form>
-					
-					<input type="text" name="college" placeholder="所属学院" class="info"/>
-					<input type="text" name="classname" placeholder="班级名称"  class="info"/>
-					<input type="text" name="classnum" placeholder="班级人数"  class="info"/>
-					<input type="submit" id="Submit" class="tijiao" value="确定">
-			</form>
-		</div>
-				
-				
-		</div>
-		
 			<!--班级编辑div  -->
 		<div id="div_editcollege" style="display:none;text-align: center; margin-top: 15%;">
 			 <form class="layui-form layui-form-pane">
@@ -155,7 +136,7 @@ body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e
 					id:'classlist',
 					url : 'basicinfo/getclass',
 					title : '班级数据表',
-					height: "full-160",
+					height: "full-200",
 					//skin : 'line',
 					even : true,
 					cols : [ 
@@ -341,8 +322,6 @@ body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e
 		  				//offset: 'b', 弹框的位置
 		  				content: $('#div_addcollege'),
 		  				btn1: function(index, layero){
-		  				
-		  				alert($("#newclassname").val().trim())
 		    				$.ajax({
 					        		type: 'post',
 					        		url: "basicinfo/addclass",

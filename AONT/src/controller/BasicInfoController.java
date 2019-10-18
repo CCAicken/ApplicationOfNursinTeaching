@@ -91,6 +91,42 @@ public class BasicInfoController {
 	}
 
 	/**
+	 * 获取所有班级
+	 * 
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "getallclass")
+	public void getClass(HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		ClassDAO cdao = new ClassImpl();
+
+		List<VClass> vClasses = cdao.select();
+		LayuiData laydata = new LayuiData();
+		if (vClasses != null) {
+			laydata.code = LayuiData.SUCCESS;
+			laydata.msg = "查询成功";
+			laydata.data = vClasses;
+		} else {
+			laydata.code = LayuiData.ERRR;
+			laydata.msg = "查询失败";
+		}
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * 添加班级
 	 * 
 	 * @param request
