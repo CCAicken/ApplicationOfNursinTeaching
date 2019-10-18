@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.List;
 
@@ -541,6 +542,13 @@ public class UserController {
 	@RequestMapping(value = "gettea")
 	public void getTea(HttpServletRequest request,
 			HttpServletResponse response, Model model) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		response.setContentType("text/html;charset=UTF-8");
 		TeacherImpl teadao = new TeacherImpl();
 		List<VTeacher> list = teadao.getAllTea();
 		LayuiData laydata = new LayuiData();
