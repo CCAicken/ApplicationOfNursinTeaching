@@ -145,6 +145,10 @@ body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e
 		<script>
 			layui.use(['layer','form','table'], function(){
 				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
+				
+				loadSelect("grade","addclassgrade", form); 
+		  		loadSelect("tea","addclasstea", form); 
+				
 				/*加载表格*/
 				table.render({
 					elem : '#classlist',
@@ -326,10 +330,7 @@ body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e
 				});
 				
 				//添加班级按钮事件
-		  		$("#addclass").click(function(){
-		  		
-		  			loadSelect("grade","addclassgrade", form); 
-		  			loadSelect("tea","addclasstea", form); 
+		  		$("#addclass").click(function(){ 
 		  			layer.open({
 		  				title:"添加班级",
 		  				type: 1,
@@ -340,14 +341,16 @@ body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e
 		  				//offset: 'b', 弹框的位置
 		  				content: $('#div_addcollege'),
 		  				btn1: function(index, layero){
+		  				
+		  				alert($("#newclassname").val().trim())
 		    				$.ajax({
-					        		type: 'get',
+					        		type: 'post',
 					        		url: "basicinfo/addclass",
 					        		dataType: 'json',
 					        		data:{
 					        		className:$("#newclassname").val().trim(),
-					        		 teaId:$("#addclasstea"),
-					        		 gradeId:$("#addclassgrade")
+					        		 teaId:$("#addclasstea").val(),
+					        		 gradeId:$("#addclassgrade").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
