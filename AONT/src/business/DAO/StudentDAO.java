@@ -73,4 +73,22 @@ public interface StudentDAO {
 	 * @return
 	 */
 	public TStudent stuLogin(String stuId, String pwd);
+
+	/**
+	 * 分页查询学生信息
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VStudent> selStuByPage(String strwhere, int page, int limit);
+
+	/**
+	 * 获取学生数量
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public int getStuCount(String strwhere);
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import util.Expression;
 import util.LayuiData;
 import Model.TStudent;
 import Model.TTeacher;
@@ -313,6 +314,53 @@ public class UserController {
 	}
 
 	/**
+	 * 分页查询学生信息
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "selStuByPage")
+	public void selStuByPage(String strwhere, int page, int limit,
+			HttpServletRequest request, HttpServletResponse response,
+			Model model) {
+		StudentImpl studao = new StudentImpl();
+
+		Expression exp = new Expression();
+		if (strwhere != null && !strwhere.equals("")) {
+			exp.orLike("stuId", strwhere, String.class);
+			exp.orLike("className", strwhere, String.class);
+			exp.orLike("stuName", strwhere, String.class);
+		}
+		String opration = exp.toString();
+		int count = studao.getStuCount(opration);
+		List<VStudent> list = studao.selStuByPage(opration, page, limit);
+		LayuiData laydata = new LayuiData();
+		if (list != null) {
+			laydata.code = LayuiData.SUCCESS;
+			laydata.msg = "查询成功";
+			laydata.count = count;
+			laydata.data = list;
+		} else {
+			laydata.code = LayuiData.ERRR;
+			laydata.msg = "查询失败";
+		}
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * 教师登录
 	 * 
 	 * @param teaId
@@ -528,6 +576,43 @@ public class UserController {
 		laydata.code = LayuiData.SUCCESS;
 		laydata.data = tea;
 		laydata.msg = "查询成功";
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value = "getTeaByPage")
+	public void getTeaByPage(String strwhere, int page, int limit,
+			HttpServletRequest request, HttpServletResponse response,
+			Model model) {
+		TeacherImpl teadao = new TeacherImpl();
+
+		Expression exp = new Expression();
+		if (strwhere != null && !strwhere.equals("")) {
+			exp.orLike("teaName", strwhere, String.class);
+			exp.orLike("teaPhoto", strwhere, String.class);
+			exp.orLike("teaId", strwhere, String.class);
+		}
+		String wherecondition = exp.toString();
+		int count = teadao.getTeaCount(wherecondition);
+		List<VTeacher> list = teadao.selByPage(wherecondition, page, limit);
+		LayuiData laydata = new LayuiData();
+		if (list != null) {
+			laydata.code = LayuiData.SUCCESS;
+			laydata.msg = "查询成功";
+			laydata.count = count;
+			laydata.data = list;
+		} else {
+			laydata.code = LayuiData.ERRR;
+			laydata.msg = "查询失败";
+		}
 		Writer out;
 		try {
 			out = response.getWriter();

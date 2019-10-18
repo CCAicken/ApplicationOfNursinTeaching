@@ -83,4 +83,22 @@ public class StudentImpl implements StudentDAO {
 		return stu;
 	}
 
+	@Override
+	public List<VStudent> selStuByPage(String strwhere, int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VStudent" + strwhere;
+		List<VStudent> list = bdao.selectByPage(hql, page, limit);
+		return list;
+	}
+
+	@Override
+	public int getStuCount(String strwhere) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VStudent";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		return bdao.selectValue(hql);
+	}
+
 }

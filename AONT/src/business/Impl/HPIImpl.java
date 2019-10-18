@@ -64,4 +64,18 @@ public class HPIImpl implements HPIDAO {
 		return ms;
 	}
 
+	@Override
+	public int getMSCount(String strwhere) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VMainSuit" + strwhere;
+		return bdao.selectValue(hql);
+	}
+
+	@Override
+	public List<VMainSuit> getMSByPage(String strwhere, int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VMainSuit" + strwhere;
+		return bdao.selectByPage(hql, page, limit);
+	}
+
 }

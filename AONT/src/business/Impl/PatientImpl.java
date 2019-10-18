@@ -59,4 +59,21 @@ public class PatientImpl implements PatientDAO {
 		return ms;
 	}
 
+	@Override
+	public int getPatCount(String strwhere) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VMainStui";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		return bdao.selectValue(hql);
+	}
+
+	@Override
+	public List<VMainSuit> getPatByPage(String strwhere, int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from MVainSuit" + strwhere;
+		return bdao.selectByPage(hql, page, limit);
+	}
+
 }

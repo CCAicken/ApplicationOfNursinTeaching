@@ -66,4 +66,22 @@ public interface HPIDAO {
 	 * @return
 	 */
 	public VMainSuit getHPIBYPatId(int pid);
+
+	/**
+	 * 获取现病史数量
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public int getMSCount(String strwhere);
+
+	/**
+	 * 分页获取现病史信息
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VMainSuit> getMSByPage(String strwhere, int page, int limit);
 }

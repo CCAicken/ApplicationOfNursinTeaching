@@ -50,4 +50,22 @@ public interface MainSuitDAO {
 	 * @return
 	 */
 	public VMainSuit getMsByMsId(int msId);
+
+	/**
+	 * 获取主诉数量
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public int getMsCoun(String strwhere);
+
+	/**
+	 * 分页获取主诉信息
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VMainSuit> selMsByPage(String strwhere, int page, int limit);
 }

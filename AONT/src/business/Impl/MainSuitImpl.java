@@ -54,4 +54,21 @@ public class MainSuitImpl implements MainSuitDAO {
 		return ms;
 	}
 
+	@Override
+	public int getMsCoun(String strwhere) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VMainSuit";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		return bdao.selectValue(hql);
+	}
+
+	@Override
+	public List<VMainSuit> selMsByPage(String strwhere, int page, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VMainSuit" + strwhere;
+		return bdao.selectByPage(hql, page, limit);
+	}
+
 }

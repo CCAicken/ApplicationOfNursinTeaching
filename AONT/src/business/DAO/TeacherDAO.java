@@ -72,4 +72,19 @@ public interface TeacherDAO {
 	 * @return
 	 */
 	public TTeacher teaLogin(String teaId, String pwd);
+
+	/**
+	 * 分页查询
+	 * 
+	 * @return
+	 */
+	public List<VTeacher> selByPage(String strwhere, int startPage, int limit);
+
+	/**
+	 * 获取数量
+	 * 
+	 * @param wherecondition
+	 * @return
+	 */
+	public int getTeaCount(String wherecondition);
 }

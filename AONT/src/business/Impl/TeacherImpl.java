@@ -98,4 +98,22 @@ public class TeacherImpl implements TeacherDAO {
 		return tea;
 	}
 
+	@Override
+	public List<VTeacher> selByPage(String strwhere, int startPage, int limit) {
+		// TODO Auto-generated method stub
+		String hql = "from VTeacher" + strwhere;
+		List<VTeacher> list = bdao.selectByPage(hql, startPage, limit);
+		return list;
+	}
+
+	@Override
+	public int getTeaCount(String wherecondition) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VTeacher";
+		if (wherecondition != null && !wherecondition.equals("")) {
+			hql += wherecondition;
+		}
+		return bdao.selectValue(hql);
+	}
+
 }

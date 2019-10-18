@@ -62,4 +62,21 @@ public interface PatientDAO {
 	 * @return
 	 */
 	public List<VMainSuit> getAllPat();
+
+	/**
+	 * 获取病人数量
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public int getPatCount(String strwhere);
+
+	/**
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VMainSuit> getPatByPage(String strwhere, int page, int limit);
 }
