@@ -11,13 +11,13 @@ import business.DAO.PatientDAO;
 public class PatientImpl implements PatientDAO {
 	private iHibBaseDAO bdao = null;
 
-	public void setBdao(iHibBaseDAOImpl bdao) {
-		this.bdao = bdao;
-	}
-
-	// public teacherImpl() {
-	// bdao = new iHibBaseDAOImpl();
+	// public void setBdao(iHibBaseDAOImpl bdao) {
+	// this.bdao = bdao;
 	// }
+
+	public PatientImpl() {
+		this.bdao = new iHibBaseDAOImpl();
+	}
 
 	@Override
 	public int addPat(TPatient patient) {

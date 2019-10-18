@@ -11,8 +11,12 @@ import business.DAO.HPIDAO;
 public class HPIImpl implements HPIDAO {
 	private iHibBaseDAO bdao;
 
-	public void setBdao(iHibBaseDAOImpl bdao) {
-		this.bdao = bdao;
+	// public void setBdao(iHibBaseDAOImpl bdao) {
+	// this.bdao = bdao;
+	// }
+
+	public HPIImpl() {
+		this.bdao = new iHibBaseDAOImpl();
 	}
 
 	@Override

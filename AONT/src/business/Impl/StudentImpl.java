@@ -11,13 +11,13 @@ import business.DAO.StudentDAO;
 public class StudentImpl implements StudentDAO {
 	private iHibBaseDAO bdao = null;
 
-	public void setBdao(iHibBaseDAOImpl bdao) {
-		this.bdao = bdao;
-	}
-
-	// public teacherImpl() {
-	// bdao = new iHibBaseDAOImpl();
+	// public void setBdao(iHibBaseDAOImpl bdao) {
+	// this.bdao = bdao;
 	// }
+
+	public StudentImpl() {
+		this.bdao = new iHibBaseDAOImpl();
+	}
 
 	@Override
 	public int addStu(TStudent stu) {

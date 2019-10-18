@@ -11,8 +11,12 @@ import business.DAO.MainSuitDAO;
 public class MainSuitImpl implements MainSuitDAO {
 	private iHibBaseDAO bdao;
 
-	public void setBdao(iHibBaseDAOImpl bdao) {
-		this.bdao = bdao;
+	// public void setBdao(iHibBaseDAOImpl bdao) {
+	// this.bdao = bdao;
+	// }
+
+	public MainSuitImpl() {
+		this.bdao = new iHibBaseDAOImpl();
 	}
 
 	@Override

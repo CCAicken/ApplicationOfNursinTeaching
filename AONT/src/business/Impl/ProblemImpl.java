@@ -10,8 +10,11 @@ import business.DAO.ProblemDAO;
 public class ProblemImpl implements ProblemDAO {
 	private iHibBaseDAO bdao;
 
-	public void setBdao(iHibBaseDAOImpl bdao) {
-		this.bdao = bdao;
+	// public void setBdao(iHibBaseDAOImpl bdao) {
+	// this.bdao = bdao;
+	// }
+	public ProblemImpl() {
+		this.bdao = new iHibBaseDAOImpl();
 	}
 
 	@Override
