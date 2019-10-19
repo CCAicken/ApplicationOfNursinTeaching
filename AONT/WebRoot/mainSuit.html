@@ -11,7 +11,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title></title>
 		<link rel="stylesheet" href="css/amazeui.min.css" />
 		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="layui/css/layui.css"/>
 	</head>
+	<style>
+		body .demo-class .layui-layer-title{background:#19A97B; color:#fff; border: none;}
+		body .demo-class .layui-layer-btn{border-top:1px solid #19A97B}
+		body .demo-class .layui-layer-btn a{background:#19A97B;}
+		body .demo-class .layui-layer-btn .layui-layer-btn1{background:#19A97B;}
+		body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e4;}
+		.layui-layer-content{
+		    text-align:center;
+		}
+	</style>
 
 	<body>
 		<div class="admin-content-body">
@@ -32,315 +43,366 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="am-u-sm-12 am-u-md-3">
 
 				</div>
-				<div class="am-u-sm-12 am-u-md-3">
-					<div class="am-input-group am-input-group-sm">
-						<input type="text" class="am-form-field">
+				<div class="am-input-group am-input-group-sm">
+						<input type="text" class="am-form-field" id="input_wherecondition">
 						<span class="am-input-group-btn">
-            <button class="am-btn am-btn-default sousuo" type="button">搜索</button>
+            <button class="am-btn am-btn-default sousuo" id="btnselfrontinfo" type="button">搜索</button>
           </span>
 					</div>
 				</div>
 			</div>
 			<div class="am-g">
 				<div class="am-u-sm-12">
-					<form class="am-form">
-						<table class="am-table am-table-striped am-table-hover table-main">
-							<thead>
-								<tr>
-									<th class="table-check"><input type="checkbox"></th>
-									<th class="table-id" style="width: 60px;">序号</th>
-									<th class="table-college">症状</th>
-									<th class="table-class">性质</th>
-									<th class="table-count">程度</th>
-									<th class="table-count">持续时间</th>
-									<th class="table-set">操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									<td>胃疼</td>
-						
-									<td>绞痛</td>
-									<td>严重</td>
-									<td>一天</td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-										<td><input type="checkbox"></td>
-										<td>1</td>
-										<td>胃疼</td>
-							
-										<td>绞痛</td>
-										<td>严重</td>
-										<td>一天</td>
-										<td>
-											<div class="am-btn-toolbar">
-												<div class="am-btn-group am-btn-group-xs">
-													<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-													<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-												</div>
-											</div>
-										</td>
-									</tr>
-								
-									<tr>
-											<td><input type="checkbox"></td>
-											<td>1</td>
-											<td>胃疼</td>
-								
-											<td>绞痛</td>
-											<td>严重</td>
-											<td>一天</td>
-											<td>
-												<div class="am-btn-toolbar">
-													<div class="am-btn-group am-btn-group-xs">
-														<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-														<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-													</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-												<td><input type="checkbox"></td>
-												<td>1</td>
-												<td>胃疼</td>
-									
-												<td>绞痛</td>
-												<td>严重</td>
-												<td>一天</td>
-												<td>
-													<div class="am-btn-toolbar">
-														<div class="am-btn-group am-btn-group-xs">
-															<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-															<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-														</div>
-													</div>
-												</td>
-											</tr>
-							
-											<tr>
-													<td><input type="checkbox"></td>
-													<td>1</td>
-													<td>胃疼</td>
-										
-													<td>绞痛</td>
-													<td>严重</td>
-													<td>一天</td>
-													<td>
-														<div class="am-btn-toolbar">
-															<div class="am-btn-group am-btn-group-xs">
-																<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-																<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<tr>
-														<td><input type="checkbox"></td>
-														<td>1</td>
-														<td>胃疼</td>
-											
-														<td>绞痛</td>
-														<td>严重</td>
-														<td>一天</td>
-														<td>
-															<div class="am-btn-toolbar">
-																<div class="am-btn-group am-btn-group-xs">
-																	<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-																	<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-																</div>
-															</div>
-														</td>
-													</tr>
-								
-													<tr>
-															<td><input type="checkbox"></td>
-															<td>1</td>
-															<td>胃疼</td>
-												
-															<td>绞痛</td>
-															<td>严重</td>
-															<td>一天</td>
-															<td>
-																<div class="am-btn-toolbar">
-																	<div class="am-btn-group am-btn-group-xs">
-																		<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-																		<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<tr>
-																<td><input type="checkbox"></td>
-																<td>1</td>
-																<td>胃疼</td>
-													
-																<td>绞痛</td>
-																<td>严重</td>
-																<td>一天</td>
-																<td>
-																	<div class="am-btn-toolbar">
-																		<div class="am-btn-group am-btn-group-xs">
-																			<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-																			<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del"  type="button"><span class="am-icon-trash-o"></span> 删除</button>
-																		</div>
-																	</div>
-																</td>
-															</tr>
-							</tbody>
-						</table>
-						<div class="am-cf">
-							共 15 条记录
-							<div class="am-fr">
-								<ul class="am-pagination">
-									<li class="am-disabled">
-										<a href="#">«</a>
-									</li>
-									<li class="am-active">
-										<a href="#">1</a>
-									</li>
-									<li>
-										<a href="#">2</a>
-									</li>
-									<li>
-										<a href="#">3</a>
-									</li>
-									<li>
-										<a href="#">4</a>
-									</li>
-									<li>
-										<a href="#">5</a>
-									</li>
-									<li>
-										<a href="#">»</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<hr>
-					</form>
+					 <table id="classlist" style="text-align: center;" class="layui-table" lay-filter="tool">	</table>
 				</div>
-
-			</div>
+			</div> 
+		<div id="div_editcollege" style="display:none;text-align: center; margin-top: 15%;">
+			<form class="layui-form layui-form-pane">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">病人姓名:</label> 
+				    <div class="layui-input-inline">
+				      <input type="text" id="oldpatName"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">症状:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldsymptom"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">性质:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldnature"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">持续时间:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldlengthOfTime"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">程度:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="olddegree"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+  			</form>
 		</div>
-
-		<div id="goodcover"></div>
-	
-		<div id="code">
-		<div class="close1"><a href="javascript:void(0)" id="closebt"><img src="images/close.gif"></a></div>
-		<div class="goodtxt">
-			<h3>填写主诉信息</h3>
-			<form>
-					
-					<input type="text" name="college" placeholder="症状（体征）" class="info"/>
-					<input type="text" name="classname" placeholder="性质（刺痛、绞痛）"  class="info"/>
-					<input type="text" name="classnum" placeholder="程度（轻微、严重）"  class="info"/>
-					<input type="text" name="classnum" placeholder="持续时间"  class="info"/>
-					<input type="submit" id="Submit" class="tijiao" value="确定">
-			</form>
-		</div>
-				
-				
-		</div>
-
 		
+		<!--班级添加div  -->
+		<div id="div_addcollege"
+			style="display: none;text-align: center; margin-top: 15%;">
+			<form class="layui-form layui-form-pane">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">学生账号:</label> 
+				    <div class="layui-input-inline">
+				      <input type="text" id="addStuId"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">学生姓名:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addStuName"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">学生密码:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addStuPwd"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">学生班级:</label>
+				    <div class="layui-input-inline">
+				     <select id="addClassId"  lay-filter="addClassId" lay-search> 
+						</select>	
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">学生性别:</label>
+				    <div class="layui-input-inline">
+				      <select id="addStuAgend"  lay-filter="addStuAgend" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+						</select>	
+				    </div> 
+				  </div>
+  			</form>
+		</div>
+		
+		<script type="text/html" id="barDemo">
+  			<a class="layui-btn layui-btn-xs" lay-event="edit"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+  			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><span class="am-icon-trash-o"></span> 删除</a>
+		</script>
 		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/popup.js"></script>
 		
-		<script type="text/javascript">
+		<script type="text/javascript" src="js/loadselect.js"></script>
+		<script type="text/javascript" src="layui/layui.all.js"></script>
 		
-			function confirmData () {
-				console.log('tihsi')
-			}
-			
-			var Popup = new Popup();
-			
-			$('.del').click(function(){
-				var title = '页面提示',
-					text = '确定删除此主诉信息吗？';
-				Popup.confirm(title,text,confirmData);
+		<script>
+			layui.use(['layer','form','table'], function(){
+				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
+				
+				loadSelect("classname","addClassId", form); 
+		  		//loadSelect("tea","addclasstea", form); 
+				
+				/*加载表格*/
+				table.render({
+					elem : '#classlist',
+					id:'classlist',
+					url : 'patient/getmspage',
+					title : '班级数据表',
+					height: "full-200",
+					//skin : 'line',
+					even : true,
+					cols : [ 
+					     [ {
+							type : 'numbers',
+							title : '序号',
+							align : 'center',
+							
+						}, {
+		     				field : 'patName',
+		     				align : 'center',
+		     				title : '姓名',
+		   
+		    			},{
+		     				field : 'symptom',
+		     				align : 'center',
+		     				title : '症状',
+		   
+		    			},{
+		     				field : 'nature',
+		     				align : 'center',
+		     				title : '性质',
+		   
+		    			},{
+		     				field : 'lengthOfTime',
+		     				align : 'center',
+		     				title : '持续时间',
+		   
+		    			},{
+		     				field : 'degree',
+		     				align : 'center',
+		     				title : '程度',
+		   
+		    			},{
+							title : '操作',
+							toolbar : '#barDemo',
+							align : 'center'
+						}] ],
+					 page: {
+							layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'],
+							groups: 5,
+							limit: 10,
+							limits: [1, 4, 5, 10, 50],
+							theme: '#1E9FFF',						
+					 },
+				});
+				
+				/* 点击查询对专业进行筛选 */
+				$("#btnselfrontinfo").click(function() {
+					table.reload('classlist', {
+						method : 'post',
+						where : {
+							'strwhere' : $("#input_wherecondition").val().trim(),
+							
+								},
+						page : {
+							curr : 1
+							}
+					});
+				});
+				
+				//表格工具栏事件 
+				table.on('tool(tool)', function(obj) {
+					var data = obj.data;
+					switch (obj.event) {
+						//删除按钮操作
+						case 'del':
+							layer.confirm('即将删除'+data.patName+',确定要删除么？', {
+							  btn: ['确定','取消'],
+							  icon:3
+							}, function(){
+								$.ajax({
+					        		type: 'get',
+					        		url: "patient/deltms",
+					        		dataType: 'json',
+					        		data:{
+					        		msId:data.msId
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        				icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，删除失败，请重试！', {
+					        				icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});   
+							}, function(){ 
+								layer.closeAll();
+							});
+						break;
+						case 'edit':
+							$("#oldpatName").val(data.patName);
+							$("#oldsymptom").val(data.symptom);
+							$("#oldnature").val(data.nature);
+							$("#oldlengthOfTime").val(data.lengthOfTime);
+							$("#olddegree").val(data.degree);
+							
+							//loadClassSelected("classId",data.classId, form);
+							//loadAgendSelected("stuAgend",data.stuAgend, form);
+							layer.open({
+		  						title:data.patName+"学生信息编辑",
+		  						type: 1,
+		  						area: ['500px', '500px'],
+		  						skin: 'demo-class',
+		  						btn:['确认保存'],
+		  						//maxmin: true,//显示最大化最小化按钮
+		  						//offset: 'b', 弹框的位置
+		  						content: $('#div_editcollege'),
+		  						btn1: function(index, layero){
+		    						$.ajax({
+					        		type: 'get',
+					        		url: "patient/editms",
+					        		dataType: 'json',
+					        		data:{
+					        		 msId:data.msId,
+					        		 patName:$("#oldpatName").val().trim(),
+					        		 symptom:$("#oldsymptom").val().trim(),
+					        		 nature:$("#oldnature").val().trim(),
+					        		 lengthOfTime:$("#lengthOfTime").val(),
+					        		 degree:$("#degree").val(),
+					        		 patId:data.patId  
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        			
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+									            form.render();
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  						},
+		  						cancel: function(){ 
+		  							form.render();
+		  						}
+							});
+							
+						break;
+					};
+				});
+				
+				//添加班级按钮事件
+		  		$("#addstu").click(function(){ 
+		  			layer.open({
+		  				title:"添加主诉",
+		  				type: 1,
+		  				area: ['400px', '600px'],
+		  				skin: 'demo-class',
+		  				btn:['添加'],
+		  				//maxmin: true,//显示最大化最小化按钮
+		  				//offset: 'b', 弹框的位置
+		  				content: $('#div_addcollege'),
+		  				btn1: function(index, layero){
+		  				 
+		    				$.ajax({
+					        		type: 'post',
+					        		url: "patient/addms",
+					        		dataType: 'json',
+					        		data:{
+					        		 stuId:$("#addStuId").val().trim(),
+					        		 stuName:$("#addStuName").val().trim(),
+					        		 stuPwd:$("#addStuPwd").val().trim(),
+					        		 classId:$("#addClassId").val(),
+					        		 stuAgend:$("#addStuAgend").val() 
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  				},
+		  				cancel: function(){ 
+		  				}
+					});
+		  		})
 			})
-			
-			sure.addEventListener('click',function(){
-				Popup.toast('操作成功',10);
-			})
-			</script>
-			
-			<script>
-				$(function() {
-					//alert($(window).height());
-					$('#addclass').click(function() {
-						$('#code').center();
-						$('#goodcover').show();
-						$('#code').fadeIn();
-					});
-					$('#closebt').click(function() {
-						$('#code').hide();
-						$('#goodcover').hide();
-					});
-					$('#goodcover').click(function() {
-						$('#code').hide();
-						$('#goodcover').hide();
-					});
-					/*var val=$(window).height();
-					var codeheight=$("#code").height();
-					var topheight=(val-codeheight)/2;
-					$('#code').css('top',topheight);*/
-					jQuery.fn.center = function(loaded) {
-						var obj = this;
-						body_width = parseInt($(window).width());
-						body_height = parseInt($(window).height());
-						block_width = parseInt(obj.width());
-						block_height = parseInt(obj.height());
-				
-						left_position = parseInt((body_width / 2) - (block_width / 2) + $(window).scrollLeft());
-						if (body_width < block_width) {
-							left_position = 0 + $(window).scrollLeft();
-						};
-				
-						top_position = parseInt((body_height / 2) - (block_height / 2) + $(window).scrollTop());
-						if (body_height < block_height) {
-							top_position = 0 + $(window).scrollTop();
-						};
-				
-						if (!loaded) {
-				
-							obj.css({
-								'position': 'absolute'
-							});
-							obj.css({
-								'top': ($(window).height() - $('#code').height()) * 0.5,
-								'left': left_position
-							});
-							$(window).bind('resize', function() {
-								obj.center(!loaded);
-							});
-							$(window).bind('scroll', function() {
-								obj.center(!loaded);
-							});
-				
-						} else {
-							obj.stop();
-							obj.css({
-								'position': 'absolute'
-							});
-							obj.animate({
-								'top': top_position
-							}, 200, 'linear');
-						}
-					}
-				
-				})
-				</script>
+		</script>
 				
 				
 	</body>

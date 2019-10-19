@@ -370,7 +370,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			layui.use(['layer','form','table'], function(){
 				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
 				
-				loadSelect("classname","addClassId", form); 
+				//loadSelect("classname","addClassId", form); 
 		  		//loadSelect("tea","addclasstea", form); 
 				
 				/*加载表格*/
@@ -404,7 +404,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     				title : '年龄',
 		   
 		    			},{
-		     				field : 'orig',
+		     				field : 'origin',
 		     				align : 'center',
 		     				title : '地区',
 		   
@@ -421,6 +421,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    			},{
 							title : '操作',
 							toolbar : '#barDemo',
+							width:300,
 							align : 'center'
 						}] ],
 					 page: {
@@ -470,11 +471,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  				type: 1,
 			  				area: ['400px', '600px'],
 			  				skin: 'demo-class',
-			  				btn:['添加'],
+			  				//btn:['添加'],
 			  				//maxmin: true,//显示最大化最小化按钮
 			  				//offset: 'b', 弹框的位置
 			  				content: $('#div_detailcollege'),
-			  				btn1: function(index, layero){},
+			  				//btn1: function(index, layero){},
 			  				cancel: function(){}
 						});
 						break;
@@ -538,6 +539,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			   				$("#oldreligiousBelief").val(data.religiousBelief);
 				 			$("#oldremarks").val(data.remarks);
 			  				$("#oldmarriageStatus").val(data.marriageStatus);
+			  				loadDepSelected("olddepId",data.depId,form);
 			   				$("#olddepId").val()
 			   				
 							//loadClassSelected("classId",data.classId, form);
@@ -554,7 +556,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  						btn1: function(index, layero){
 		    						$.ajax({
 					        		type: 'get',
-					        		url: "user/edtistu",
+					        		url: "patient/editpat",
 					        		dataType: 'json',
 					        		data:{
 					        		 patName:$("#oldpatName").val().trim(),  
@@ -615,6 +617,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				//添加按钮事件
 		  		$("#addpatient").click(function(){ 
+		  			loadSelect("dep","adddepId", form)
 		  			layer.open({
 		  				title:"添加病人",
 		  				type: 1,
@@ -625,25 +628,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  				//offset: 'b', 弹框的位置
 		  				content: $('#div_addcollege'),
 		  				btn1: function(index, layero){
-		  				 
 		    				$.ajax({
-					        		type: 'post',
+					        		type: 'get',
 					        		url: "patient/addpat",
 					        		dataType: 'json',
 					        		data:{
-					        	    patName:$("#addpatName").val().trim(),  
-					        		profession:$("#addprofession").val().trim(),  
-					        		agend:$("#addagend").val().trim(),
-			 						age:$("#addage").val().trim(),
-			   						origin:$("#addorigin").val().trim(), 
-		 							nation:$("#addnation").val().trim(), 
-		  							beHospitalizedTime:$("#addbeHospitalizedTime").val().trim(),
-			 						degreeOfEducation:$("#adddegreeOfEducation").val().trim(), 
-			  						address:$("#addaddress").val().trim(), 
-			   						religiousBelief:$("#addreligiousBelief").val().trim(),
-				 					remarks:$("#addremarks").val().trim(), 
-			  						marriageStatus:$("#addmarriageStatus").val().trim(), 
-			   						depId:$("#adddepId").val()
+						        	    patName:$("#addpatName").val().trim(),  
+						        		profession:$("#addprofession").val().trim(),  
+						        		agend:$("#addagend").val().trim(),
+				 						age:$("#addage").val().trim(),
+				   						origin:$("#addorigin").val().trim(), 
+			 							nation:$("#addnation").val().trim(), 
+			  							beHospitalizedTime:$("#addbeHospitalizedTime").val().trim(),
+				 						degreeOfEducation:$("#adddegreeOfEducation").val().trim(), 
+				  						address:$("#addaddress").val().trim(), 
+				   						religiousBelief:$("#addreligiousBelief").val().trim(),
+					 					remarks:$("#addremarks").val().trim(), 
+				  						marriageStatus:$("#addmarriageStatus").val().trim(), 
+				   						depId:$("#adddepId").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){

@@ -40,6 +40,8 @@ function loadSelect(type,selectId, form){
 		reqURL = 'basicinfo/getallclass';
 	}if(type=="pat"){
 		reqURL = 'patient/allpat';
+	}if(type=="dep"){
+		reqURL = 'dep/getalldep';
 	}
 	var reqPara = {};
 	var stageData = callAJAX(reqType, reqURL, reqPara);  
@@ -54,6 +56,8 @@ function loadSelect(type,selectId, form){
 				var str = "<option value=''>请选择班级</option>";
 			}if(type=="pat"){
 				var str = "<option value=''>请选择病人</option>";
+			}if(type=="dep"){
+				var str = "<option value=''>请选择科室</option>";
 			}
 			
 			for(var i = 0; i < stageData.data.length; i++) {
@@ -65,6 +69,8 @@ function loadSelect(type,selectId, form){
 					str += '<option value=' + stageData.data[i]['classId'] + '>' + stageData.data[i]['className'] + '</option>'; 
 				}if(type=="pat"){
 					str += '<option value=' + stageData.data[i]['patId'] +'>' + stageData.data[i]['patName'] + '</option>';
+				}if(type=="dep"){
+					str += '<option value=' + stageData.data[i]['depId'] +'>' + stageData.data[i]['depName'] + '</option>';
 				}
 			}
 			$('#' + selectId).append(str);
@@ -245,6 +251,40 @@ function loadPatSelected(selectId,classId, form){
 	} else {
 		//layer.msg("阶段信息获取失败！");
 		layer.msg('未获取到信息', function(){});
+	}
+}
+
+/**
+ * 教师下拉框默认值
+ * @param {Object} selectId 要加载到的select控件的id属性名称
+ * @param {Object} form layui表单依赖参数form.render("select")，重新渲染
+ */
+function loadDepSelected(selectId,depId, form){
+	var reqType = 'post';
+	var reqURL = 'dep/getalldep'; 
+	var reqPara = {};
+	var stageData = callAJAX(reqType, reqURL, reqPara);  
+	if(stageData != '' && stageData != undefined) { 
+		if(stageData.code == 0) {
+			$('#' + selectId).html(""); //获取id为selectId指定的控件内容
+			var str = "<option value=''>请选择科室</option>";
+			for(var i = 0; i < stageData.data.length; i++) {
+				if(depId==stageData.data[i]['depId'])
+				{
+						str += '<option value=' + stageData.data[i]['depId'] + " selected='selected'"+'>' + stageData.data[i]['depName'] + '</option>';
+				}else{
+						str += '<option value=' + stageData.data[i]['depId'] + '>' + stageData.data[i]['depName'] + '</option>';
+				}	
+			}
+			$('#' + selectId).append(str);
+			form.render("select");
+		} else {
+			//layer.msg("未获取到阶段信息！");
+			layer.msg('未获取到教师信息', function(){});
+		}
+	} else {
+		//layer.msg("阶段信息获取失败！");
+		layer.msg('未获取到教师信息', function(){});
 	}
 }
 

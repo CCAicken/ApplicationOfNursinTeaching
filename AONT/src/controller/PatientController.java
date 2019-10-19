@@ -86,11 +86,11 @@ public class PatientController {
 	 */
 	@RequestMapping(value = "addpat")
 	public void addPat(String patName, String profession, String agend,
-			int age, String origin, String nation, String beHospitalizedTime,
-			String degreeOfEducation, String address, String religiousBelief,
-			String remarks, String marriageStatus, int depId,
-			HttpServletRequest request, HttpServletResponse response,
-			Model model) {
+			Integer age, String origin, String nation,
+			String beHospitalizedTime, String degreeOfEducation,
+			String address, String religiousBelief, String remarks,
+			String marriageStatus, Integer depId, HttpServletRequest request,
+			HttpServletResponse response, Model model) {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		PatientImpl pdao = new PatientImpl();
@@ -537,6 +537,32 @@ public class PatientController {
 		LayuiData laydata = new LayuiData();
 		if (result) {
 			laydata.code = LayuiData.SUCCESS;
+			laydata.msg = "编辑成功";
+		} else {
+			laydata.code = LayuiData.ERRR;
+			laydata.msg = "编辑失败";
+		}
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@RequestMapping(value = "deltms")
+	public void editMS(Integer msId, HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		MainSuitImpl mdao = new MainSuitImpl();
+		LayuiData laydata = new LayuiData();
+		if (mdao.delMainSuit(msId)) {
+			laydata.code = LayuiData.SUCCESS;
 			laydata.msg = "删除成功";
 		} else {
 			laydata.code = LayuiData.ERRR;
@@ -565,15 +591,15 @@ public class PatientController {
 	 * @param model
 	 */
 	@RequestMapping(value = "getmspage")
-	public void getMSPage(String patName, int page, int limit,
+	public void getMSPage(String strwhere, int page, int limit,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		MainSuitImpl mdao = new MainSuitImpl();
 		Expression exp = new Expression();
-		if (patName != null && !patName.equals("")) {
-			exp.andLike("patName", patName, String.class);
+		if (strwhere != null && !strwhere.equals("")) {
+			exp.andLike("patName", strwhere, String.class);
 		}
 		String opration = exp.toString();
 		List<VMainSuit> list = mdao.selMsByPage(opration, page, limit);
