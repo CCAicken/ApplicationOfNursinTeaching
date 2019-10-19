@@ -38,6 +38,8 @@ function loadSelect(type,selectId, form){
 		reqURL = 'basicinfo/getgrade';
 	}if(type=="classname"){
 		reqURL = 'basicinfo/getallclass';
+	}if(type=="pat"){
+		reqURL = 'patient/allpat';
 	}
 	var reqPara = {};
 	var stageData = callAJAX(reqType, reqURL, reqPara);  
@@ -50,6 +52,8 @@ function loadSelect(type,selectId, form){
 				var str = "<option value=''>请选择年级</option>";
 			} if(type=="classname"){
 				var str = "<option value=''>请选择班级</option>";
+			}if(type=="pat"){
+				var str = "<option value=''>请选择病人</option>";
 			}
 			
 			for(var i = 0; i < stageData.data.length; i++) {
@@ -59,6 +63,8 @@ function loadSelect(type,selectId, form){
 					str += '<option value=' + stageData.data[i]['gradeId'] + '>' + stageData.data[i]['gradeName'] + '</option>'; 
 				}if(type=="classname"){
 					str += '<option value=' + stageData.data[i]['classId'] + '>' + stageData.data[i]['className'] + '</option>'; 
+				}if(type=="pat"){
+					str += '<option value=' + stageData.data[i]['patId'] +'>' + stageData.data[i]['patName'] + '</option>';
 				}
 			}
 			$('#' + selectId).append(str);
@@ -205,6 +211,40 @@ function loadAgendSelected(selectId,agend,stuId, form){
 	} else {
 		//layer.msg("阶段信息获取失败！");
 		layer.msg('未获取到信息', function(){});
+	}
+}
+
+/**
+ * 病人下拉框默认值
+ * @param {Object} selectId 要加载到的select控件的id属性名称
+ * @param {Object} form layui表单依赖参数form.render("select")，重新渲染
+ */
+function loadPatSelected(selectId,teaId, form){
+	var reqType = 'post';
+	var reqURL = 'patient/allpat'; 
+	var reqPara = {};
+	var stageData = callAJAX(reqType, reqURL, reqPara);  
+	if(stageData != '' && stageData != undefined) { 
+		if(stageData.code == 0) {
+			$('#' + selectId).html(""); //获取id为selectId指定的控件内容
+			var str = "<option value=''>请选择病人</option>";
+			for(var i = 0; i < stageData.data.length; i++) {
+				if(patId==stageData.data[i]['patId'])
+				{
+						str += '<option value=' + stageData.data[i]['patId'] + " selected='selected'"+'>' + stageData.data[i]['patName'] + '</option>';
+				}else{
+						str += '<option value=' + stageData.data[i]['patId'] + '>' + stageData.data[i]['patName'] + '</option>';
+				}	
+			}
+			$('#' + selectId).append(str);
+			form.render("select");
+		} else {
+			//layer.msg("未获取到阶段信息！");
+			layer.msg('未获取到病人信息', function(){});
+		}
+	} else {
+		//layer.msg("阶段信息获取失败！");
+		layer.msg('未获取到病人信息', function(){});
 	}
 }
 

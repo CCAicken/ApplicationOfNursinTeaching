@@ -32,6 +32,36 @@ import com.alibaba.fastjson.JSON;
 @Controller
 @RequestMapping(value = "patient")
 public class PatientController {
+
+	/**
+	 * 获取所有病人信息
+	 * @param request
+	 * @param response
+	 * @param model
+	 */
+	@RequestMapping(value = "allpat")
+	public void getAllPat(HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		PatientImpl pdao = new PatientImpl();
+		List<VMainSuit> list = pdao.getAllPat();
+		LayuiData laydata = new LayuiData();
+		laydata.code = LayuiData.SUCCESS;
+		laydata.data = list;
+		laydata.msg = "查询成功";
+		Writer out;
+		try {
+			out = response.getWriter();
+			out.write(JSON.toJSONString(laydata));
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * 添加病人
 	 * 

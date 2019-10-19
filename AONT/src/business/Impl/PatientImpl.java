@@ -44,10 +44,7 @@ public class PatientImpl implements PatientDAO {
 	@Override
 	public VMainSuit getPatByPId(int pId) {
 		// TODO Auto-generated method stub
-		String hql = "from VMainSuit where patId=?";
-		Object[] para = { pId };
-		VMainSuit ms = (VMainSuit) bdao.select(hql, para);
-
+		VMainSuit ms = (VMainSuit) bdao.findById(VMainSuit.class, pId);
 		return ms;
 	}
 

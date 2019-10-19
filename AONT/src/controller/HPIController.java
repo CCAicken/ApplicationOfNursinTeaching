@@ -16,6 +16,7 @@ import util.LayuiData;
 import Model.THPI;
 import Model.VMainSuit;
 import business.Impl.HPIImpl;
+import business.Impl.PatientImpl;
 
 import com.alibaba.fastjson.JSON;
 
@@ -45,6 +46,7 @@ public class HPIController {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		HPIImpl hdao = new HPIImpl();
+		PatientImpl pdao = new PatientImpl();
 		THPI hpi = new THPI();
 		hpi.setAccompaniedSymptoms(accompaniedSymptoms);
 		hpi.setDevelopmentOfIllness(developmentOfIllness);
@@ -53,14 +55,20 @@ public class HPIController {
 		hpi.setPathogeny(pathogeny);
 		hpi.setPatId(patId);
 		hpi.setTreatmentAndNursing(treatmentAndNursing);
-		int count = hdao.addHPI(hpi);
 		LayuiData laydata = new LayuiData();
-		if (count > 0) {
-			laydata.code = LayuiData.SUCCESS;
-			laydata.msg = "添加成功";
-		} else {
+		ms = pdao.getPatByPId(patId);
+		if (ms != null) {
 			laydata.code = LayuiData.ERRR;
-			laydata.msg = "添加失败";
+			laydata.msg = "该病人已有现病史记录";
+		} else {
+			int count = hdao.addHPI(hpi);
+			if (count > 0) {
+				laydata.code = LayuiData.SUCCESS;
+				laydata.msg = "添加成功";
+			} else {
+				laydata.code = LayuiData.ERRR;
+				laydata.msg = "添加失败";
+			}
 		}
 		Writer out;
 		try {
