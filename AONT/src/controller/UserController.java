@@ -437,12 +437,21 @@ public class UserController {
 	 */
 	@RequestMapping(value = "addtea")
 	public void addTea(String teaId, String teaPwd, String teaName,
-			String agend, String jobTitle, int userType,
+			String agend, String jobTitle, int userType, String teaTel,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		TeacherImpl teadao = new TeacherImpl();
+		if (teaPwd == null || teaPwd.equals("")) {
+			teaPwd = "123456";
+		}
+
+		// Calendar calendar = Calendar.getInstance();
+		// SimpleDateFormat dateFormat = new SimpleDateFormat(
+		// "yyyy-MM-dd :hh:mm:ss");
+		// System.out.println(dateFormat.format(calendar.getTime()));
+
 		TTeacher tea = new TTeacher();
 		tea.setTeaId(teaId);
 		tea.setTeaName(teaName);
@@ -450,13 +459,16 @@ public class UserController {
 		tea.setAgend(agend);
 		tea.setJobTitle(jobTitle);
 		tea.setUserType(userType);
-		int count = teadao.addTeacher(tea);
+		tea.setTeaPhoto(teaTel);
+		tea.setNation("龙");
+		tea.setCreateTime("2019/10/19");
 		LayuiData laydata = new LayuiData();
 		VTeacher teacher = teadao.getTeaById(teaId);
 		if (teacher != null && !teacher.getTeaId().equals("")) {
 			laydata.code = LayuiData.ERRR;
 			laydata.msg = "该账号已存在";
 		} else {
+			int count = teadao.addTeacher(tea);
 			if (count > 0) {
 				laydata.code = LayuiData.SUCCESS;
 				laydata.msg = "添加成功";

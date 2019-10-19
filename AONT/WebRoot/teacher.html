@@ -62,21 +62,21 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 			<div class="layui-form-item">
 				<label class="layui-form-label">工号:</label>
 				<div class="layui-input-inline">
-					<input type="text" id="newclassname" lay-verify="required"
+					<input type="text" id="newteaId" lay-verify="required"
 						placeholder="请输入工号" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">姓名:</label>
 				<div class="layui-input-inline">
-					<input type="text" id="newclassname" lay-verify="required"
+					<input type="text" id="newteaname" lay-verify="required"
 						placeholder="请输姓名" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">联系电话:</label>
 				<div class="layui-input-inline">
-					<input type="text" id="newclassname" lay-verify="required"
+					<input type="text" id="newteatel" lay-verify="required"
 						placeholder="请输入联系电话" autocomplete="off" class="layui-input">
 				</div>
 			</div>
@@ -90,7 +90,7 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 			<div class="layui-form-item">
 				<label class="layui-form-label">职称:</label>
 				<div class="layui-input-inline">
-					<input type="text" id="newclassname" lay-verify="required"
+					<input type="text" id="newjobtitle" lay-verify="required"
 						placeholder="请输入职称" autocomplete="off" class="layui-input">
 				</div>
 			</div>
@@ -98,6 +98,9 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 				    <label class="layui-form-label">用户类型:</label>
 				    <div class="layui-input-inline">
 				     	<select id="selUserType"  lay-filter="addclassgrade" lay-search> 
+				     		<option value ="0">请选择用户类型</option>
+							<option value ="1">教师</option>
+							<option value="2">管理员</option>
 						</select>	
 				    </div>
 				  </div>
@@ -192,184 +195,122 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 								});
 							});
 
-							//表格工具栏事件 
-							table.on('tool(tool)',function(obj) {
-								var data = obj.data;
-												switch (obj.event) {
-												//删除按钮操作
-												case 'del':
-													layer
-															.confirm(
-																	'即将删除'
-																			+ data.className
-																			+ ',确定要删除么？',
-																	{
-																		btn : [
-																				'确定',
-																				'取消' ],
-																		icon : 3
-																	},
-																	function() {
-																		$
-																				.ajax({
-																					type : 'get',
-																					url : "basicinfo/delclass",
-																					dataType : 'json',
-																					data : {
-																						classId : data.classId
-																					},
-																					success : function(
-																							data) {
-																						if (data.code == 0) {
-																							layer
-																									.confirm(
-																											data.msg,
-																											{
-																												icon : 1,
-																												btn : [ '确定' ]
-																											},
-																											function() {
-																												table
-																														.reload(
-																																"classlist",
-																																{ //此处是上文提到的 初始化标识id
-																																	where : {
-
-																																	},
-																																	page : {
-																																		curr : 1
-																																	}
-																																});
-																												layer
-																														.closeAll();
-																											});
-																						} else {
-																							layer
-																									.confirm(
-																											data.msg,
-																											{
-																												icon : 7,
-																												btn : [ '确定' ]
-																											});
-																						}
-																					},
-																					error : function() {
-																						layer
-																								.confirm(
-																										'出现错误，删除失败，请重试！',
-																										{
-																											icon : 6,
-																											btn : [ '确定' ]
-																										});
-																					},
-																				});
-																	},
-																	function() {
-																		layer
-																				.closeAll();
-																	});
-													break;
-												case 'edit':
-													$("#oldclassname").val(
-															data.className);
-													loadTeaSelected(
-															"edclassid",
-															data.teaId, form);
-													loadGradeSelected(
-															"edgradeid",
-															data.gradeId, form);
-													layer
-															.open({
-																title : "班级信息编辑",
-																type : 1,
-																area : [
-																		'500px',
-																		'500px' ],
-																skin : 'demo-class',
-																btn : [ '确认保存' ],
-																//maxmin: true,//显示最大化最小化按钮
-																//offset: 'b', 弹框的位置
-																content : $('#div_editcollege'),
-																btn1 : function(
-																		index,
-																		layero) {
-																	$
-																			.ajax({
-																				type : 'get',
-																				url : "basicinfo/editclass",
-																				dataType : 'json',
-																				data : {
-																					classId : data.classId,
-																					className : $(
-																							"#oldclassname")
-																							.val()
-																							.trim(),
-																					teaId : $(
-																							"#edclassid")
-																							.val(),
-																					gradeId : $(
-																							"#edgradeid")
-																							.val()
-																				},
-																				success : function(
-																						data) {
-																					if (data.code == 0) {
-
-																						layer
-																								.confirm(
-																										data.msg,
-																										{
-																											icon : 1,
-																											btn : [ '确定' ]
-																										},
-																										function() {
-																											table
-																													.reload(
-																															"classlist",
-																															{ //此处是上文提到的 初始化标识id
-																																where : {
-
-																																},
-																																page : {
-																																	curr : 1
-																																}
-																															});
-																											form
-																													.render();
-																											layer
-																													.closeAll();
-																										});
-																					} else {
-																						layer
-																								.confirm(
-																										data.msg,
-																										{
-																											icon : 7,
-																											btn : [ '确定' ]
-																										});
-																					}
-																				},
-																				error : function() {
-																					layer
-																							.confirm(
-																									'出现错误，请重试！',
-																									{
-																										icon : 6,
-																										btn : [ '确定' ]
-																									});
-																				},
-																			});
-																},
-																cancel : function() {
-																	form
-																			.render();
-																}
-															});
-
-													break;
-												}
-												;
+				//表格工具栏事件 
+				table.on('tool(tool)', function(obj) {
+					var data = obj.data;
+					switch (obj.event) {
+						//删除按钮操作
+						case 'del':
+							layer.confirm('即将删除'+data.className+',确定要删除么？', {
+							  btn: ['确定','取消'],
+							  icon:3
+							}, function(){
+								$.ajax({
+					        		type: 'get',
+					        		url: "basicinfo/delclass",
+					        		dataType: 'json',
+					        		data:{
+					        		classId:data.classId
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        				icon: 7,
+												  btn: ['确定']
 											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，删除失败，请重试！', {
+					        				icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});   
+							}, function(){ 
+								layer.closeAll();
+							});
+						break;
+						case 'edit':
+							$("#oldclassname").val(data.className);
+							loadTeaSelected("edclassid",data.teaId, form);
+							loadGradeSelected("edgradeid",data.gradeId, form);
+							layer.open({
+		  						title:"班级信息编辑",
+		  						type: 1,
+		  						area: ['500px', '500px'],
+		  						skin: 'demo-class',
+		  						btn:['确认保存'],
+		  						//maxmin: true,//显示最大化最小化按钮
+		  						//offset: 'b', 弹框的位置
+		  						content: $('#div_editcollege'),
+		  						btn1: function(index, layero){
+		    						$.ajax({
+					        		type: 'get',
+					        		url: "basicinfo/editclass",
+					        		dataType: 'json',
+					        		data:{
+					        		classId:data.classId,
+					        		 className:$("#oldclassname").val().trim(),
+					        		 teaId:$("#edclassid").val(),
+					        		 gradeId:$("#edgradeid").val()
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        			
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+									            form.render();
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  						},
+		  						cancel: function(){ 
+		  							form.render();
+		  						}
+							});
+							
+						break;
+					};
+				});
 
 				//添加教师按钮事件
 		  		$("#addTeach").click(function(){ 
@@ -384,15 +325,18 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 		  				content: $('#div_addtea'),
 		  				btn1: function(index, layero){
 		  				
-		  				alert($("#newclassname").val().trim())
+		  					//alert($("input[name='sex']:checked").val());
 		    				$.ajax({
 					        		type: 'post',
-					        		url: "basicinfo/addclass",
+					        		url: "user/addtea",
 					        		dataType: 'json',
 					        		data:{
-					        		className:$("#newclassname").val().trim(),
-					        		 teaId:$("#addclasstea").val(),
-					        		 gradeId:$("#addclassgrade").val()
+					        		teaId:$("#newteaId").val().trim(),
+					        		 teaName:$("#newteaname").val(),
+					        		 teaTel:$("#newteatel").val(),
+					        		  jobTitle:$("#newjobtitle").val(),
+					        		   userType:$("#selUserType").val(),
+					        		   agend:$("input[name='sex']:checked").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
