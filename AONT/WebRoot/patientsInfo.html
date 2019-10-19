@@ -12,10 +12,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title></title>
 		<link rel="stylesheet" href="css/amazeui.min.css" />
 		<link rel="stylesheet" href="css/admin.css" />
-		
-		
+		<link rel="stylesheet" href="layui/css/layui.css"/>
 	</head>
-
+	<style>
+		body .demo-class .layui-layer-title{background:#19A97B; color:#fff; border: none;}
+		body .demo-class .layui-layer-btn{border-top:1px solid #19A97B}
+		body .demo-class .layui-layer-btn a{background:#19A97B;}
+		body .demo-class .layui-layer-btn .layui-layer-btn1{background:#19A97B;}
+		body .demo-class .layui-layer-page .layui-layer-content {background-color: #e13e4;}
+		.layui-layer-content{
+		    text-align:center;
+		}
+	</style>
 	<body>
 		<div class="admin-content-body">
 			<div class="am-cf am-padding am-padding-bottom-0">
@@ -51,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-
+		<!-- 编辑 -->
 		<div id="div_editcollege" style="display:none;text-align: center; margin-top: 15%;">
 			<form class="layui-form layui-form-pane">
 				   <div class="layui-form-item">
@@ -149,7 +157,104 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </div>
   			</form>
 		</div>
-		
+		<!-- 查看 -->
+		<div id="div_detailcollege" style="display:none;text-align: center; margin-top: 15%;">
+			<form class="layui-form layui-form-pane">
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">病人姓名:</label> 
+				    <div class="layui-input-inline">
+				      <input type="text" id="detailpatName"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">职业:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailprofession"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">性别:</label>
+				    <div class="layui-input-inline">
+				     <select id="detailagend"  lay-filter="detailagend" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+					 </select>	
+					</div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">年龄:</label>
+				    <div class="layui-input-inline">
+				     <input type="number" id="detailage"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">籍贯:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailorigin"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">婚姻状态:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailmarriageStatus"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">民族:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailnation"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">入院时间:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailbeHospitalizedTime"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">文化程度:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detaildegreeOfEducation"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">家庭地址:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailaddress"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">宗教信仰:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailreligiousBelief"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">备注:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="detailremarks"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">科室:</label>
+				    <div class="layui-input-inline">
+				      <select id="detaildepId"  lay-filter="detaildepId" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+						</select>	
+				    </div> 
+				  </div>
+  			</form>
+		</div>
 		<!--班级添加div  -->
 		<div id="div_addcollege"
 			style="display: none;text-align: center; margin-top: 15%;">
@@ -251,6 +356,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<script type="text/html" id="barDemo">
+			<a class="layui-btn layui-btn-xs" lay-event="detaill"><i class="layui-icon layui-icon-search"></i>  查看更多</a>
   			<a class="layui-btn layui-btn-xs" lay-event="edit"><span class="am-icon-pencil-square-o"></span> 编辑</a>
   			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><span class="am-icon-trash-o"></span> 删除</a>
 		</script>
@@ -344,6 +450,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				table.on('tool(tool)', function(obj) {
 					var data = obj.data;
 					switch (obj.event) {
+						//查看更多
+						case 'detaill':
+							$("#detailpatName").val(data.patName);
+					        $("#detailprofession").val(data.profession);
+					        $("#detailagend").val(data.agend);
+			 				$("#detailage").val(data.age);
+			   				$("#detailorigin").val(data.origin);
+		 					$("#detailnation").val(data.nation);
+		  					$("#detailbeHospitalizedTime").val(data.beHospitalizedTime);
+			 				$("#detaildegreeOfEducation").val(data.degreeOfEducation);
+			  				$("#detailaddress").val(data.address);
+			   				$("#detailreligiousBelief").val(data.religiousBelief);
+				 			$("#detailremarks").val(data.remarks);
+			  				$("#detailmarriageStatus").val(data.marriageStatus);
+			   				$("#detaildepId").val()
+						layer.open({
+			  				title:"查看"+data.patName+"病人信息",
+			  				type: 1,
+			  				area: ['400px', '600px'],
+			  				skin: 'demo-class',
+			  				btn:['添加'],
+			  				//maxmin: true,//显示最大化最小化按钮
+			  				//offset: 'b', 弹框的位置
+			  				content: $('#div_detailcollege'),
+			  				btn1: function(index, layero){},
+			  				cancel: function(){}
+						});
+						break;
 						//删除按钮操作
 						case 'del':
 							layer.confirm('即将删除'+data.patName+',确定要删除么？', {
@@ -392,24 +526,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 						break;
 						case 'edit':
-							$("#addpatName").val(data.patName);
-					        $("#addprofession").val(data.patName);
-					        $("#addagend").val(data.patName);
-			 				$("#addage").val(data.patName);
-			   				$("#addorigin").val(data.patName);
-		 					$("#addnation").val(data.patName);
-		  					$("#addbeHospitalizedTime").val(data.patName);
-			 				$("#adddegreeOfEducation").val(data.patName);
-			  				$("#addaddress").val(data.patName);
-			   				$("#addreligiousBelief").val(data.patName);
-				 			$("#addremarks").val(data.patName);
-			  				$("#addmarriageStatus").val(data.patName);
-			   				$("#adddepId").val()
+							$("#oldpatName").val(data.patName);
+					        $("#oldprofession").val(data.profession);
+					        $("#oldagend").val(data.agend);
+			 				$("#oldage").val(data.age);
+			   				$("#oldorigin").val(data.origin);
+		 					$("#oldnation").val(data.nation);
+		  					$("#oldbeHospitalizedTime").val(data.beHospitalizedTime);
+			 				$("#olddegreeOfEducation").val(data.degreeOfEducation);
+			  				$("#oldaddress").val(data.address);
+			   				$("#oldreligiousBelief").val(data.religiousBelief);
+				 			$("#oldremarks").val(data.remarks);
+			  				$("#oldmarriageStatus").val(data.marriageStatus);
+			   				$("#olddepId").val()
 			   				
-							loadClassSelected("classId",data.classId, form);
+							//loadClassSelected("classId",data.classId, form);
 							//loadAgendSelected("stuAgend",data.stuAgend, form);
 							layer.open({
-		  						title:data.stuName+"学生信息编辑",
+		  						title:data.patName+"病人信息编辑",
 		  						type: 1,
 		  						area: ['500px', '500px'],
 		  						skin: 'demo-class',
@@ -423,11 +557,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        		url: "user/edtistu",
 					        		dataType: 'json',
 					        		data:{
-					        		 stuId:$("#stuId").val().trim(),
-					        		 stuName:$("#stuName").val().trim(),
-					        		 stuPwd:$("#stuPwd").val().trim(),
-					        		 classId:$("#classId").val(),
-					        		 stuAgend:$("#stuAgend").val() 
+					        		 patName:$("#oldpatName").val().trim(),  
+					        		profession:$("#oldprofession").val().trim(),  
+					        		agend:$("#oldagend").val().trim(),
+			 						age:$("#oldage").val().trim(),
+			   						origin:$("#oldorigin").val().trim(), 
+		 							nation:$("#oldnation").val().trim(), 
+		  							beHospitalizedTime:$("#oldbeHospitalizedTime").val().trim(),
+			 						degreeOfEducation:$("#olddegreeOfEducation").val().trim(), 
+			  						address:$("#oldaddress").val().trim(), 
+			   						religiousBelief:$("#oldreligiousBelief").val().trim(),
+				 					remarks:$("#oldremarks").val().trim(), 
+			  						marriageStatus:$("#oldmarriageStatus").val().trim(), 
+			   						depId:$("#olddepId").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){

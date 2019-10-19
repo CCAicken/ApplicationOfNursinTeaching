@@ -170,8 +170,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_HPI" catalog="ApplicationOfNursinTeaching"
-	class="Model.VHPI">
+	<table name="V_HPI" catalog="ApplicationOfNursinTeaching"
+		class="Model.VHPI">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_DailyLife" catalog="ApplicationOfNursinTeaching"
+	class="Model.VDailyLife">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
