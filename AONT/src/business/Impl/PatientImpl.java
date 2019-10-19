@@ -6,6 +6,7 @@ import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
 import Model.TPatient;
 import Model.VMainSuit;
+import Model.VPatient;
 import business.DAO.PatientDAO;
 
 public class PatientImpl implements PatientDAO {
@@ -69,6 +70,22 @@ public class PatientImpl implements PatientDAO {
 	@Override
 	public List<VMainSuit> getPatByPage(String strwhere, int page, int limit) {
 		// TODO Auto-generated method stub
+		String hql = "from MVainSuit" + strwhere;
+		return bdao.selectByPage(hql, page, limit);
+	}
+
+	@Override
+	public int getPatCountForV(String strwhere) {
+		// TODO Auto-generated method stub
+		String hql = "select count(*) from VPatient";
+		if (strwhere != null && !strwhere.equals("")) {
+			hql += strwhere;
+		}
+		return bdao.selectValue(hql);
+	}
+
+	@Override
+	public List<VPatient> getPatByPageForV(String strwhere, int page, int limit) {
 		String hql = "from MVainSuit" + strwhere;
 		return bdao.selectByPage(hql, page, limit);
 	}

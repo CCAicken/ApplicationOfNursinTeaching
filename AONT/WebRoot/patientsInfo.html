@@ -37,9 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="am-u-sm-12 am-u-md-3">
 					<div class="am-input-group am-input-group-sm">
-						<input type="text" class="am-form-field">
+						<input type="text" class="am-form-field" id="input_wherecondition">
 						<span class="am-input-group-btn">
-			<button class="am-btn am-btn-default sousuo" type="button">搜索</button>
+			<button class="am-btn am-btn-default sousuo" id="btnselfrontinfo" type="button">搜索</button>
 			
           </span>
 					</div>
@@ -47,348 +47,498 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="am-g">
 				<div class="am-u-sm-12">
-					<form class="am-form">
-						<table class="am-table am-table-striped am-table-hover table-main">
-							<thead>
-								<tr>
-									<th class="table-check"><input type="checkbox"></th>
-									<th class="table-id">序号</th>
-									<th class="table-title">姓名</th>
-									<th class="table-author am-hide-sm-only">性别</th>
-									<th class="table-age">年龄</th>
-									<th class="table-work">职业</th>
-									<th class="table-ethnic">民族</th>
-									<th class="table-time">入院时间</th>
-									<th class="table-look">更多</th>
-									<th class="table-set">操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									
-									<td>
-										<a href="#">张三</a>
-									</td>
-									
-									<td class="am-hide-sm-only">男</td>
-									<td>23</td>
-									<td>白领</td>
-									<td>汉</td>
-									<td>2019-3-23</td>
-									<td><a href="javascript:void(0)" class="click_pop">详细信息</a></td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									
-									<td>
-										<a href="#">张三</a>
-									</td>
-									
-									<td class="am-hide-sm-only">男</td>
-									<td>23</td>
-									<td>白领</td>
-									<td>汉</td>
-									<td>2019-3-23</td>
-									<td><a href="javascript:void(0)" class="click_pop">详细信息</a></td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									
-									<td>
-										<a href="#">张三</a>
-									</td>
-									
-									<td class="am-hide-sm-only">男</td>
-									<td>23</td>
-									<td>白领</td>
-									<td>汉</td>
-									<td>2019-3-23</td>
-									<td><a href="javascript:void(0)" class="click_pop">详细信息</a></td>
-									
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									
-									<td>
-										<a href="#">张三</a>
-									</td>
-									
-									<td class="am-hide-sm-only">男</td>
-									<td>23</td>
-									<td>白领</td>
-									<td>汉</td>
-									<td>2019-3-23</td>
-									<td><a href="javascript:void(0)" class="click_pop">详细信息</a></td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr><tr>
-									<td><input type="checkbox"></td>
-									<td>1</td>
-									
-									<td>
-										<a href="#">张三</a>
-									</td>
-									
-									<td class="am-hide-sm-only">男</td>
-									<td>23</td>
-									<td>白领</td>
-									<td>汉</td>
-									<td>2019-3-23</td>
-									<td><a href="javascript:void(0)" class="click_pop">详细信息</a></td>
-									<td>
-										<div class="am-btn-toolbar">
-											<div class="am-btn-group am-btn-group-xs">
-												<button class="am-btn am-btn-default am-btn-xs am-text-secondary" type="button"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-												<button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only del" type="button"><span class="am-icon-trash-o"></span> 删除</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-							
-							</tbody>
-						</table>
-						<div class="am-cf">
-							共 15 条记录
-							<div class="am-fr">
-								<ul class="am-pagination">
-									<li class="am-disabled">
-										<a href="#">«</a>
-									</li>
-									<li class="am-active">
-										<a href="#">1</a>
-									</li>
-									<li>
-										<a href="#">2</a>
-									</li>
-									<li>
-										<a href="#">3</a>
-									</li>
-									<li>
-										<a href="#">4</a>
-									</li>
-									<li>
-										<a href="#">5</a>
-									</li>
-									<li>
-										<a href="#">»</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<hr>
-					</form>
+					 <table id="classlist" style="text-align: center;" class="layui-table" lay-filter="tool">	</table>
 				</div>
 			</div>
 		</div>
 
-		<div id="goodcover"></div>
-	
-		<div id="code_p">
-		<div class="close1"><a href="javascript:void(0)" id="closebt"><img src="images/close.gif"></a></div>
-		<div class="goodtxt">
-			<h3>填写病人信息</h3>
-			<form>
-					<input type="text" name="name" placeholder="姓名"  class="info"/>
-					<div class="am-form-group gender">
-						<label class="am-radio-inline">
-						  <input type="radio"  value="" name="docInlineRadio"> 男
-						</label>
-						<label class="am-radio-inline">
-						  <input type="radio" name="docInlineRadio"> 女
-						</label>
-					  </div>
-					<input type="text" name="age" placeholder="年龄"  class="info"/>
-					<input type="text" name="work" placeholder="职业"  class="info"/>
-					<input type="text" name="minz" placeholder="民族"  class="info"/>
-					<input type="text" name="jiguan" placeholder="籍贯"  class="info"/>
-					<div class="am-form-group "  >
-						<select id="doc-select-1 " class="info_hy">
-						  <option value="0">---婚姻状况---</option>
-						  <option value="option1">未婚</option>
-						  <option value="option2">已婚</option>
-						  <option value="option3">离婚</option>
-						  <option value="option1">丧偶</option>
-						</select>
-						<span class="am-form-caret"></span>
-					  </div>
-					<input type="text" name="time" placeholder="入院时间"  class="info"/>
-					<input type="text" name="zongj" placeholder="宗教信仰"  class="info"/>
-					<input type="texta" name="wenh" placeholder="文化程度"  class="info"/>
-					<input type="text" name="addres" placeholder="家庭地址"  class="info"/>
-					
-					<input type="submit" id="Submit" class="tijiao" value="确定">
-			</form>
-		</div>
-				
-				
+		<div id="div_editcollege" style="display:none;text-align: center; margin-top: 15%;">
+			<form class="layui-form layui-form-pane">
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">病人姓名:</label> 
+				    <div class="layui-input-inline">
+				      <input type="text" id="oldpatName"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">职业:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldprofession"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">性别:</label>
+				    <div class="layui-input-inline">
+				     <select id="oldagend"  lay-filter="oldagend" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+					 </select>	
+					</div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">年龄:</label>
+				    <div class="layui-input-inline">
+				     <input type="number" id="oldage"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">籍贯:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldorigin"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">婚姻状态:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldmarriageStatus"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">民族:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldnation"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">入院时间:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldbeHospitalizedTime"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">文化程度:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="olddegreeOfEducation"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">家庭地址:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldaddress"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">宗教信仰:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldreligiousBelief"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">备注:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="oldremarks"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">科室:</label>
+				    <div class="layui-input-inline">
+				      <select id="olddepId"  lay-filter="oldStuAgend" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+						</select>	
+				    </div> 
+				  </div>
+  			</form>
 		</div>
 		
-
-		<div class="bgPop"></div>
-		<!--弹出框-->
-		<div class="pop">
-			<div class="pop-top">
-				<h2>病人信息</h2>
-				<span class="pop-close">Ｘ</span>
-			</div>
-			<div class="pop-content">
-				<div class="pop-content-left">
-					<img src="" alt="" class="teathumb">
-				</div>
-				<div class="pop-content-right">
-					<p>姓名：<b class="xm">李爱国</b><span class="info_t">性别：<b class="xb">男</b></span><span class="info_t">年龄：<b class="nl">29</b></span></p>
-					
-					<p>宗教信仰：<b class="zj">无</b><span class="info_t">民族：<b class="mz">汉</b></span></p>
-					<p>职业：<b class="zy">农民</b></p>
-					<p>文化程度：<b class="wh">小学</b></p>
-					<p>婚姻状况：<b class="hy">未婚</b></p>
-					<p>籍贯：<b class="jg">云南昆明</b></p>
-					<p>家庭地址：<b class="jt">云南省昆明市五华区天桥一号</b></p>
-					<p>入院时间：<b class="sj">2019-2-1</b></p>
-					
-				</div>
-			</div>
-			<div class="pop-foot">
-					<input type="button" value="关闭" class="pop-cancel pop-close"/>
-					
-				</div>
-			
+		<!--班级添加div  -->
+		<div id="div_addcollege"
+			style="display: none;text-align: center; margin-top: 15%;">
+			<form class="layui-form layui-form-pane">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">病人姓名:</label> 
+				    <div class="layui-input-inline">
+				      <input type="text" id="addpatName"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">职业:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addprofession"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">性别:</label>
+				    <div class="layui-input-inline">
+				     <select id="addagend"  lay-filter="addagend" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+					 </select>	
+					</div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">年龄:</label>
+				    <div class="layui-input-inline">
+				     <input type="number" id="addage"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">籍贯:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addorigin"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">婚姻状态:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addmarriageStatus"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">民族:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addnation"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">入院时间:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addbeHospitalizedTime"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">文化程度:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="adddegreeOfEducation"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">家庭地址:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addaddress"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">宗教信仰:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addreligiousBelief"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				   <div class="layui-form-item">
+				    <label class="layui-form-label">备注:</label>
+				    <div class="layui-input-inline">
+				     <input type="text" id="addremarks"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">科室:</label>
+				    <div class="layui-input-inline">
+				      <select id="adddepId"  lay-filter="addStuAgend" lay-search> 
+				      <option value="男" >男</option>
+				      <option value="女" >女</option>
+						</select>	
+				    </div> 
+				  </div>
+  			</form>
 		</div>
-			
-
-		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-		<script>
-				$(document).ready(function () {
-					$('.pop-close').click(function () {
-						$('.bgPop,.pop').hide();
-					});
-					$('.click_pop').click(function () {
-						$('.bgPop,.pop').show();
-					});
-				})
-			
+		
+		<script type="text/html" id="barDemo">
+  			<a class="layui-btn layui-btn-xs" lay-event="edit"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+  			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><span class="am-icon-trash-o"></span> 删除</a>
 		</script>
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/popup.js"></script>
 		
-		<script type="text/javascript">
+		<script type="text/javascript" src="js/loadselect.js"></script>
+		<script type="text/javascript" src="layui/layui.all.js"></script>
 		
-			function confirmData () {
-				console.log('tihsi')
-			}
-			
-			var Popup = new Popup();
-			
-			$('.del').click(function(){
-				var title = '页面提示',
-					text = '确定删除该病人信息吗？';
-				Popup.confirm(title,text,confirmData);
-			})
-			
-			sure.addEventListener('click',function(){
-				Popup.toast('操作成功',10);
-			})
-			</script>
 		<script>
-				$(function() {
-					//alert($(window).height());
-					$('#addpatient').click(function() {
-						$('#code_p').center();
-						$('#goodcover').show();
-						$('#code_p').fadeIn();
+			layui.use(['layer','form','table'], function(){
+				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
+				
+				loadSelect("classname","addClassId", form); 
+		  		//loadSelect("tea","addclasstea", form); 
+				
+				/*加载表格*/
+				table.render({
+					elem : '#classlist',
+					id:'classlist',
+					url : 'patient/getpatpage',
+					title : '班级数据表',
+					height: "full-200",
+					//skin : 'line',
+					even : true,
+					cols : [ 
+					     [ {
+							type : 'numbers',
+							title : '序号',
+							align : 'center',
+							
+						}, {
+		     				field : 'patName',
+		     				align : 'center',
+		     				title : '姓名',
+		   
+		    			},{
+		     				field : 'agend',
+		     				align : 'center',
+		     				title : '性别',
+		   
+		    			},{
+		     				field : 'age',
+		     				align : 'center',
+		     				title : '年龄',
+		   
+		    			},{
+		     				field : 'orig',
+		     				align : 'center',
+		     				title : '地区',
+		   
+		    			},{
+		     				field : 'depName',
+		     				align : 'center',
+		     				title : '科室',
+		   
+		    			},{
+		     				field : 'beHospitalizedTime',
+		     				align : 'center',
+		     				title : '入院时间',
+		   
+		    			},{
+							title : '操作',
+							toolbar : '#barDemo',
+							align : 'center'
+						}] ],
+					 page: {
+							layout: ['prev', 'page', 'next', 'skip', 'count', 'limit'],
+							groups: 5,
+							limit: 10,
+							limits: [1, 4, 5, 10, 50],
+							theme: '#1E9FFF',						
+					 },
+				});
+				
+				/* 点击查询对专业进行筛选 */
+				$("#btnselfrontinfo").click(function() {
+					table.reload('classlist', {
+						method : 'post',
+						where : {
+							'strwhere' : $("#input_wherecondition").val().trim(),
+							
+								},
+						page : {
+							curr : 1
+							}
 					});
-					$('#closebt').click(function() {
-						$('#code_p').hide();
-						$('#goodcover').hide();
+				});
+				
+				//表格工具栏事件 
+				table.on('tool(tool)', function(obj) {
+					var data = obj.data;
+					switch (obj.event) {
+						//删除按钮操作
+						case 'del':
+							layer.confirm('即将删除'+data.patName+',确定要删除么？', {
+							  btn: ['确定','取消'],
+							  icon:3
+							}, function(){
+								$.ajax({
+					        		type: 'get',
+					        		url: "patient/delpat",
+					        		dataType: 'json',
+					        		data:{
+					        		patId:data.patId
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        				icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，删除失败，请重试！', {
+					        				icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});   
+							}, function(){ 
+								layer.closeAll();
+							});
+						break;
+						case 'edit':
+							$("#addpatName").val(data.patName);
+					        $("#addprofession").val(data.patName);
+					        $("#addagend").val(data.patName);
+			 				$("#addage").val(data.patName);
+			   				$("#addorigin").val(data.patName);
+		 					$("#addnation").val(data.patName);
+		  					$("#addbeHospitalizedTime").val(data.patName);
+			 				$("#adddegreeOfEducation").val(data.patName);
+			  				$("#addaddress").val(data.patName);
+			   				$("#addreligiousBelief").val(data.patName);
+				 			$("#addremarks").val(data.patName);
+			  				$("#addmarriageStatus").val(data.patName);
+			   				$("#adddepId").val()
+			   				
+							loadClassSelected("classId",data.classId, form);
+							//loadAgendSelected("stuAgend",data.stuAgend, form);
+							layer.open({
+		  						title:data.stuName+"学生信息编辑",
+		  						type: 1,
+		  						area: ['500px', '500px'],
+		  						skin: 'demo-class',
+		  						btn:['确认保存'],
+		  						//maxmin: true,//显示最大化最小化按钮
+		  						//offset: 'b', 弹框的位置
+		  						content: $('#div_editcollege'),
+		  						btn1: function(index, layero){
+		    						$.ajax({
+					        		type: 'get',
+					        		url: "user/edtistu",
+					        		dataType: 'json',
+					        		data:{
+					        		 stuId:$("#stuId").val().trim(),
+					        		 stuName:$("#stuName").val().trim(),
+					        		 stuPwd:$("#stuPwd").val().trim(),
+					        		 classId:$("#classId").val(),
+					        		 stuAgend:$("#stuAgend").val() 
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        			
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+									            form.render();
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  						},
+		  						cancel: function(){ 
+		  							form.render();
+		  						}
+							});
+							
+						break;
+					};
+				});
+				
+				//添加按钮事件
+		  		$("#addpatient").click(function(){ 
+		  			layer.open({
+		  				title:"添加病人",
+		  				type: 1,
+		  				area: ['400px', '600px'],
+		  				skin: 'demo-class',
+		  				btn:['添加'],
+		  				//maxmin: true,//显示最大化最小化按钮
+		  				//offset: 'b', 弹框的位置
+		  				content: $('#div_addcollege'),
+		  				btn1: function(index, layero){
+		  				 
+		    				$.ajax({
+					        		type: 'post',
+					        		url: "patient/addpat",
+					        		dataType: 'json',
+					        		data:{
+					        	    patName:$("#addpatName").val().trim(),  
+					        		profession:$("#addprofession").val().trim(),  
+					        		agend:$("#addagend").val().trim(),
+			 						age:$("#addage").val().trim(),
+			   						origin:$("#addorigin").val().trim(), 
+		 							nation:$("#addnation").val().trim(), 
+		  							beHospitalizedTime:$("#addbeHospitalizedTime").val().trim(),
+			 						degreeOfEducation:$("#adddegreeOfEducation").val().trim(), 
+			  						address:$("#addaddress").val().trim(), 
+			   						religiousBelief:$("#addreligiousBelief").val().trim(),
+				 					remarks:$("#addremarks").val().trim(), 
+			  						marriageStatus:$("#addmarriageStatus").val().trim(), 
+			   						depId:$("#adddepId").val()
+					        		},
+					        		success:function(data){
+					        			if(data.code == 0){
+					        				layer.confirm(data.msg, {
+					        				icon: 1,
+											  btn: ['确定']
+											}, function(){
+												table.reload("classlist", { //此处是上文提到的 初始化标识id
+									                where: {
+									                	
+									                },page: {
+									                curr:1
+									                }
+									            });	
+												layer.closeAll();
+											});          				 
+					        			}
+					        			else{
+					        				layer.confirm(data.msg, {
+					        					  icon: 7,
+												  btn: ['确定']
+											});
+					        			}
+					        		},
+					        		error:function(){
+					        			layer.confirm('出现错误，请重试！', {
+					        				  icon: 6,
+											  btn: ['确定']
+										});
+					        		},
+					        	});  
+		  				},
+		  				cancel: function(){ 
+		  				}
 					});
-					$('#goodcover').click(function() {
-						$('#code_p').hide();
-						$('#goodcover').hide();
-					});
-					/*var val=$(window).height();
-					var codeheight=$("#code").height();
-					var topheight=(val-codeheight)/2;
-					$('#code').css('top',topheight);*/
-					jQuery.fn.center = function(loaded) {
-						var obj = this;
-						body_width = parseInt($(window).width());
-						body_height = parseInt($(window).height());
-						block_width = parseInt(obj.width());
-						block_height = parseInt(obj.height());
-				
-						left_position = parseInt((body_width / 2) - (block_width / 2) + $(window).scrollLeft());
-						if (body_width < block_width) {
-							left_position = 0 + $(window).scrollLeft();
-						};
-				
-						top_position = parseInt((body_height / 2) - (block_height / 2) + $(window).scrollTop());
-						if (body_height < block_height) {
-							top_position = 0 + $(window).scrollTop();
-						};
-				
-						if (!loaded) {
-				
-							obj.css({
-								'position': 'absolute'
-							});
-							obj.css({
-								'top': ($(window).height() - $('#code_p').height()) * 0.5,
-								'left': left_position
-							});
-							$(window).bind('resize', function() {
-								obj.center(!loaded);
-							});
-							$(window).bind('scroll', function() {
-								obj.center(!loaded);
-							});
-				
-						} else {
-							obj.stop();
-							obj.css({
-								'position': 'absolute'
-							});
-							obj.animate({
-								'top': top_position
-							}, 200, 'linear');
-						}
-					}
-				
-				})
-				</script>
-				
+		  		})
+			})
+		</script>
 	</body>
 </html>

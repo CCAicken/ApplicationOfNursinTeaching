@@ -17,6 +17,7 @@ import Model.TDailyLife;
 import Model.TMainSuit;
 import Model.TPatient;
 import Model.VMainSuit;
+import Model.VPatient;
 import business.Impl.DailyLifeImpl;
 import business.Impl.MainSuitImpl;
 import business.Impl.PatientImpl;
@@ -35,6 +36,7 @@ public class PatientController {
 
 	/**
 	 * 获取所有病人信息
+	 * 
 	 * @param request
 	 * @param response
 	 * @param model
@@ -229,7 +231,8 @@ public class PatientController {
 		}
 	}
 
-	public void getPatPage(String patName, int depId, int page, int limit,
+	@RequestMapping(value = "getpatpage")
+	public void getPatPage(String strwhere, int page, int limit,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) {
 		response.setCharacterEncoding("utf-8");
@@ -237,17 +240,14 @@ public class PatientController {
 		PatientImpl pdao = new PatientImpl();
 
 		Expression exp = new Expression();
-		if (patName != null && !patName.equals("") && depId == 0) {
-			exp.andLike("patName", patName, String.class);
-		} else if (depId != 0 && patName == null && patName.equals("")) {
-			exp.andEqu("depId", depId, Integer.class);
-		} else {
-			exp.andEqu("depId", depId, Integer.class);
-			exp.andEqu("patName", patName, String.class);
+		if (strwhere != null && !strwhere.equals("")) {
+			exp.andLike("patName", strwhere, String.class);
+			exp.orEqu("depId", strwhere, Integer.class);
+			exp.orEqu("patName", strwhere, String.class);
 		}
 		String opration = exp.toString();
-		List<VMainSuit> list = pdao.getPatByPage(opration, page, limit);
-		int count = pdao.getPatCount(opration);
+		List<VPatient> list = pdao.getPatByPageForV(opration, page, limit);
+		int count = pdao.getPatCountForV(opration);
 		LayuiData laydata = new LayuiData();
 		if (list != null) {
 			laydata.code = LayuiData.SUCCESS;

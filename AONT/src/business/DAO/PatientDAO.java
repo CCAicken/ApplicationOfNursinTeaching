@@ -4,6 +4,7 @@ import java.util.List;
 
 import Model.TPatient;
 import Model.VMainSuit;
+import Model.VPatient;
 
 /***
  * 
@@ -79,4 +80,15 @@ public interface PatientDAO {
 	 * @return
 	 */
 	public List<VMainSuit> getPatByPage(String strwhere, int page, int limit);
+
+	public int getPatCountForV(String strwhere);
+
+	/**
+	 * 
+	 * @param strwhere
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	public List<VPatient> getPatByPageForV(String strwhere, int page, int limit);
 }
