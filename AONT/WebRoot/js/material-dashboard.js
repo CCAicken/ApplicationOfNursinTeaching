@@ -360,6 +360,17 @@ function unfold(){
            
           }
         }
+function three(){
+    
+    if(document.getElementById('exam').style.display=='none'){
+        document.getElementById('exam').style.display='block';
+       
+      }
+      else{
+        document.getElementById('exam').style.display='none';
+       
+      }
+    }
 function fold(){
     
             if(document.getElementById('custom').style.display=='none'){
