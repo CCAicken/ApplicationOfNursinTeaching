@@ -80,4 +80,6 @@ public interface CheckDAO {
 	 */
 	public List<VCheck> getVCheckByLike(String likecondtion, int currentPage,
 			int pageSize);
+
+	public TCheck isExit(int patId);
 }

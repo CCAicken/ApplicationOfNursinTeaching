@@ -3,7 +3,7 @@ package business.DAO;
 import java.util.List;
 
 import Model.TDailyLife;
-import Model.VMainSuit;
+import Model.VDailyLife;
 
 /***
  * 
@@ -49,7 +49,7 @@ public interface DailyLifeDAO {
 	 * 
 	 * @return 日常生活数据集
 	 */
-	public List<VMainSuit> select();
+	public List<VDailyLife> select();
 
 	/**
 	 * 根据条件获取符合条件的日常生活的数量
@@ -71,6 +71,14 @@ public interface DailyLifeDAO {
 	 *            每页数量
 	 * @return 日常生活数据集
 	 */
-	public List<VMainSuit> getVMainSuitByLike(String likecondtion,
+	public List<VDailyLife> getVMainSuitByLike(String likecondtion,
 			int currentPage, int pageSize);
+
+	/**
+	 * 判断病人是否已有日常生活记录
+	 * 
+	 * @param dlId
+	 * @return
+	 */
+	public TDailyLife isExit(int patId);
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
 import Model.TDailyLife;
-import Model.VMainSuit;
+import Model.VDailyLife;
 import business.DAO.DailyLifeDAO;
 
 public class DailyLifeImpl implements DailyLifeDAO {
@@ -40,28 +40,34 @@ public class DailyLifeImpl implements DailyLifeDAO {
 	}
 
 	@Override
-	public List<VMainSuit> select() {
-		return bdao.select("from VMainSuit");
+	public List<VDailyLife> select() {
+		return bdao.select("from VDailyLife");
 	}
 
 	@Override
 	public int getVMainSuitAmount(String wherecondition) {
-		String hql = "from VMainSuit ";
+		String hql = "select count(*) from VDailyLife ";
 		if (wherecondition != null && wherecondition.equals("")) {
 			hql += wherecondition;
 		}
-
 		return bdao.selectValue(hql);
 	}
 
 	@Override
-	public List<VMainSuit> getVMainSuitByLike(String likecondtion,
+	public List<VDailyLife> getVMainSuitByLike(String likecondtion,
 			int currentPage, int pageSize) {
-		String hql = "from VMainSuit";
+		String hql = "from VDailyLife";
 		if (likecondtion != null && !likecondtion.equals("")) {
 			hql += likecondtion;
 		}
 		return bdao.selectByPage(hql, currentPage, pageSize);
+	}
+
+	@Override
+	public TDailyLife isExit(int patId) {
+		// TODO Auto-generated method stub
+		TDailyLife tdl = (TDailyLife) bdao.findById(TDailyLife.class, patId);
+		return tdl;
 	}
 
 }

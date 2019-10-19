@@ -293,6 +293,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        				icon: 1,
 											  btn: ['确定']
 											}, function(){
+												$("#onsetCondition").val("");
+												$("#pathogeny").val(data.pathogeny);
+												$("#mainSymptoms").val("");
+												$("#accompaniedSymptoms").val("");
+												$("#developmentOfIllness").val("");
+												$("#treatmentAndNursing").val("");
+												loadPatSelected("selPatId",0, form);
 												table.reload("classlist", { //此处是上文提到的 初始化标识id
 									                where: {
 									                	
@@ -331,7 +338,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				//添加现病史按钮事件
 		  		$("#addhpi").click(function(){ 
 		  			layer.open({
-		  				title:"添加班级",
+		  				title:"添加现病史",
 		  				type: 1,
 		  				area: ['400px', '600px'],
 		  				skin: 'demo-class',

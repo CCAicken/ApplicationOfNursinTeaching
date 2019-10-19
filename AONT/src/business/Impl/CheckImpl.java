@@ -51,7 +51,7 @@ public class CheckImpl implements CheckDAO {
 
 	@Override
 	public int getVCheckAmount(String wherecondition) {
-		String hql = "from VCheck ";
+		String hql = "selct count(*) from VCheck ";
 		if (wherecondition != null && wherecondition.equals("")) {
 			hql += wherecondition;
 		}
@@ -67,6 +67,12 @@ public class CheckImpl implements CheckDAO {
 			hql += likecondtion;
 		}
 		return bdao.selectByPage(hql, currentPage, pageSize);
+	}
+
+	@Override
+	public TCheck isExit(int patId) {
+		// TODO Auto-generated method stub
+		return (TCheck) bdao.findById(TCheck.class, patId);
 	}
 
 	// public static void main(String[] args) {
