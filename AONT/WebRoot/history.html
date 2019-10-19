@@ -209,16 +209,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					switch (obj.event) {
 						//删除按钮操作
 						case 'del':
-							layer.confirm('即将删除'+data.className+',确定要删除么？', {
+							layer.confirm('即将删除'+data.patName+'的现病史信息,确定要删除么？', {
 							  btn: ['确定','取消'],
 							  icon:3
 							}, function(){
 								$.ajax({
 					        		type: 'get',
-					        		url: "basicinfo/delclass",
+					        		url: "HPI/delhpi",
 					        		dataType: 'json',
 					        		data:{
-					        		classId:data.classId
+					        		hpiId:data.hpiId
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){

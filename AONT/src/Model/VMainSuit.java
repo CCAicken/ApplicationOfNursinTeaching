@@ -22,23 +22,26 @@ public class VMainSuit implements java.io.Serializable {
 	private String marriageStatus;
 	private String nation;
 	private String beHospitalizedTime;
-	private String degreeOfEducation;
-	private Boolean state;
-	private String religiousBelief;
 	private String address;
+	private String religiousBelief;
+	private Boolean state;
+	private String remarks;
+	private String depName;
+	private Integer hpiid;
 	private String onsetCondition;
 	private String pathogeny;
 	private String mainSymptoms;
 	private String accompaniedSymptoms;
 	private String developmentOfIllness;
 	private String treatmentAndNursing;
+	private Integer dailyId;
 	private String dietAndNutritionType;
 	private String eliminationPatternType;
 	private String restAndSleepType;
 	private String dailyActivities;
 	private String selfCare;
 	private String personaHobbies;
-	private String depName;
+	private String degreeOfEducation;
 
 	// Constructors
 
@@ -50,13 +53,14 @@ public class VMainSuit implements java.io.Serializable {
 	public VMainSuit(Integer mainSuitId, String symptom, String nature,
 			String lengthOfTime, String degree, Integer patId, String patName,
 			String profession, String agend, Integer age, String origin,
-			String nation, String beHospitalizedTime, String degreeOfEducation,
-			Boolean state, String religiousBelief, String address,
-			String onsetCondition, String pathogeny, String mainSymptoms,
-			String accompaniedSymptoms, String developmentOfIllness,
-			String treatmentAndNursing, String dietAndNutritionType,
+			String nation, String beHospitalizedTime, String address,
+			String religiousBelief, Boolean state, String depName,
+			Integer hpiid, String onsetCondition, String pathogeny,
+			String mainSymptoms, String accompaniedSymptoms,
+			String developmentOfIllness, String treatmentAndNursing,
+			Integer dailyId, String dietAndNutritionType,
 			String eliminationPatternType, String restAndSleepType,
-			String dailyActivities, String depName) {
+			String dailyActivities, String degreeOfEducation) {
 		this.mainSuitId = mainSuitId;
 		this.symptom = symptom;
 		this.nature = nature;
@@ -70,21 +74,23 @@ public class VMainSuit implements java.io.Serializable {
 		this.origin = origin;
 		this.nation = nation;
 		this.beHospitalizedTime = beHospitalizedTime;
-		this.degreeOfEducation = degreeOfEducation;
-		this.state = state;
-		this.religiousBelief = religiousBelief;
 		this.address = address;
+		this.religiousBelief = religiousBelief;
+		this.state = state;
+		this.depName = depName;
+		this.hpiid = hpiid;
 		this.onsetCondition = onsetCondition;
 		this.pathogeny = pathogeny;
 		this.mainSymptoms = mainSymptoms;
 		this.accompaniedSymptoms = accompaniedSymptoms;
 		this.developmentOfIllness = developmentOfIllness;
 		this.treatmentAndNursing = treatmentAndNursing;
+		this.dailyId = dailyId;
 		this.dietAndNutritionType = dietAndNutritionType;
 		this.eliminationPatternType = eliminationPatternType;
 		this.restAndSleepType = restAndSleepType;
 		this.dailyActivities = dailyActivities;
-		this.depName = depName;
+		this.degreeOfEducation = degreeOfEducation;
 	}
 
 	/** full constructor */
@@ -92,13 +98,14 @@ public class VMainSuit implements java.io.Serializable {
 			String lengthOfTime, String degree, Integer patId, String patName,
 			String profession, String agend, Integer age, String origin,
 			String marriageStatus, String nation, String beHospitalizedTime,
-			String degreeOfEducation, Boolean state, String religiousBelief,
-			String address, String onsetCondition, String pathogeny,
-			String mainSymptoms, String accompaniedSymptoms,
-			String developmentOfIllness, String treatmentAndNursing,
+			String address, String religiousBelief, Boolean state,
+			String remarks, String depName, Integer hpiid,
+			String onsetCondition, String pathogeny, String mainSymptoms,
+			String accompaniedSymptoms, String developmentOfIllness,
+			String treatmentAndNursing, Integer dailyId,
 			String dietAndNutritionType, String eliminationPatternType,
 			String restAndSleepType, String dailyActivities, String selfCare,
-			String personaHobbies, String depName) {
+			String personaHobbies, String degreeOfEducation) {
 		this.mainSuitId = mainSuitId;
 		this.symptom = symptom;
 		this.nature = nature;
@@ -113,23 +120,26 @@ public class VMainSuit implements java.io.Serializable {
 		this.marriageStatus = marriageStatus;
 		this.nation = nation;
 		this.beHospitalizedTime = beHospitalizedTime;
-		this.degreeOfEducation = degreeOfEducation;
-		this.state = state;
-		this.religiousBelief = religiousBelief;
 		this.address = address;
+		this.religiousBelief = religiousBelief;
+		this.state = state;
+		this.remarks = remarks;
+		this.depName = depName;
+		this.hpiid = hpiid;
 		this.onsetCondition = onsetCondition;
 		this.pathogeny = pathogeny;
 		this.mainSymptoms = mainSymptoms;
 		this.accompaniedSymptoms = accompaniedSymptoms;
 		this.developmentOfIllness = developmentOfIllness;
 		this.treatmentAndNursing = treatmentAndNursing;
+		this.dailyId = dailyId;
 		this.dietAndNutritionType = dietAndNutritionType;
 		this.eliminationPatternType = eliminationPatternType;
 		this.restAndSleepType = restAndSleepType;
 		this.dailyActivities = dailyActivities;
 		this.selfCare = selfCare;
 		this.personaHobbies = personaHobbies;
-		this.depName = depName;
+		this.degreeOfEducation = degreeOfEducation;
 	}
 
 	// Property accessors
@@ -246,20 +256,12 @@ public class VMainSuit implements java.io.Serializable {
 		this.beHospitalizedTime = beHospitalizedTime;
 	}
 
-	public String getDegreeOfEducation() {
-		return this.degreeOfEducation;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setDegreeOfEducation(String degreeOfEducation) {
-		this.degreeOfEducation = degreeOfEducation;
-	}
-
-	public Boolean getState() {
-		return this.state;
-	}
-
-	public void setState(Boolean state) {
-		this.state = state;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getReligiousBelief() {
@@ -270,12 +272,36 @@ public class VMainSuit implements java.io.Serializable {
 		this.religiousBelief = religiousBelief;
 	}
 
-	public String getAddress() {
-		return this.address;
+	public Boolean getState() {
+		return this.state;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setState(Boolean state) {
+		this.state = state;
+	}
+
+	public String getRemarks() {
+		return this.remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public String getDepName() {
+		return this.depName;
+	}
+
+	public void setDepName(String depName) {
+		this.depName = depName;
+	}
+
+	public Integer getHpiid() {
+		return this.hpiid;
+	}
+
+	public void setHpiid(Integer hpiid) {
+		this.hpiid = hpiid;
 	}
 
 	public String getOnsetCondition() {
@@ -326,6 +352,14 @@ public class VMainSuit implements java.io.Serializable {
 		this.treatmentAndNursing = treatmentAndNursing;
 	}
 
+	public Integer getDailyId() {
+		return this.dailyId;
+	}
+
+	public void setDailyId(Integer dailyId) {
+		this.dailyId = dailyId;
+	}
+
 	public String getDietAndNutritionType() {
 		return this.dietAndNutritionType;
 	}
@@ -374,12 +408,12 @@ public class VMainSuit implements java.io.Serializable {
 		this.personaHobbies = personaHobbies;
 	}
 
-	public String getDepName() {
-		return this.depName;
+	public String getDegreeOfEducation() {
+		return this.degreeOfEducation;
 	}
 
-	public void setDepName(String depName) {
-		this.depName = depName;
+	public void setDegreeOfEducation(String degreeOfEducation) {
+		this.degreeOfEducation = degreeOfEducation;
 	}
 
 	public boolean equals(Object other) {
@@ -440,23 +474,26 @@ public class VMainSuit implements java.io.Serializable {
 						&& castOther.getBeHospitalizedTime() != null && this
 						.getBeHospitalizedTime().equals(
 								castOther.getBeHospitalizedTime())))
-				&& ((this.getDegreeOfEducation() == castOther
-						.getDegreeOfEducation()) || (this
-						.getDegreeOfEducation() != null
-						&& castOther.getDegreeOfEducation() != null && this
-						.getDegreeOfEducation().equals(
-								castOther.getDegreeOfEducation())))
-				&& ((this.getState() == castOther.getState()) || (this
-						.getState() != null && castOther.getState() != null && this
-						.getState().equals(castOther.getState())))
+				&& ((this.getAddress() == castOther.getAddress()) || (this
+						.getAddress() != null && castOther.getAddress() != null && this
+						.getAddress().equals(castOther.getAddress())))
 				&& ((this.getReligiousBelief() == castOther
 						.getReligiousBelief()) || (this.getReligiousBelief() != null
 						&& castOther.getReligiousBelief() != null && this
 						.getReligiousBelief().equals(
 								castOther.getReligiousBelief())))
-				&& ((this.getAddress() == castOther.getAddress()) || (this
-						.getAddress() != null && castOther.getAddress() != null && this
-						.getAddress().equals(castOther.getAddress())))
+				&& ((this.getState() == castOther.getState()) || (this
+						.getState() != null && castOther.getState() != null && this
+						.getState().equals(castOther.getState())))
+				&& ((this.getRemarks() == castOther.getRemarks()) || (this
+						.getRemarks() != null && castOther.getRemarks() != null && this
+						.getRemarks().equals(castOther.getRemarks())))
+				&& ((this.getDepName() == castOther.getDepName()) || (this
+						.getDepName() != null && castOther.getDepName() != null && this
+						.getDepName().equals(castOther.getDepName())))
+				&& ((this.getHpiid() == castOther.getHpiid()) || (this
+						.getHpiid() != null && castOther.getHpiid() != null && this
+						.getHpiid().equals(castOther.getHpiid())))
 				&& ((this.getOnsetCondition() == castOther.getOnsetCondition()) || (this
 						.getOnsetCondition() != null
 						&& castOther.getOnsetCondition() != null && this
@@ -488,6 +525,9 @@ public class VMainSuit implements java.io.Serializable {
 						&& castOther.getTreatmentAndNursing() != null && this
 						.getTreatmentAndNursing().equals(
 								castOther.getTreatmentAndNursing())))
+				&& ((this.getDailyId() == castOther.getDailyId()) || (this
+						.getDailyId() != null && castOther.getDailyId() != null && this
+						.getDailyId().equals(castOther.getDailyId())))
 				&& ((this.getDietAndNutritionType() == castOther
 						.getDietAndNutritionType()) || (this
 						.getDietAndNutritionType() != null
@@ -519,9 +559,12 @@ public class VMainSuit implements java.io.Serializable {
 						&& castOther.getPersonaHobbies() != null && this
 						.getPersonaHobbies().equals(
 								castOther.getPersonaHobbies())))
-				&& ((this.getDepName() == castOther.getDepName()) || (this
-						.getDepName() != null && castOther.getDepName() != null && this
-						.getDepName().equals(castOther.getDepName())));
+				&& ((this.getDegreeOfEducation() == castOther
+						.getDegreeOfEducation()) || (this
+						.getDegreeOfEducation() != null
+						&& castOther.getDegreeOfEducation() != null && this
+						.getDegreeOfEducation().equals(
+								castOther.getDegreeOfEducation())));
 	}
 
 	public int hashCode() {
@@ -565,18 +608,20 @@ public class VMainSuit implements java.io.Serializable {
 				* result
 				+ (getBeHospitalizedTime() == null ? 0 : this
 						.getBeHospitalizedTime().hashCode());
-		result = 37
-				* result
-				+ (getDegreeOfEducation() == null ? 0 : this
-						.getDegreeOfEducation().hashCode());
 		result = 37 * result
-				+ (getState() == null ? 0 : this.getState().hashCode());
+				+ (getAddress() == null ? 0 : this.getAddress().hashCode());
 		result = 37
 				* result
 				+ (getReligiousBelief() == null ? 0 : this.getReligiousBelief()
 						.hashCode());
 		result = 37 * result
-				+ (getAddress() == null ? 0 : this.getAddress().hashCode());
+				+ (getState() == null ? 0 : this.getState().hashCode());
+		result = 37 * result
+				+ (getRemarks() == null ? 0 : this.getRemarks().hashCode());
+		result = 37 * result
+				+ (getDepName() == null ? 0 : this.getDepName().hashCode());
+		result = 37 * result
+				+ (getHpiid() == null ? 0 : this.getHpiid().hashCode());
 		result = 37
 				* result
 				+ (getOnsetCondition() == null ? 0 : this.getOnsetCondition()
@@ -599,6 +644,8 @@ public class VMainSuit implements java.io.Serializable {
 				* result
 				+ (getTreatmentAndNursing() == null ? 0 : this
 						.getTreatmentAndNursing().hashCode());
+		result = 37 * result
+				+ (getDailyId() == null ? 0 : this.getDailyId().hashCode());
 		result = 37
 				* result
 				+ (getDietAndNutritionType() == null ? 0 : this
@@ -621,8 +668,10 @@ public class VMainSuit implements java.io.Serializable {
 				* result
 				+ (getPersonaHobbies() == null ? 0 : this.getPersonaHobbies()
 						.hashCode());
-		result = 37 * result
-				+ (getDepName() == null ? 0 : this.getDepName().hashCode());
+		result = 37
+				* result
+				+ (getDegreeOfEducation() == null ? 0 : this
+						.getDegreeOfEducation().hashCode());
 		return result;
 	}
 

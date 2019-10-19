@@ -48,17 +48,23 @@
             <property name="beHospitalizedTime" type="java.lang.String">
                 <column name="beHospitalizedTime" length="50" />
             </property>
-            <property name="degreeOfEducation" type="java.lang.String">
-                <column name="degreeOfEducation" length="20" />
-            </property>
-            <property name="state" type="java.lang.Boolean">
-                <column name="state" />
+            <property name="address" type="java.lang.String">
+                <column name="address" />
             </property>
             <property name="religiousBelief" type="java.lang.String">
                 <column name="religiousBelief" length="100" />
             </property>
-            <property name="address" type="java.lang.String">
-                <column name="address" />
+            <property name="state" type="java.lang.Boolean">
+                <column name="state" />
+            </property>
+            <property name="remarks" type="java.lang.String">
+                <column name="remarks" length="65535" />
+            </property>
+            <property name="depName" type="java.lang.String">
+                <column name="depName" length="100" />
+            </property>
+            <property name="hpiid" type="java.lang.Integer">
+                <column name="HPIId" />
             </property>
             <property name="onsetCondition" type="java.lang.String">
                 <column name="onsetCondition" />
@@ -78,6 +84,9 @@
             <property name="treatmentAndNursing" type="java.lang.String">
                 <column name="treatmentAndNursing" length="65535" />
             </property>
+            <property name="dailyId" type="java.lang.Integer">
+                <column name="dailyId" />
+            </property>
             <property name="dietAndNutritionType" type="java.lang.String">
                 <column name="dietAndNutritionType" length="100" />
             </property>
@@ -96,8 +105,8 @@
             <property name="personaHobbies" type="java.lang.String">
                 <column name="personaHobbies" length="100" />
             </property>
-            <property name="depName" type="java.lang.String">
-                <column name="depName" length="100" />
+            <property name="degreeOfEducation" type="java.lang.String">
+                <column name="degreeOfEducation" length="20" />
             </property>
     </class>
 </hibernate-mapping>

@@ -56,7 +56,7 @@ public class HPIController {
 		hpi.setPatId(patId);
 		hpi.setTreatmentAndNursing(treatmentAndNursing);
 		LayuiData laydata = new LayuiData();
-		ms = pdao.getPatByPId(patId);
+		VMainSuit ms = pdao.getPatByPId(patId);
 		if (ms != null) {
 			laydata.code = LayuiData.ERRR;
 			laydata.msg = "该病人已有现病史记录";
