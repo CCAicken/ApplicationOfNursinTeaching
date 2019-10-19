@@ -16,12 +16,10 @@ import util.Expression;
 import util.LayuiData;
 import Model.TStudent;
 import Model.TTeacher;
-import Model.TUserType;
 import Model.VStudent;
 import Model.VTeacher;
 import business.Impl.StudentImpl;
 import business.Impl.TeacherImpl;
-import business.Impl.UserTypeImpl;
 
 import com.alibaba.fastjson.JSON;
 
@@ -98,15 +96,14 @@ public class UserController {
 		if (selStu != null && !selStu.getStuId().equals("")) {
 			laydata.code = LayuiData.ERRR;
 			laydata.msg = "该账号已存在";
+		}
+		if (studao.addStu(stu)) {
+
+			laydata.code = LayuiData.SUCCESS;
+			laydata.msg = "添加成功";
 		} else {
-			int count = studao.addStu(stu);
-			if (count > 0) {
-				laydata.code = LayuiData.SUCCESS;
-				laydata.msg = "添加成功";
-			} else {
-				laydata.code = LayuiData.ERRR;
-				laydata.msg = "添加失败";
-			}
+			laydata.code = LayuiData.ERRR;
+			laydata.msg = "添加失败";
 		}
 		Writer out;
 		try {
@@ -680,32 +677,21 @@ public class UserController {
 	 * @param request
 	 * @param response
 	 * @param model
+	 * @RequestMapping(value = "getusertype") public void
+	 *                       getUserType(HttpServletRequest request,
+	 *                       HttpServletResponse response, Model model) {
+	 *                       response.setCharacterEncoding("utf-8");
+	 *                       response.setContentType("application/json");
+	 *                       UserTypeImpl udao = new UserTypeImpl();
+	 *                       List<TUserType> list = udao.getAllUserTypes();
+	 *                       LayuiData laydata = new LayuiData(); if (list !=
+	 *                       null) { laydata.code = LayuiData.SUCCESS;
+	 *                       laydata.msg = "查询成功"; laydata.data = list; } else {
+	 *                       laydata.code = LayuiData.ERRR; laydata.msg =
+	 *                       "查询失败"; } Writer out; try { out =
+	 *                       response.getWriter();
+	 *                       out.write(JSON.toJSONString(laydata)); out.flush();
+	 *                       out.close(); } catch (IOException e) { // TODO
+	 *                       Auto-generated catch block e.printStackTrace(); } }
 	 */
-	@RequestMapping(value = "getusertype")
-	public void getUserType(HttpServletRequest request,
-			HttpServletResponse response, Model model) {
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("application/json");
-		UserTypeImpl udao = new UserTypeImpl();
-		List<TUserType> list = udao.getAllUserTypes();
-		LayuiData laydata = new LayuiData();
-		if (list != null) {
-			laydata.code = LayuiData.SUCCESS;
-			laydata.msg = "查询成功";
-			laydata.data = list;
-		} else {
-			laydata.code = LayuiData.ERRR;
-			laydata.msg = "查询失败";
-		}
-		Writer out;
-		try {
-			out = response.getWriter();
-			out.write(JSON.toJSONString(laydata));
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }

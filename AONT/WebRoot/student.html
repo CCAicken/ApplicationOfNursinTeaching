@@ -278,9 +278,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						case 'edit':
 							$("#stuId").val(data.stuId);
 							$("#stuAgend").val(data.stuAgende);
-							$("#stuPwd").val(data.stuPwd);
+							$("#stuName").val(data.stuName);
+							$("#stuPwd").val(data.stupwd);
 							loadClassSelected("classId",data.classId, form);
-							loadAgendSelected("stuAgend",data.stuAgend, form);
+							//loadAgendSelected("stuAgend",data.stuAgend, form);
 							layer.open({
 		  						title:data.stuName+"学生信息编辑",
 		  						type: 1,

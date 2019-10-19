@@ -16,7 +16,7 @@ public interface StudentDAO {
 	 * @param stu
 	 * @return
 	 */
-	public int addStu(TStudent stu);
+	public boolean addStu(TStudent stu);
 
 	/**
 	 * 编辑学生
