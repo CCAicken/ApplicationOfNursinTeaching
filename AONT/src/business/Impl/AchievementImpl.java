@@ -60,7 +60,7 @@ public class AchievementImpl implements AchievementDAO {
 
 	@Override
 	public int getAchievementrAmount(String wherecondition) {
-		String hql = "select from VAchievement ";
+		String hql = "select(achId) from VAchievement ";
 		if (wherecondition != null && wherecondition.equals("")) {
 			hql += wherecondition;
 		}

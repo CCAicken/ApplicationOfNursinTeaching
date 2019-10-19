@@ -159,26 +159,19 @@ public class ExamController {
 	 * @param model
 	 */
 	@RequestMapping(value = "getdlpage")
-	public void getDLPage(String teaName, String startTime, String endTime,
-			String examName, int page, int limit, HttpServletRequest request,
-			HttpServletResponse response, Model model) {
+	public void getDLPage(String strwhere, int page, int limit,
+			HttpServletRequest request, HttpServletResponse response,
+			Model model) {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		ExamImpl edao = new ExamImpl();
 		Expression exp = new Expression();
-		if (teaName != null && !teaName.equals("")) {
-			exp.andLike("teaName", teaName, String.class);
+		if (strwhere != null && !strwhere.equals("")) {
+			exp.andLike("teaName", strwhere, String.class);
+			exp.orLike("examName", strwhere, String.class);
+			exp.orLike("teaName", strwhere, String.class);
 		}
-		if (examName != null && !examName.equals("")) {
-			exp.andLike("examName", examName, String.class);
-		}
-		if (startTime != null && !startTime.equals("")) {
-			// exp.andLike("startTime", startTime, String.class);
-			exp.andBetween("startTime", startTime, String.class);
-		}
-		if (endTime != null && !endTime.equals("")) {
-			exp.andAnd(endTime, String.class);
-		}
+
 		String opration = exp.toString();
 		List<VExam> list = edao.getVExamByLike(opration, page, limit);
 		int count = edao.getVExamAmount(opration);
@@ -266,18 +259,16 @@ public class ExamController {
 	 * @param model
 	 */
 	@RequestMapping(value = "getampage")
-	public void selectAMpage(String stuName, String examName, int page,
-			int limit, HttpServletRequest request,
-			HttpServletResponse response, Model model) {
+	public void selectAMpage(String strwhere, int page, int limit,
+			HttpServletRequest request, HttpServletResponse response,
+			Model model) {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		AchievementImpl adao = new AchievementImpl();
 		Expression exp = new Expression();
-		if (stuName != null && !stuName.equals("")) {
-			exp.andLike("stuName", stuName, String.class);
-		}
-		if (examName != null && !examName.equals("")) {
-			exp.andLike("examName", examName, String.class);
+		if (strwhere != null && !strwhere.equals("")) {
+			exp.andLike("stuName", strwhere, String.class);
+			exp.orLike("examName", strwhere, String.class);
 		}
 		String likecondition = exp.toString();
 		List<VAchievement> list = adao.getAchievementByLike(likecondition,

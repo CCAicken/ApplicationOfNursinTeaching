@@ -46,7 +46,7 @@ public class ExamImpl implements ExamDAO {
 
 	@Override
 	public int getVExamAmount(String wherecondition) {
-		String hql = "from VExam ";
+		String hql = "select count(examId) from VExam ";
 		if (wherecondition != null && wherecondition.equals("")) {
 			hql += wherecondition;
 		}

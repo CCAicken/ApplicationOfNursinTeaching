@@ -13,10 +13,10 @@
             <property name="examName" type="java.lang.String">
                 <column name="examName" length="100" />
             </property>
-            <property name="startTime" type="java.sql.Timestamp">
+            <property name="startTime" type="java.lang.String">
                 <column name="startTime" length="19" />
             </property>
-            <property name="endTime" type="java.sql.Timestamp">
+            <property name="endTime" type="java.lang.String">
                 <column name="endTime" length="19" />
             </property>
             <property name="teaId" type="java.lang.String">
@@ -37,7 +37,7 @@
             <property name="teapwd" type="java.lang.String">
                 <column name="teapwd" />
             </property>
-            <property name="createTime" type="java.sql.Timestamp">
+            <property name="createTime" type="java.lang.String">
                 <column name="createTime" length="19" />
             </property>
             <property name="userType" type="java.lang.Integer">

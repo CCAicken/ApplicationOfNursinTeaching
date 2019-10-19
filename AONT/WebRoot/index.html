@@ -80,10 +80,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 						</li>
 	                <li>
-	                    <a href="score.html" target="right">
+	                    <a href="javascript:;" target="right">
 	                        <i class="material-icons">content_paste</i>
-	                        <p>成绩管理</p>
+	                        <p>考试管理</p>
 	                    </a>
+	                    <ul class="nav_kids" id="nav_kids" style="display: none">
+								<li>
+										<a href="exam.html" target="right" >
+										
+											<p>考试管理</p>
+										</a>
+								</li>
+								<li>
+										<a href="score.html" target="right" class="kids">
+											
+											<p>成绩管理</p>
+										</a>
+								</li>
+						</ul>
 	                </li>
 	                <li>
 	                    <a href="javascript:;" target="right" onclick="unfold()">
