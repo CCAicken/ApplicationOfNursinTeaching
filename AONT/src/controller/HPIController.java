@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import util.Expression;
 import util.LayuiData;
 import Model.THPI;
-import Model.VMainSuit;
+import Model.VHPI;
 import business.Impl.HPIImpl;
 import business.Impl.PatientImpl;
 
@@ -23,6 +23,7 @@ import com.alibaba.fastjson.JSON;
 @Controller
 @RequestMapping(value = "HPI")
 public class HPIController {
+
 	/**
 	 * 添加现病史
 	 * 
@@ -56,8 +57,8 @@ public class HPIController {
 		hpi.setPatId(patId);
 		hpi.setTreatmentAndNursing(treatmentAndNursing);
 		LayuiData laydata = new LayuiData();
-		VMainSuit ms = pdao.getPatByPId(patId);
-		if (ms != null) {
+		THPI ishpi = hdao.isExitByPatId(patId);
+		if (ishpi != null) {
 			laydata.code = LayuiData.ERRR;
 			laydata.msg = "该病人已有现病史记录";
 		} else {
@@ -191,7 +192,7 @@ public class HPIController {
 			exp.orLike("patName", strwhere, String.class);
 		}
 		String opration = exp.toString();
-		List<VMainSuit> list = hdao.getMSByPage(opration, page, limit);
+		List<VHPI> list = hdao.getMSByPage(opration, page, limit);
 		int count = hdao.getMSCount(opration);
 		LayuiData laydata = new LayuiData();
 		if (list != null) {

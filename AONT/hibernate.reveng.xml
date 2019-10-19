@@ -164,8 +164,14 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-<table name="V_Patient" catalog="ApplicationOfNursinTeaching"
-	class="Model.VPatient">
+	<table name="V_Patient" catalog="ApplicationOfNursinTeaching"
+		class="Model.VPatient">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_HPI" catalog="ApplicationOfNursinTeaching"
+	class="Model.VHPI">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

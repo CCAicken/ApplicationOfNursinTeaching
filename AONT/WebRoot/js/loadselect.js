@@ -219,7 +219,7 @@ function loadAgendSelected(selectId,agend,stuId, form){
  * @param {Object} selectId 要加载到的select控件的id属性名称
  * @param {Object} form layui表单依赖参数form.render("select")，重新渲染
  */
-function loadPatSelected(selectId,teaId, form){
+function loadPatSelected(selectId,classId, form){
 	var reqType = 'post';
 	var reqURL = 'patient/allpat'; 
 	var reqPara = {};
@@ -229,7 +229,7 @@ function loadPatSelected(selectId,teaId, form){
 			$('#' + selectId).html(""); //获取id为selectId指定的控件内容
 			var str = "<option value=''>请选择病人</option>";
 			for(var i = 0; i < stageData.data.length; i++) {
-				if(patId==stageData.data[i]['patId'])
+				if(classId==stageData.data[i]['patId'])
 				{
 						str += '<option value=' + stageData.data[i]['patId'] + " selected='selected'"+'>' + stageData.data[i]['patName'] + '</option>';
 				}else{
@@ -240,11 +240,11 @@ function loadPatSelected(selectId,teaId, form){
 			form.render("select");
 		} else {
 			//layer.msg("未获取到阶段信息！");
-			layer.msg('未获取到病人信息', function(){});
+			layer.msg('未获取到信息', function(){});
 		}
 	} else {
 		//layer.msg("阶段信息获取失败！");
-		layer.msg('未获取到病人信息', function(){});
+		layer.msg('未获取到信息', function(){});
 	}
 }
 

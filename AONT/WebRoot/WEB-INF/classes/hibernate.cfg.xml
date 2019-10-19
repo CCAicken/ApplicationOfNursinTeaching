@@ -46,6 +46,7 @@
 		<mapping resource="Model/VCheck.hbm.xml" />
 		<mapping resource="Model/VExam.hbm.xml" />
 		<mapping resource="Model/VPatient.hbm.xml" />
+		<mapping resource="Model/VHPI.hbm.xml" />
 
 	</session-factory>
 

@@ -55,14 +55,14 @@ public interface PatientDAO {
 	 * @param pId
 	 * @return
 	 */
-	public VMainSuit getPatByPId(int pId);
+	public VPatient getPatByPId(int pId);
 
 	/**
 	 * 获取所有病人基本信息
 	 * 
 	 * @return
 	 */
-	public List<VMainSuit> getAllPat();
+	public List<VPatient> getAllPat();
 
 	/**
 	 * 获取病人数量

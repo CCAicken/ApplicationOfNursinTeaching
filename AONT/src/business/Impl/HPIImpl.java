@@ -5,7 +5,7 @@ import java.util.List;
 import Basic.iHibBaseDAO;
 import Basic.iHibBaseDAOImpl;
 import Model.THPI;
-import Model.VMainSuit;
+import Model.VHPI;
 import business.DAO.HPIDAO;
 
 public class HPIImpl implements HPIDAO {
@@ -55,31 +55,37 @@ public class HPIImpl implements HPIDAO {
 	}
 
 	@Override
-	public List<VMainSuit> getAllFromVMS() {
+	public List<VHPI> getAllFromVMS() {
 		// TODO Auto-generated method stub
 
-		return bdao.select("from VMainSuit");
+		return bdao.select("from VHPI");
 	}
 
 	@Override
-	public VMainSuit getHPIBYPatId(int pid) {
+	public VHPI getHPIBYPatId(int pid) {
 		// TODO Auto-generated method stub
-		VMainSuit ms = (VMainSuit) bdao.findById(VMainSuit.class, pid);
+		VHPI ms = (VHPI) bdao.findById(VHPI.class, pid);
 		return ms;
 	}
 
 	@Override
 	public int getMSCount(String strwhere) {
 		// TODO Auto-generated method stub
-		String hql = "select count(*) from VMainSuit" + strwhere;
+		String hql = "select count(*) from VHPI" + strwhere;
 		return bdao.selectValue(hql);
 	}
 
 	@Override
-	public List<VMainSuit> getMSByPage(String strwhere, int page, int limit) {
+	public List<VHPI> getMSByPage(String strwhere, int page, int limit) {
 		// TODO Auto-generated method stub
-		String hql = "from VMainSuit" + strwhere;
+		String hql = "from VHPI" + strwhere;
 		return bdao.selectByPage(hql, page, limit);
+	}
+
+	@Override
+	public THPI isExitByPatId(int patId) {
+		// TODO Auto-generated method stub
+		return (THPI) bdao.findById(THPI.class, patId);
 	}
 
 }

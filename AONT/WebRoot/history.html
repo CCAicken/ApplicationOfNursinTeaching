@@ -109,8 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</form>
 	</div>
-
-		
+	
 		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/popup.js"></script>
 		<script type="text/javascript" src="layui/layui.all.js"></script>
@@ -209,6 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					switch (obj.event) {
 						//删除按钮操作
 						case 'del':
+							//alert(data.hpiid);
 							layer.confirm('即将删除'+data.patName+'的现病史信息,确定要删除么？', {
 							  btn: ['确定','取消'],
 							  icon:3
@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        		url: "HPI/delhpi",
 					        		dataType: 'json',
 					        		data:{
-					        		hpiId:data.hpiId
+					        		hpiId:data.hpiid
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
@@ -255,28 +255,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 						break;
 						case 'edit':
-							$("#oldclassname").val(data.className);
-							loadTeaSelected("edclassid",data.teaId, form);
-							loadGradeSelected("edgradeid",data.gradeId, form);
+							$("#onsetCondition").val(data.onsetCondition);
+							$("#pathogeny").val(data.pathogeny);
+							$("#mainSymptoms").val(data.onsetCondition);
+							$("#accompaniedSymptoms").val(data.accompaniedSymptoms);
+							$("#developmentOfIllness").val(data.developmentOfIllness);
+							$("#treatmentAndNursing").val(data.treatmentAndNursing);
+							loadPatSelected("selPatId",data.patId, form);
 							layer.open({
-		  						title:"班级信息编辑",
+		  						title:"现病史信息编辑",
 		  						type: 1,
 		  						area: ['500px', '500px'],
 		  						skin: 'demo-class',
 		  						btn:['确认保存'],
 		  						//maxmin: true,//显示最大化最小化按钮
 		  						//offset: 'b', 弹框的位置
-		  						content: $('#div_editcollege'),
+		  						content: $('#div_addHPI'),
 		  						btn1: function(index, layero){
 		    						$.ajax({
 					        		type: 'get',
-					        		url: "basicinfo/editclass",
+					        		url: "HPI/edithpi",
 					        		dataType: 'json',
 					        		data:{
-					        		classId:data.classId,
-					        		 className:$("#oldclassname").val().trim(),
-					        		 teaId:$("#edclassid").val(),
-					        		 gradeId:$("#edgradeid").val()
+					        			hpiId:data.hpiid,
+					        			onsetCondition:$("#onsetCondition").val().trim(),
+					        			pathogeny:$("#pathogeny").val().trim(),
+					        			mainSymptoms:$("#mainSymptoms").val().trim(),
+					        			accompaniedSymptoms:$("#accompaniedSymptoms").val().trim(),
+					        			developmentOfIllness:$("#developmentOfIllness").val().trim(),
+					        			treatmentAndNursing:$("#treatmentAndNursing").val().trim(),
+					        			patId:$("#selPatId").val(),
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){

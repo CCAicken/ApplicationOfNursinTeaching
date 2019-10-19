@@ -47,7 +47,7 @@ public class PatientController {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		PatientImpl pdao = new PatientImpl();
-		List<VMainSuit> list = pdao.getAllPat();
+		List<VPatient> list = pdao.getAllPat();
 		LayuiData laydata = new LayuiData();
 		laydata.code = LayuiData.SUCCESS;
 		laydata.data = list;

@@ -43,17 +43,17 @@ public class PatientImpl implements PatientDAO {
 	}
 
 	@Override
-	public VMainSuit getPatByPId(int pId) {
+	public VPatient getPatByPId(int pId) {
 		// TODO Auto-generated method stub
-		VMainSuit ms = (VMainSuit) bdao.findById(VMainSuit.class, pId);
+		VPatient ms = (VPatient) bdao.findById(VMainSuit.class, pId);
 		return ms;
 	}
 
 	@Override
-	public List<VMainSuit> getAllPat() {
+	public List<VPatient> getAllPat() {
 		// TODO Auto-generated method stub
-		String hql = "from VMainSuit";
-		List<VMainSuit> ms = bdao.select(hql);
+		String hql = "from VPatient";
+		List<VPatient> ms = bdao.select(hql);
 		return ms;
 	}
 

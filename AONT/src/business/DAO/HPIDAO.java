@@ -3,7 +3,7 @@ package business.DAO;
 import java.util.List;
 
 import Model.THPI;
-import Model.VMainSuit;
+import Model.VHPI;
 
 /**
  * 现病史模块接口
@@ -57,7 +57,7 @@ public interface HPIDAO {
 	 * 
 	 * @return
 	 */
-	public List<VMainSuit> getAllFromVMS();
+	public List<VHPI> getAllFromVMS();
 
 	/**
 	 * 根据病人Id获取现病史信息
@@ -65,7 +65,7 @@ public interface HPIDAO {
 	 * @param pid
 	 * @return
 	 */
-	public VMainSuit getHPIBYPatId(int pid);
+	public VHPI getHPIBYPatId(int pid);
 
 	/**
 	 * 获取现病史数量
@@ -83,5 +83,13 @@ public interface HPIDAO {
 	 * @param limit
 	 * @return
 	 */
-	public List<VMainSuit> getMSByPage(String strwhere, int page, int limit);
+	public List<VHPI> getMSByPage(String strwhere, int page, int limit);
+
+	/**
+	 * 查看病人是否有现病史
+	 * 
+	 * @param patId
+	 * @return
+	 */
+	public THPI isExitByPatId(int patId);
 }
