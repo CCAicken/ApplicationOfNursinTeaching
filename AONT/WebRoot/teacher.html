@@ -106,6 +106,58 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 				  </div>
 		</form>
 	</div>
+	
+	<!--教师编辑div  -->
+	<div id="div_edittea"
+		style="display: none;text-align: center; margin-top: 15%;">
+		<form class="layui-form layui-form-pane">
+			<div class="layui-form-item">
+				<label class="layui-form-label">工号:</label>
+				<div class="layui-input-inline">
+					<input type="text" id="oldteaId" lay-verify="required"
+						placeholder="请输入工号" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">姓名:</label>
+				<div class="layui-input-inline">
+					<input type="text" id="oldteaname" lay-verify="required"
+						placeholder="请输姓名" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">联系电话:</label>
+				<div class="layui-input-inline">
+					<input type="text" id="oldteatel" lay-verify="required"
+						placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">性别:</label>
+				<div class="layui-input-inline">
+					<input type="radio" name="oldsex" value="男" title="男" checked="">
+      				<input type="radio" name="oldsex" value="女" title="女">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">职称:</label>
+				<div class="layui-input-inline">
+					<input type="text" id="oldjobtitle" lay-verify="required"
+						placeholder="请输入职称" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				    <label class="layui-form-label">用户类型:</label>
+				    <div class="layui-input-inline">
+				     	<select id="selnewUserType"  lay-filter="addclassgrade" lay-search> 
+				     		<option value ="0">请选择用户类型</option>
+							<option value ="1">教师</option>
+							<option value="2">管理员</option>
+						</select>	
+				    </div>
+				  </div>
+		</form>
+	</div>
 
 	<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/popup.js"></script>
@@ -201,16 +253,16 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 					switch (obj.event) {
 						//删除按钮操作
 						case 'del':
-							layer.confirm('即将删除'+data.className+',确定要删除么？', {
+							layer.confirm('即将删除'+data.teaName+',确定要删除么？', {
 							  btn: ['确定','取消'],
 							  icon:3
 							}, function(){
 								$.ajax({
 					        		type: 'get',
-					        		url: "basicinfo/delclass",
+					        		url: "user/deltea",
 					        		dataType: 'json',
 					        		data:{
-					        		classId:data.classId
+					        		teaId:data.teaId
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
@@ -247,28 +299,44 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 							});
 						break;
 						case 'edit':
-							$("#oldclassname").val(data.className);
-							loadTeaSelected("edclassid",data.teaId, form);
-							loadGradeSelected("edgradeid",data.gradeId, form);
+							//teaId:$("#newteaId").val().trim(),
+					        		// teaName:$("#newteaname").val(),
+					        	//	 teaTel:$("#newteatel").val(),
+					        	//	  jobTitle:$("#newjobtitle").val(),
+					        	//	   userType:$("#selUserType").val(),
+					        	//	   agend:$("input[name='sex']:checked").val();
+					       	$("#oldteaId").val(data.teaId);
+					       	$("#oldteaname").val(data.teaName);
+					       	$("#oldteatel").val(data.teaPhoto);
+					       	$("#oldjobtitle").val(data.jobTitle);
+					       	//$('#selnewUserType option:contains(\''+data.typeName'\')').attr('selected',true);
+					       	$("#selnewUserType option[value='data.userType']").attr("selected","selected");
+							//loadTeaSelected("edclassid",data.teaId, form);
+							//loadGradeSelected("edgradeid",data.gradeId, form);
 							layer.open({
-		  						title:"班级信息编辑",
+		  						title:"教师信息编辑",
 		  						type: 1,
 		  						area: ['500px', '500px'],
 		  						skin: 'demo-class',
 		  						btn:['确认保存'],
 		  						//maxmin: true,//显示最大化最小化按钮
 		  						//offset: 'b', 弹框的位置
-		  						content: $('#div_editcollege'),
+		  						content: $('#div_edittea'),
 		  						btn1: function(index, layero){
+		  							if($("#selnewUserType").val()=='0'){
+		  								alert("请选择用户类型");
+		  							}
 		    						$.ajax({
 					        		type: 'get',
-					        		url: "basicinfo/editclass",
+					        		url: "user/edittea",
 					        		dataType: 'json',
 					        		data:{
-					        		classId:data.classId,
-					        		 className:$("#oldclassname").val().trim(),
-					        		 teaId:$("#edclassid").val(),
-					        		 gradeId:$("#edgradeid").val()
+					        			teaId:$("#oldteaId").val(),
+						        		teaName:$("#oldteaname").val(),
+						        		teaTel:$("#oldteatel").val(),
+						        		jobTitle:$("#oldjobtitle").val(),
+						        		userType:$("#selnewUserType").val(),
+						        		agend:$("input[name='oldsex']:checked").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
@@ -331,12 +399,12 @@ request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pa
 					        		url: "user/addtea",
 					        		dataType: 'json',
 					        		data:{
-					        		teaId:$("#newteaId").val().trim(),
-					        		 teaName:$("#newteaname").val(),
-					        		 teaTel:$("#newteatel").val(),
-					        		  jobTitle:$("#newjobtitle").val(),
-					        		   userType:$("#selUserType").val(),
-					        		   agend:$("input[name='sex']:checked").val()
+						        		teaId:$("#newteaId").val().trim(),
+						        		teaName:$("#newteaname").val(),
+						        		teaTel:$("#newteatel").val(),
+						        		jobTitle:$("#newjobtitle").val(),
+						        		userType:$("#selUserType").val(),
+						        		agend:$("input[name='sex']:checked").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){

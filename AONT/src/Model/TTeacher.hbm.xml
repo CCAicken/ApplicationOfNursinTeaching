@@ -46,7 +46,7 @@
             </column>
         </property>
         <property name="nation" type="java.lang.String">
-            <column name="nation" length="20" not-null="true">
+            <column name="nation" length="20">
                 <comment>民族</comment>
             </column>
         </property>

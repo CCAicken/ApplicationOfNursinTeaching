@@ -512,7 +512,6 @@ public class UserController {
 		tea.setAgend(agend);
 		tea.setJobTitle(jobTitle);
 		tea.setUserType(userType);
-		tea.setTeapwd(teaPwd);
 		boolean result = teadao.editTeacher(tea);
 		LayuiData laydata = new LayuiData();
 		if (result) {
@@ -544,7 +543,7 @@ public class UserController {
 	 * @param model
 	 */
 	@RequestMapping(value = "deltea")
-	public void delTea(String teaId, String teaPwd, HttpServletRequest request,
+	public void delTea(String teaId, HttpServletRequest request,
 			HttpServletResponse response, Model model) {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");

@@ -22,8 +22,12 @@ public class TeacherImpl implements TeacherDAO {
 	@Override
 	public int addTeacher(TTeacher teahcer) {
 		// TODO Auto-generated method stub
-		int count = (int) bdao.insert(teahcer);
-		return count;
+		Object count = bdao.insert(teahcer);
+		if (count != null) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	@Override

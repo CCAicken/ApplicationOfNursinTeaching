@@ -1,7 +1,6 @@
 package Model;
 
 
-
 /**
  * TTeacher entity. @author MyEclipse Persistence Tools
  */
@@ -28,8 +27,7 @@ public class TTeacher implements java.io.Serializable {
 
 	/** minimal constructor */
 	public TTeacher(String teaId, String teaName, String agend,
-			String jobTitle, String teapwd, String createTime,
-			Integer userType, String nation) {
+			String jobTitle, String teapwd, String createTime, Integer userType) {
 		this.teaId = teaId;
 		this.teaName = teaName;
 		this.agend = agend;
@@ -37,7 +35,6 @@ public class TTeacher implements java.io.Serializable {
 		this.teapwd = teapwd;
 		this.createTime = createTime;
 		this.userType = userType;
-		this.nation = nation;
 	}
 
 	/** full constructor */
