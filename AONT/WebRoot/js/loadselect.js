@@ -194,11 +194,11 @@ function loadAgendSelected(selectId,agend,stuId, form){
 			
 				if(stageData.stuAgende=="男")
 				{
-						str += "<option value='男' selected='selected'>" +男+ '</option>';
-						str += "<option value='女'>" +女+ '</option>';
+						str += "<option value='男' selected='selected'>男</option>";
+						str += "<option value='女'>女</option>";
 				}else{
-					str += "<option value='女' selected='selected'>" +女+ '</option>';
-					str += "<option value='男'>" +男+ '</option>';
+					str += "<option value='女' selected='selected'>女</option>";
+					str += "<option value='男'>男</option>";
 				}	
 			$('#' + selectId).append(str);
 			form.render("select");

@@ -20,10 +20,13 @@ public class StudentImpl implements StudentDAO {
 	}
 
 	@Override
-	public int addStu(TStudent stu) {
+	public boolean addStu(TStudent stu) {
 		// TODO Auto-generated method stub
-		int count = (int) bdao.insert(stu);
-		return count;
+		String id = (String) bdao.insert(stu);
+		if (id != null && !id.equals("")) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
