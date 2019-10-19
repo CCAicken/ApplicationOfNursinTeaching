@@ -70,7 +70,7 @@ public class PatientImpl implements PatientDAO {
 	@Override
 	public List<VMainSuit> getPatByPage(String strwhere, int page, int limit) {
 		// TODO Auto-generated method stub
-		String hql = "from MVainSuit" + strwhere;
+		String hql = "from VainSuit" + strwhere;
 		return bdao.selectByPage(hql, page, limit);
 	}
 
@@ -86,7 +86,7 @@ public class PatientImpl implements PatientDAO {
 
 	@Override
 	public List<VPatient> getPatByPageForV(String strwhere, int page, int limit) {
-		String hql = "from MVainSuit" + strwhere;
+		String hql = "from VPatient" + strwhere;
 		return bdao.selectByPage(hql, page, limit);
 	}
 
