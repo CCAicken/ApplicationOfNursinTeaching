@@ -1,10 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -681,7 +681,7 @@ public class UserController {
 
 	@RequestMapping(value = "loginout")
 	public void loginOut(String type, HttpServletRequest request,
-			HttpServletResponse response, Model model) {
+			HttpServletResponse response, Model model) throws IOException {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		// 干掉cookie和session
@@ -692,18 +692,16 @@ public class UserController {
 		if (type.equals("stu")) {
 			session.removeAttribute("stu");
 		}
-
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null && cookies.length > 0) {
-			for (Cookie c : cookies) {
-				if ("autoLogin".equals(c.getName())) {
-					// 设置cookie存活时间为0
-					c.setMaxAge(0);
-					// 将cookie响应到前台
-					response.addCookie(c);
-					break;
-				}
-			}
-		}
+		LayuiData laydata = new LayuiData();
+		session.removeAttribute("loginuser");
+		laydata.code = LayuiData.SUCCESS;
+		laydata.msg = "退出成功";
+		// 回传json字符串
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		out.write(JSON.toJSONString(laydata));
+		out.flush();
+		out.close();
 	}
 }

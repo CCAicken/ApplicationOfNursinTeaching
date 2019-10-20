@@ -170,8 +170,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									
 
 								</a>
-								<ul class="dropdown-menu" id="loginout">
-									<li><a href="#" id="a">退出</a></li>
+								<ul class="dropdown-menu">
+									<li id="loginout"><a href="#" id="a">退出</a></li>
 								</ul>
 							</li>
 							
@@ -207,8 +207,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--  Charts Plugin -->
 	<script src="js/chartist.min.js"></script>
 
-	<script type="text/javascript" src="myplugs/js/plugs.js">
-		</script>
+	<!--  <script type="text/javascript" src="myplugs/js/plugs.js">
+		</script>-->
 		<script type="text/javascript">
 			//添加编辑弹出层
 			function updatePwd(title, id) {
@@ -227,7 +227,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<script type="text/javascript">
     	$(document).ready(function(){
-	    	$('#loginout li').bind('click',function(){alert("ok")}); 
+	    	$('#loginout').bind('click',function(){
+	    		alert("ok");
+	    		$.ajax({
+					type: 'get',
+					url: 'user/loginout',
+					datatype: 'json',
+					data:{
+						type:'tea'
+					},
+					success: function(data) {
+						if(data.code=="0"){
+							window.location.href = "login.html";
+						}else{
+							layer.msg(data.msg,{icon:2});
+						}
+					},
+					error: function() {}
+				});
+	    	}); 
 
 $(".nav li").click(function(){
 	
