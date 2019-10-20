@@ -91,11 +91,15 @@ public class TeacherImpl implements TeacherDAO {
 	public TTeacher teaLogin(String teaId, String pwd) {
 		// TODO Auto-generated method stub
 		TTeacher teacher = (TTeacher) bdao.findById(TTeacher.class, teaId);
-		if (pwd.equals(teacher.getTeapwd())) {
-			return teacher;
+		if (teacher == null) {
+			return null;
 		} else {
+			if (pwd.equals(teacher.getTeapwd())) {
+				return teacher;
+			}
 			return null;
 		}
+
 	}
 
 	@Override
