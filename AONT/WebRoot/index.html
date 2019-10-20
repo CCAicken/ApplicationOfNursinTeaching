@@ -170,8 +170,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									
 
 								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">退出</a></li>
+								<ul class="dropdown-menu" id="loginout">
+									<li><a href="#" id="a">退出</a></li>
 								</ul>
 							</li>
 							
@@ -212,24 +212,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="js/material-dashboard.js"></script>
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-	
-	<script type="text/javascript" src="myplugs/js/plugs.js">
-		</script>
-		<script type="text/javascript">
-			//添加编辑弹出层
-			function updatePwd(title, id) {
-				$.jq_Panel({
-					title: title,
-					iframeWidth: 500,
-					iframeHeight: 300,
-					url: "updatePwd.html"
-				});
-			}
-		</script>
-
 
 	<script type="text/javascript">
     	$(document).ready(function(){
+	    	$('#loginout li').bind('click',function(){alert("ok")}); 
 
 $(".nav li").click(function(){
 	
@@ -243,8 +229,6 @@ $(".nav_kids li").click(function(){
 	$(this).addClass("active");
 	
 })
-
-			// Javascript method's body can be found in assets/js/demos.js
 
     	});
 	</script>

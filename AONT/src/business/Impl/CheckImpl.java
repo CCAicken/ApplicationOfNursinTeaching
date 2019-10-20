@@ -51,7 +51,7 @@ public class CheckImpl implements CheckDAO {
 
 	@Override
 	public int getVCheckAmount(String wherecondition) {
-		String hql = "selct count(*) from VCheck ";
+		String hql = "select count(*) from VCheck ";
 		if (wherecondition != null && wherecondition.equals("")) {
 			hql += wherecondition;
 		}

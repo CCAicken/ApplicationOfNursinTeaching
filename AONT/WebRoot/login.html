@@ -1,3 +1,8 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,10 +88,10 @@
               
             <form method="post" class="am-form">
               <label for="account">账号:</label>
-              <input type="email" name="" id="email" value="">
+              <input type="email" name="" id="stuId" value="">
               <br>
               <label for="password">密码:</label>
-              <input type="password" name="" id="password" value="">
+              <input type="password" name="" id="stuPwd" value="">
               <br>
               <label for="remember-me">
                     <a href="#" class="forget">忘记密码？</a>
@@ -95,13 +100,69 @@
               <div class="am-cf">
                
                
-                <button type="button" class="am-btn am-btn-default am-btn-block btnlogin">登录</button>
+                <button type="button" class="am-btn am-btn-default am-btn-block btnlogin" id="btnLogin">登录</button>
               </div>
             </form>
            
           </div>
         </div>
     </div>
-        
-        </body>
+	<script type="text/javascript" src="layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/loadselect.js"></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+	<script>
+		$(document).ready(function(){
+		  $("#btnLogin").click(function(){
+		    var stuId=$("#stuId").val().trim();
+		    var stuPwd=$("#stuPwd").val().trim();
+		    //alert(stuId+stuPwd);
+		    if(stuId==null||stuId==""){
+		    	layer.alert('账号不能为空', {
+		    		title:"提示",
+				  //icon: 1,
+				  //skin: 'layer-ext-moon' //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+				})
+		    }
+		    else if(stuPwd==null||stuPwd==""){
+		    	layer.alert('账号不能为空', {
+		    		title:"提示",
+				  //icon: 1,
+				  //skin: 'layer-ext-moon' //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则，去这里查阅
+				})
+		    }
+		    else{
+		    	$.ajax({
+		    		type: 'get',
+					url: "user/tealogin",
+					dataType: 'json',
+					data:{
+						teaId:stuId,
+						teaPwd:stuPwd
+					},
+					success:function(data){
+						if(data.code == 0){
+							//layer.confirm(data.msg, {
+								//icon: 1,
+								//btn: ['确定']
+							//},function(){
+								window.location.href='index.html';
+							//});
+						}else{
+							layer.confirm(data.msg, {
+								icon: 6,
+								btn: ['确定']
+							});
+						}
+					},error:function(){
+						layer.confirm('出现错误，删除失败，请重试！', {
+						icon: 6,
+						btn: ['确定']
+						});
+					},
+		    	})
+		    }
+		  });
+		});
+	</script>
+</body>
 </html>
