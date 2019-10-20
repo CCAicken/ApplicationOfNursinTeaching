@@ -50,6 +50,7 @@ public class UserController {
 			session.setAttribute("student", stu);
 			laydata.code = LayuiData.SUCCESS;
 			laydata.msg = "登录成功";
+			laydata.data = stu;
 		} else {
 			laydata.code = LayuiData.ERRR;
 			laydata.msg = "登录失败";
