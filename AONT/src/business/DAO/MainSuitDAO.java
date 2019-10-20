@@ -60,6 +60,14 @@ public interface MainSuitDAO {
 	public int getMsCoun(String strwhere);
 
 	/**
+	 * 是否已有主诉
+	 * 
+	 * @param strwhere
+	 * @return
+	 */
+	public boolean isExit(Integer patId);
+
+	/**
 	 * 分页获取主诉信息
 	 * 
 	 * @param strwhere

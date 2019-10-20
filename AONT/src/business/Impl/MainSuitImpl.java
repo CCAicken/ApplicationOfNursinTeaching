@@ -69,6 +69,19 @@ public class MainSuitImpl implements MainSuitDAO {
 	}
 
 	@Override
+	public boolean isExit(Integer patId) {
+		// TODO Auto-generated method stub
+		String hql = "select count(mainSuitId) from TMainSuit where mainSuitId="
+				+ patId;
+
+		Integer count = bdao.selectValue(hql);
+		if (count != null && count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public List<VMainSuit> selMsByPage(String strwhere, int page, int limit) {
 		// TODO Auto-generated method stub
 		String hql = "from VMainSuit" + strwhere;

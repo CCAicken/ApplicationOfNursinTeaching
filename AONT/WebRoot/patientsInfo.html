@@ -660,6 +660,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									                curr:1
 									                }
 									            });	
+									            $(".layui-input").val("");
 												layer.closeAll();
 											});          				 
 					        			}
@@ -679,6 +680,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        	});  
 		  				},
 		  				cancel: function(){ 
+		  					$(".layui-input").val("");
 		  				}
 					});
 		  		})

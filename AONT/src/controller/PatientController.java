@@ -289,21 +289,28 @@ public class PatientController {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		MainSuitImpl mdao = new MainSuitImpl();
-		TMainSuit ms = new TMainSuit();
-		ms.setDegree(degree);
-		ms.setLengthOfTime(lengthOfTime);
-		ms.setNature(nature);
-		ms.setSymptom(symptom);
-		ms.setPatId(patId);
-		int count = mdao.addMainSuit(ms);
 		LayuiData laydata = new LayuiData();
-		if (count > 0) {
-			laydata.code = LayuiData.SUCCESS;
-			laydata.msg = "添加成功";
-		} else {
+		if (mdao.isExit(patId)) {
 			laydata.code = LayuiData.ERRR;
-			laydata.msg = "添加失败";
+			laydata.msg = "该病人已有主诉";
+		} else {
+			TMainSuit ms = new TMainSuit();
+			ms.setDegree(degree);
+			ms.setLengthOfTime(lengthOfTime);
+			ms.setNature(nature);
+			ms.setSymptom(symptom);
+			ms.setPatId(patId);
+			int count = mdao.addMainSuit(ms);
+
+			if (count > 0) {
+				laydata.code = LayuiData.SUCCESS;
+				laydata.msg = "添加成功";
+			} else {
+				laydata.code = LayuiData.ERRR;
+				laydata.msg = "添加失败";
+			}
 		}
+
 		Writer out;
 		try {
 			out = response.getWriter();

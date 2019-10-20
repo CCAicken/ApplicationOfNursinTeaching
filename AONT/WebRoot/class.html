@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--班级添加div  -->
 		<div id="div_addcollege"
 			style="display: none;text-align: center; margin-top: 15%;">
-			<form class="layui-form layui-form-pane">
+			<form class="layui-form layui-form-pane" lay-filter="form_add">
 				  <div class="layui-form-item">
 				    <label class="layui-form-label">班级名称:</label>
 				    <div class="layui-input-inline">
@@ -125,11 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<script>
 			layui.use(['layer','form','table'], function(){
-				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
-				
-				loadSelect("grade","addclassgrade", form); 
-		  		loadSelect("tea","addclasstea", form); 
-				
+				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form; 
 				/*加载表格*/
 				table.render({
 					elem : '#classlist',
@@ -312,6 +308,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				//添加班级按钮事件
 		  		$("#addclass").click(function(){ 
+		  			loadSelect("grade","addclassgrade", form); 
+		  			loadSelect("tea","addclasstea", form); 
 		  			layer.open({
 		  				title:"添加班级",
 		  				type: 1,
@@ -344,6 +342,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									                curr:1
 									                }
 									            });	
+									              $(".layui-input").val("");
 												layer.closeAll();
 											});          				 
 					        			}
@@ -363,6 +362,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        	});  
 		  				},
 		  				cancel: function(){ 
+		  				 $(".layui-input").val("");
+		  					// $("#newclassname").val("");
 		  				}
 					});
 		  		})

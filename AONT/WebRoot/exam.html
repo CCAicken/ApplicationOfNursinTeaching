@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			layui.use(['layer','form','laydate','table'], function(){
 				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form,laydate=layui.laydate;
 				
-		  		loadSelect("tea","teaId", form); 
+		  		
 				//执行一个laydate实例
 				 laydate.render({
 				   elem: '#startTime', //指定元素
@@ -334,6 +334,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				//添加班级按钮事件
 		  		$("#addstu").click(function(){ 
+		  			loadSelect("tea","teaId", form); 
 		  			layer.open({
 		  				title:"添加考试",
 		  				type: 1,
@@ -377,6 +378,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									                curr:1
 									                }
 									            });	
+									             $(".layui-input").val("");
 												layer.closeAll();
 											});          				 
 					        			}
@@ -396,6 +398,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        	});  
 		  				},
 		  				cancel: function(){ 
+		  					 $(".layui-input").val("");
 		  				}
 					});
 		  		})

@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  <div class="layui-form-item">
 				    <label class="layui-form-label">病人姓名:</label> 
 				    <div class="layui-input-inline">
-				      <input type="text" id="oldpatName"  lay-verify="required" autocomplete="off" class="layui-input">
+				      <input type="text" id="oldpatName" readonly="readonly"  lay-verify="required" autocomplete="off" class="layui-input">
 				    </div>
 				  </div>
 				  <div class="layui-form-item">
@@ -96,38 +96,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			style="display: none;text-align: center; margin-top: 15%;">
 			<form class="layui-form layui-form-pane">
 				  <div class="layui-form-item">
-				    <label class="layui-form-label">学生账号:</label> 
+				    <label class="layui-form-label">病人姓名:</label> 
 				    <div class="layui-input-inline">
-				      <input type="text" id="addStuId"  lay-verify="required" autocomplete="off" class="layui-input">
+				    	 <select id="addPatId"  lay-filter="addStuAgend" lay-search> </select>
+				     
 				    </div>
 				  </div>
 				  <div class="layui-form-item">
-				    <label class="layui-form-label">学生姓名:</label>
+				    <label class="layui-form-label">症状:</label>
 				    <div class="layui-input-inline">
-				     <input type="text" id="addStuName"  lay-verify="required" autocomplete="off" class="layui-input">
+				     <input type="text" id="addsymptom"  lay-verify="required" autocomplete="off" class="layui-input">
 				    </div>
 				  </div>
 				  <div class="layui-form-item">
-				    <label class="layui-form-label">学生密码:</label>
+				    <label class="layui-form-label">性质:</label>
 				    <div class="layui-input-inline">
-				     <input type="text" id="addStuPwd"  lay-verify="required" autocomplete="off" class="layui-input">
+				     <input type="text" id="addnature"  lay-verify="required" autocomplete="off" class="layui-input">
 				    </div>
 				  </div>
 				   <div class="layui-form-item">
-				    <label class="layui-form-label">学生班级:</label>
+				    <label class="layui-form-label">持续时间:</label>
 				    <div class="layui-input-inline">
-				     <select id="addClassId"  lay-filter="addClassId" lay-search> 
-						</select>	
+				     <input type="text" id="addlengthOfTime"  lay-verify="required" autocomplete="off" class="layui-input">
 				    </div>
 				  </div>
 				  <div class="layui-form-item">
-				    <label class="layui-form-label">学生性别:</label>
+				    <label class="layui-form-label">程度:</label>
 				    <div class="layui-input-inline">
-				      <select id="addStuAgend"  lay-filter="addStuAgend" lay-search> 
-				      <option value="男" >男</option>
-				      <option value="女" >女</option>
-						</select>	
-				    </div> 
+				     <input type="text" id="adddegree"  lay-verify="required" autocomplete="off" class="layui-input">
+				    </div>
 				  </div>
   			</form>
 		</div>
@@ -146,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			layui.use(['layer','form','table'], function(){
 				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
 				
-				loadSelect("classname","addClassId", form); 
+				
 		  		//loadSelect("tea","addclasstea", form); 
 				
 				/*加载表格*/
@@ -291,14 +288,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        		type: 'get',
 					        		url: "patient/editms",
 					        		dataType: 'json',
-					        		data:{
-					        		 msId:data.msId,
+					        		data:{ 
+					        		 msId:data.mainSuitId,
+					        		 patId:data.patId,  
 					        		 patName:$("#oldpatName").val().trim(),
 					        		 symptom:$("#oldsymptom").val().trim(),
 					        		 nature:$("#oldnature").val().trim(),
-					        		 lengthOfTime:$("#lengthOfTime").val(),
-					        		 degree:$("#degree").val(),
-					        		 patId:data.patId  
+					        		 lengthOfTime:$("#oldlengthOfTime").val(),
+					        		 degree:$("#olddegree").val()
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
@@ -342,8 +339,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					};
 				});
 				
-				//添加班级按钮事件
-		  		$("#addstu").click(function(){ 
+				//添加按钮事件
+		  		$("#addclass").click(function(){ 
+		  		 	loadSelect("pat","addPatId", form) 
 		  			layer.open({
 		  				title:"添加主诉",
 		  				type: 1,
@@ -360,11 +358,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        		url: "patient/addms",
 					        		dataType: 'json',
 					        		data:{
-					        		 stuId:$("#addStuId").val().trim(),
-					        		 stuName:$("#addStuName").val().trim(),
-					        		 stuPwd:$("#addStuPwd").val().trim(),
-					        		 classId:$("#addClassId").val(),
-					        		 stuAgend:$("#addStuAgend").val() 
+					        		 patId:$("#addPatId").val(),
+					        		 symptom:$("#addsymptom").val().trim(),
+					        		 nature:$("#addnature").val().trim(),
+					        		 lengthOfTime:$("#addlengthOfTime").val(),
+					        		 degree:$("#adddegree").val(),
 					        		},
 					        		success:function(data){
 					        			if(data.code == 0){
@@ -379,6 +377,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									                curr:1
 									                }
 									            });	
+									            $(".layui-input").val("");
 												layer.closeAll();
 											});          				 
 					        			}
@@ -398,6 +397,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        	});  
 		  				},
 		  				cancel: function(){ 
+		  					 $(".layui-input").val("");
 		  				}
 					});
 		  		})

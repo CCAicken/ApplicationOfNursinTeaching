@@ -98,10 +98,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			</form>
 		</div>
 		
-		<!--班级添加div  -->
+		<!--添加div  -->
 		<div id="div_addcollege"
 			style="display: none;text-align: center; margin-top: 15%;">
-			<form class="layui-form layui-form-pane">
+			<form class="layui-form layui-form-pane" lay-filter="form_add" id="form_add">
 				  <div class="layui-form-item">
 				    <label class="layui-form-label">学生账号:</label> 
 				    <div class="layui-input-inline">
@@ -153,7 +153,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			layui.use(['layer','form','table'], function(){
 				var layer = layui.layer,$=layui.jquery,table=layui.table,form=layui.form;
 				
-				loadSelect("classname","addClassId", form); 
+				
 		  		//loadSelect("tea","addclasstea", form); 
 				
 				/*加载表格*/
@@ -347,6 +347,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				//添加班级按钮事件
 		  		$("#addstu").click(function(){ 
+		  		loadSelect("classname","addClassId", form); 
 		  			layer.open({
 		  				title:"添加班级",
 		  				type: 1,
@@ -381,7 +382,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									                },page: {
 									                curr:1
 									                }
-									            });	
+									            });
+									            $(".layui-input").val("");
 												layer.closeAll();
 											});          				 
 					        			}
@@ -389,18 +391,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        				layer.confirm(data.msg, {
 					        					  icon: 7,
 												  btn: ['确定']
-											});
+											}); 
 					        			}
 					        		},
 					        		error:function(){
 					        			layer.confirm('出现错误，请重试！', {
 					        				  icon: 6,
 											  btn: ['确定']
-										});
+										}); 
 					        		},
 					        	});  
 		  				},
 		  				cancel: function(){ 
+		  					 $(".layui-input").val("");
 		  				}
 					});
 		  		})
